@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luke's 2026 Garden Plan — Decatur, GA</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&family=Bitter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --soil: #2C1810;
+    --earth: #5C3D2E;
+    --mulch: #8B6F47;
+    --straw: #C9A96E;
+    --cream: #F5F0E8;
+    --sage: #6B7C5C;
+    --leaf: #4A7C59;
+    --tomato: #C0392B;
+    --pepper: #E67E22;
+    --basil: #27AE60;
+    --bean: #8E44AD;
+    --okra: #16A085;
+    --onion: #9B59B6;
+    --garlic: #F39C12;
+    --blueberry: #2980B9;
+    --border: rgba(92,61,46,0.2);
+    --shadow: 0 4px 24px rgba(44,24,16,0.12);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--cream); font-family: 'Bitter', Georgia, serif; color: var(--soil); min-height: 100vh; }
+
+  header {
+    background: var(--soil); color: var(--cream); padding: 2.5rem 2rem 2rem; position: relative; overflow: hidden;
+  }
+  header::before {
+    content: ''; position: absolute; inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.02) 40px, rgba(255,255,255,0.02) 41px);
+  }
+  header h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; position: relative; }
+  header h1 em { font-style: italic; color: var(--straw); }
+  header p { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--straw); margin-top: 0.5rem; letter-spacing: 0.08em; text-transform: uppercase; position: relative; }
+
+  .tabs { display: flex; gap: 0; background: var(--earth); overflow-x: auto; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab {
+    font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase;
+    padding: 0.8rem 1.2rem; cursor: pointer; color: var(--straw); border: none; background: transparent;
+    white-space: nowrap; transition: all 0.2s; border-bottom: 3px solid transparent;
+  }
+  .tab:hover { color: var(--cream); background: rgba(255,255,255,0.05); }
+  .tab.active { color: var(--cream); border-bottom-color: var(--straw); background: rgba(255,255,255,0.08); }
+
+  .panel { display: none; padding: 2rem; max-width: 1100px; margin: 0 auto; }
+  .panel.active { display: block; animation: fadeIn 0.3s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+  .section-title {
+    font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--soil);
+    margin-bottom: 1rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--straw);
+  }
+  .section-title span {
+    font-family: 'DM Mono', monospace; font-size: 0.6rem; font-weight: 400; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--mulch); display: block; margin-bottom: 0.15rem;
+  }
+
+  .summary-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.8rem; margin-bottom: 2rem; }
+  .summary-card {
+    background: white; border: 1px solid var(--border); border-radius: 8px; padding: 1rem; box-shadow: var(--shadow); text-align: center;
+  }
+  .summary-card .number { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; line-height: 1; }
+  .summary-card .label { font-family: 'DM Mono', monospace; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--mulch); margin-top: 0.2rem; }
+  .summary-card .detail { font-size: 0.7rem; color: var(--earth); margin-top: 0.3rem; }
+
+  .bed-container {
+    background: white; border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: var(--shadow);
+  }
+  .bed-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.8rem; }
+  .bed-label { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; }
+  .bed-note { font-size: 0.75rem; color: var(--leaf); font-style: italic; margin-top: 0.2rem; }
+  .bed-meta { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--mulch); letter-spacing: 0.06em; text-transform: uppercase; text-align: right; }
+
+  .change-callout {
+    background: #fef3cd; border: 1px solid #f0d77b; border-radius: 8px; padding: 1rem 1.2rem; margin-bottom: 1.5rem;
+    font-size: 0.82rem; line-height: 1.7;
+  }
+  .change-callout strong { color: var(--soil); }
+  .new-badge {
+    background: var(--tomato); color: white; font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 0.1rem 0.4rem; border-radius: 3px; margin-left: 0.3rem; vertical-align: middle;
+  }
+
+  .variety-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; margin-top: 0.8rem; }
+  .variety-table th { font-family: 'DM Mono', monospace; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--mulch); text-align: left; padding: 0.4rem 0.6rem; border-bottom: 2px solid var(--straw); }
+  .variety-table td { padding: 0.4rem 0.6rem; border-bottom: 1px solid var(--border); }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+  .legend-item { display: flex; align-items: center; gap: 0.35rem; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.04em; text-transform: uppercase; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  .basil-map { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 0.8rem; margin-bottom: 1.5rem; }
+  .basil-location { background: linear-gradient(135deg, #eafaf1, #d5f5e3); border: 1px solid #a9dfbf; border-radius: 8px; padding: 0.9rem; }
+  .basil-location .loc-name { font-family: 'DM Mono', monospace; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.06em; color: #1e8449; margin-bottom: 0.2rem; }
+  .basil-location .loc-count { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--basil); line-height: 1; }
+  .basil-location .loc-detail { font-size: 0.7rem; color: var(--leaf); margin-top: 0.2rem; }
+
+  .hydro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+  .hydro-card { background: linear-gradient(135deg, #eaf4fb, #d6eaf8); border: 1px solid #a9cce3; border-radius: 8px; padding: 1.2rem; }
+  .hydro-card h3 { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; color: #1a5276; margin-bottom: 0.5rem; }
+  .hydro-card ul { font-size: 0.76rem; color: #1a5276; padding-left: 1.2rem; line-height: 1.8; }
+  .hydro-card.wide { grid-column: 1 / -1; }
+
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before { content: ''; position: absolute; left: 0.5rem; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, var(--straw), var(--mulch)); }
+  .timeline-item { position: relative; margin-bottom: 1rem; background: white; border: 1px solid var(--border); border-radius: 8px; padding: 0.8rem 1rem; box-shadow: var(--shadow); }
+  .timeline-item::before { content: ''; position: absolute; left: -1.65rem; top: 0.9rem; width: 10px; height: 10px; background: var(--straw); border-radius: 50%; border: 2px solid var(--cream); }
+  .timeline-item .month { font-family: 'DM Mono', monospace; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--mulch); margin-bottom: 0.2rem; }
+  .timeline-item .action { font-size: 0.8rem; line-height: 1.6; color: var(--earth); }
+
+  .spring-note { background: #e8f5e9; border: 1px solid #a5d6a7; border-radius: 8px; padding: 1rem; font-size: 0.78rem; color: #2e7d32; line-height: 1.7; margin-bottom: 1rem; }
+
+  footer { text-align: center; font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--mulch); letter-spacing: 0.1em; text-transform: uppercase; padding: 2rem; opacity: 0.6; }
+
+  @media (max-width: 700px) {
+    .hydro-grid { grid-template-columns: 1fr; }
+    .summary-grid { grid-template-columns: repeat(2, 1fr); }
+    .basil-map { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Luke's <em>2026</em> Garden Plan</h1>
+  <p>Decatur, GA · Zone 8a · Tomato-First Revision · Updated April 3, 2026</p>
+</header>
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab('overview')">Overview</button>
+  <button class="tab" onclick="showTab('beda')">Bed A</button>
+  <button class="tab" onclick="showTab('bedbc')">Beds B & C</button>
+  <button class="tab" onclick="showTab('bags')">Grow Bags</button>
+  <button class="tab" onclick="showTab('basil')">Basil Strategy</button>
+  <button class="tab" onclick="showTab('hydro')">Hydroponics</button>
+  <button class="tab" onclick="showTab('timeline')">Timeline</button>
+  <button class="tab" onclick="showTab('spring')">Spring (History)</button>
+</div>
+
+<!-- OVERVIEW -->
+<div id="overview" class="panel active">
+  <div class="change-callout">
+    <strong>v4 Changes (April 2026):</strong>
+    <ul style="margin:0.4rem 0 0 1.2rem; line-height:1.8;">
+      <li>Bed A redesigned: 10–12 tomatoes replacing most basil <span class="new-badge">revised</span></li>
+      <li>Added San Marzano + Amish Paste for tomato jam production <span class="new-badge">new</span></li>
+      <li>Basil redistributed to grow bag edges + AeroGarden rounds <span class="new-badge">new</span></li>
+      <li>Total tomato count: 6 → 14 plants</li>
+      <li>Bed B pepper count corrected to 8 (P9/P10 removed)</li>
+      <li>Variety names on all bed maps (BigBeef, Whopper, etc.)</li>
+      <li>2nd hydro unit: cucumber nursery → tatsoi + mustard greens permanent</li>
+      <li>Lost 1 jalapeño on Gardyn tower noted</li>
+    </ul>
+  </div>
+
+  <div class="section-title"><span>At a glance</span>Production Summary</div>
+  <div class="summary-grid">
+    <div class="summary-card">
+      <div class="number" style="color:var(--tomato)">14</div>
+      <div class="label">Tomato Plants</div>
+      <div class="detail">Slicers, paste & heirlooms for jam</div>
+    </div>
+    <div class="summary-card">
+      <div class="number" style="color:var(--basil)">18</div>
+      <div class="label">Basil Plants</div>
+      <div class="detail">Distributed: bags + AeroGarden</div>
+    </div>
+    <div class="summary-card">
+      <div class="number" style="color:var(--pepper)">8</div>
+      <div class="label">Pepper Plants</div>
+      <div class="detail">Bell, Cajun, Lunchbox, Jalapeño</div>
+    </div>
+    <div class="summary-card">
+      <div class="number" style="color:var(--bean)">3</div>
+      <div class="label">Bean Zones</div>
+      <div class="detail">Stringless + Blue Lake</div>
+    </div>
+    <div class="summary-card">
+      <div class="number" style="color:var(--okra)">4</div>
+      <div class="label">Okra Plants</div>
+      <div class="detail">Bed C · Direct sow</div>
+    </div>
+    <div class="summary-card">
+      <div class="number" style="color:var(--blueberry)">8</div>
+      <div class="label">Grow Bags</div>
+      <div class="detail">Onions, garlic, herbs + more</div>
+    </div>
+  </div>
+
+  <div class="section-title"><span>Three raised beds</span>Bed Layout Overview</div>
+  <div class="bed-container" style="border-left:4px solid var(--tomato)">
+    <div class="bed-header">
+      <div>
+        <div class="bed-label">🍅 Bed A — Tomato Production Bed</div>
+        <div class="bed-note">West trellis · 8×4 ft · Heavy tomato focus for jam</div>
+      </div>
+      <div class="bed-meta">8 × 4 ft<br>~14 plants</div>
+    </div>
+    <p style="font-size:0.8rem; color:var(--earth); line-height:1.7;">Original 6 varieties on west trellis (N→S: BigBeef, Whopper, Rainbow, Brandy, Cherokee, Yellow Pear). Interior row adds San Marzano + Amish Paste for paste/jam. 2–3 basil at south end only.</p>
+  </div>
+  <div class="bed-container" style="border-left:4px solid var(--pepper)">
+    <div class="bed-header">
+      <div>
+        <div class="bed-label">🌶 Bed B — Peppers, Beans & Cucumbers</div>
+        <div class="bed-note">8 peppers + stringless beans + 2 cucumbers on trellis</div>
+      </div>
+      <div class="bed-meta">8 × 4 ft</div>
+    </div>
+    <p style="font-size:0.8rem; color:var(--earth); line-height:1.7;">N→S: Orange Bell ×2, Cajun Belle ×2, Lunchbox Orange ×2, Jalapeño ×2. Stringless Green beans in zones. 2 cucumbers at trellis base.</p>
+  </div>
+  <div class="bed-container" style="border-left:4px solid var(--bean)">
+    <div class="bed-header">
+      <div>
+        <div class="bed-label">🫘 Bed C — Beans & Okra</div>
+        <div class="bed-note">Blue Lake beans + 4 okra (direct sow)</div>
+      </div>
+      <div class="bed-meta">8 × 4 ft</div>
+    </div>
+    <p style="font-size:0.8rem; color:var(--earth); line-height:1.7;">Blue Lake bush beans filling the main area. 4 okra (Clemson Spineless) direct sown at north end — they grow 5–6 ft tall, placed to avoid shading beans.</p>
+  </div>
+</div>
+
+<!-- BED A -->
+<div id="beda" class="panel">
+  <div class="section-title"><span>Bed A · 8×4 ft</span>Tomato Production Bed</div>
+  <div class="bed-container">
+    <svg viewBox="0 0 260 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:400px;display:block;margin:0 auto;">
+      <rect x="10" y="10" width="240" height="460" rx="6" fill="#3E2723" opacity="0.08" stroke="#5D4037" stroke-width="1.5"/>
+      <text x="130" y="30" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#8B6F47" letter-spacing="0.1em">NORTH ↑</text>
+      <!-- Trellis west side -->
+      <rect x="18" y="40" width="8" height="410" rx="2" fill="#A1887F" opacity="0.5"/>
+      <text x="22" y="250" text-anchor="middle" font-family="DM Mono,monospace" font-size="5" fill="#5D4037" transform="rotate(-90,22,250)" letter-spacing="0.15em">WEST TRELLIS</text>
+      <!-- Tomatoes on trellis (N to S) -->
+      <polygon points="40,60 48,45 56,60" fill="#C0392B"/><text x="48" y="56" text-anchor="middle" font-size="5" fill="#fff" font-weight="600">BigBf</text>
+      <polygon points="40,120 48,105 56,120" fill="#C0392B"/><text x="48" y="116" text-anchor="middle" font-size="5" fill="#fff" font-weight="600">Whop</text>
+      <polygon points="40,180 48,165 56,180" fill="#E74C3C"/><text x="48" y="176" text-anchor="middle" font-size="5" fill="#fff" font-weight="600">Rainb</text>
+      <polygon points="40,240 48,225 56,240" fill="#C0392B"/><text x="48" y="236" text-anchor="middle" font-size="5" fill="#fff" font-weight="600">Brndy</text>
+      <polygon points="40,300 48,285 56,300" fill="#922B21"/><text x="48" y="296" text-anchor="middle" font-size="5" fill="#fff" font-weight="600">Chrkee</text>
+      <polygon points="40,360 48,345 56,360" fill="#F39C12"/><text x="48" y="356" text-anchor="middle" font-size="5" fill="#fff" font-weight="600">YelPr</text>
+      <!-- Interior row paste tomatoes -->
+      <polygon points="100,90 108,75 116,90" fill="#E74C3C"/><text x="108" y="86" text-anchor="middle" font-size="4.5" fill="#fff" font-weight="600">SanMrz</text>
+      <polygon points="100,150 108,135 116,150" fill="#E74C3C"/><text x="108" y="146" text-anchor="middle" font-size="4.5" fill="#fff" font-weight="600">SanMrz</text>
+      <polygon points="100,210 108,195 116,210" fill="#E74C3C"/><text x="108" y="206" text-anchor="middle" font-size="4.5" fill="#fff" font-weight="600">AmshPt</text>
+      <polygon points="100,270 108,255 116,270" fill="#E74C3C"/><text x="108" y="266" text-anchor="middle" font-size="4.5" fill="#fff" font-weight="600">AmshPt</text>
+      <polygon points="160,90 168,75 176,90" fill="#E74C3C"/><text x="168" y="86" text-anchor="middle" font-size="4.5" fill="#fff" font-weight="600">SanMrz</text>
+      <polygon points="160,150 168,135 176,150" fill="#E74C3C"/><text x="168" y="146" text-anchor="middle" font-size="4.5" fill="#fff" font-weight="600">SanMrz</text>
+      <polygon points="160,210 168,195 176,210" fill="#E74C3C"/><text x="168" y="206" text-anchor="middle" font-size="4.5" fill="#fff" font-weight="600">AmshPt</text>
+      <polygon points="160,270 168,255 176,270" fill="#E74C3C"/><text x="168" y="266" text-anchor="middle" font-size="4.5" fill="#fff" font-weight="600">AmshPt</text>
+      <!-- Basil at south end -->
+      <rect x="80" y="410" width="14" height="14" rx="3" fill="#27AE60"/><text x="87" y="420" text-anchor="middle" font-size="5" fill="#fff" font-weight="600">B1</text>
+      <rect x="120" y="410" width="14" height="14" rx="3" fill="#27AE60"/><text x="127" y="420" text-anchor="middle" font-size="5" fill="#fff" font-weight="600">B2</text>
+      <rect x="160" y="410" width="14" height="14" rx="3" fill="#27AE60"/><text x="167" y="420" text-anchor="middle" font-size="5" fill="#fff" font-weight="600">B3</text>
+      <text x="130" y="448" text-anchor="middle" font-family="DM Mono,monospace" font-size="6" fill="#8B6F47">SOUTH ↓</text>
+    </svg>
+    <div class="legend" style="margin-top:1rem;">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--tomato)"></div>Tomato (trellis)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#E74C3C"></div>Paste tomato (interior)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--basil)"></div>Basil</div>
+    </div>
+    <table class="variety-table">
+      <thead><tr><th>Variety</th><th>Type</th><th>Position</th><th>Jam Suitability</th></tr></thead>
+      <tbody>
+        <tr><td>Big Beef</td><td>Slicer</td><td>Trellis N</td><td>Good — juicy, balanced</td></tr>
+        <tr><td>Whopper</td><td>Slicer</td><td>Trellis</td><td>Good — large fruit</td></tr>
+        <tr><td>Rainbow</td><td>Heirloom</td><td>Trellis</td><td>Fair — low acid, pretty color</td></tr>
+        <tr><td>Brandywine</td><td>Heirloom</td><td>Trellis</td><td>Good — rich flavor</td></tr>
+        <tr><td>Cherokee Purple</td><td>Heirloom</td><td>Trellis</td><td>Good — complex, smoky</td></tr>
+        <tr><td>Yellow Pear</td><td>Cherry</td><td>Trellis S</td><td>Great — sweet jam</td></tr>
+        <tr><td>San Marzano</td><td>Paste</td><td>Interior</td><td>★ Best — dense, low moisture</td></tr>
+        <tr><td>Amish Paste</td><td>Paste</td><td>Interior</td><td>★ Best — meaty, sweet</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- BEDS B & C -->
+<div id="bedbc" class="panel">
+  <div class="section-title"><span>Bed B · 8×4 ft</span>Peppers, Beans & Cucumbers</div>
+  <div class="bed-container">
+    <svg viewBox="0 0 260 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:400px;display:block;margin:0 auto;">
+      <rect x="10" y="10" width="240" height="460" rx="6" fill="#3E2723" opacity="0.08" stroke="#5D4037" stroke-width="1.5"/>
+      <text x="130" y="30" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#8B6F47" letter-spacing="0.1em">NORTH ↑</text>
+      <!-- Trellis west for cucumbers -->
+      <rect x="18" y="40" width="8" height="80" rx="2" fill="#A1887F" opacity="0.5"/>
+      <text x="22" y="80" text-anchor="middle" font-family="DM Mono,monospace" font-size="5" fill="#5D4037" transform="rotate(-90,22,80)">TRELLIS</text>
+      <rect x="32" y="55" width="14" height="14" rx="3" fill="#16A085"/><text x="39" y="65" text-anchor="middle" font-size="5" fill="#fff" font-weight="600">CK1</text>
+      <rect x="32" y="95" width="14" height="14" rx="3" fill="#16A085"/><text x="39" y="105" text-anchor="middle" font-size="5" fill="#fff" font-weight="600">CK2</text>
+      <!-- Peppers N to S -->
+      <circle cx="90" cy="65" r="9" fill="var(--pepper)"/><text x="90" y="68" text-anchor="middle" font-size="4.5" fill="#fff" font-weight="600">OrgBl</text>
+      <circle cx="150" cy="65" r="9" fill="var(--pepper)"/><text x="150" y="68" text-anchor="middle" font-size="4.5" fill="#fff" font-weight="600">OrgBl</text>
+      <circle cx="90" cy="140" r="9" fill="#D35400"/><text x="90" y="143" text-anchor="middle" font-size="4.5" fill="#fff" font-weight="600">Cajun</text>
+      <circle cx="150" cy="140" r="9" fill="#D35400"/><text x="150" y="143" text-anchor="middle" font-size="4.5" fill="#fff" font-weight="600">Cajun</text>
+      <circle cx="90" cy="215" r="9" fill="#F39C12"/><text x="90" y="218" text-anchor="middle" font-size="4.5" fill="#fff" font-weight="600">Lunch</text>
+      <circle cx="150" cy="215" r="9" fill="#F39C12"/><text x="150" y="218" text-anchor="middle" font-size="4.5" fill="#fff" font-weight="600">Lunch</text>
+      <circle cx="90" cy="290" r="9" fill="#27AE60"/><text x="90" y="293" text-anchor="middle" font-size="4.5" fill="#fff" font-weight="600">Jalap</text>
+      <circle cx="150" cy="290" r="9" fill="#27AE60"/><text x="150" y="293" text-anchor="middle" font-size="4.5" fill="#fff" font-weight="600">Jalap</text>
+      <!-- Bean zone -->
+      <rect x="60" y="340" width="140" height="80" rx="4" fill="#8E44AD" opacity="0.15" stroke="#8E44AD" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="130" y="385" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#8E44AD" font-weight="500">STRINGLESS GREEN BEANS</text>
+      <text x="130" y="400" text-anchor="middle" font-family="DM Mono,monospace" font-size="5.5" fill="#8E44AD">Direct sow · Succession waves</text>
+      <text x="130" y="448" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#8B6F47">SOUTH ↓</text>
+    </svg>
+    <div class="legend" style="margin-top:1rem;">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--pepper)"></div>Pepper</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#16A085"></div>Cucumber</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--bean)"></div>Bean zone</div>
+    </div>
+  </div>
+
+  <div class="section-title"><span>Bed C · 8×4 ft</span>Beans & Okra</div>
+  <div class="bed-container">
+    <svg viewBox="0 0 260 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:400px;display:block;margin:0 auto;">
+      <rect x="10" y="10" width="240" height="460" rx="6" fill="#3E2723" opacity="0.08" stroke="#5D4037" stroke-width="1.5"/>
+      <text x="130" y="30" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#8B6F47" letter-spacing="0.1em">NORTH ↑</text>
+      <!-- Okra at north -->
+      <polygon points="60,60 68,45 76,60" fill="#16A085"/><text x="68" y="56" text-anchor="middle" font-size="5" fill="#fff" font-weight="600">OK1</text>
+      <polygon points="110,60 118,45 126,60" fill="#16A085"/><text x="118" y="56" text-anchor="middle" font-size="5" fill="#fff" font-weight="600">OK2</text>
+      <polygon points="160,60 168,45 176,60" fill="#16A085"/><text x="168" y="56" text-anchor="middle" font-size="5" fill="#fff" font-weight="600">OK3</text>
+      <polygon points="210,60 218,45 226,60" fill="#16A085"/><text x="218" y="56" text-anchor="middle" font-size="5" fill="#fff" font-weight="600">OK4</text>
+      <text x="130" y="85" text-anchor="middle" font-family="DM Mono,monospace" font-size="5.5" fill="#16A085">Clemson Spineless · Direct sow · 5-6 ft tall</text>
+      <!-- Bean zone -->
+      <rect x="30" y="100" width="200" height="340" rx="4" fill="#8E44AD" opacity="0.12" stroke="#8E44AD" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="130" y="270" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="#8E44AD" font-weight="500">BLUE LAKE BEANS</text>
+      <text x="130" y="290" text-anchor="middle" font-family="DM Mono,monospace" font-size="6" fill="#8E44AD">Direct sow · Succession every 2-3 weeks</text>
+      <text x="130" y="448" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#8B6F47">SOUTH ↓</text>
+    </svg>
+    <div class="legend" style="margin-top:1rem;">
+      <div class="legend-item"><div class="legend-dot" style="background:#16A085"></div>Okra (direct sow)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--bean)"></div>Bean zone</div>
+    </div>
+  </div>
+</div>
+
+<!-- GROW BAGS -->
+<div id="bags" class="panel">
+  <div class="section-title"><span>8 felt bags</span>Grow Bag Assignments</div>
+  <table class="variety-table">
+    <thead><tr><th>#</th><th>Contents</th><th>Status</th><th>Basil Companion</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Sweet Onions</td><td>✅ Done</td><td>—</td></tr>
+      <tr><td>2</td><td>Sweet Onions</td><td>✅ Done</td><td>—</td></tr>
+      <tr><td>3</td><td>Garlic</td><td>✅ Done</td><td>—</td></tr>
+      <tr><td>4</td><td>Herb Bag (parsley, dill, sage, basil)</td><td>✅ Started</td><td>Included</td></tr>
+      <tr><td>5</td><td>Tomato (extra variety)</td><td>🕐 Apr transplant</td><td>1 basil at edge</td></tr>
+      <tr><td>6</td><td>Tomato (extra variety)</td><td>🕐 Apr transplant</td><td>1 basil at edge</td></tr>
+      <tr><td>7</td><td>Pepper (extra variety)</td><td>🕐 Apr transplant</td><td>1 basil at edge</td></tr>
+      <tr><td>8</td><td>Pepper (extra variety)</td><td>🕐 Apr transplant</td><td>1 basil at edge</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:0.78rem; color:var(--earth); margin-top:0.8rem; line-height:1.7;">Basil companion planting at bag edges provides pest deterrence (aphids, whiteflies) and convenient harvest pairing. Each bag gets 1 basil transplant from AeroGarden round.</p>
+  <p style="font-size:0.78rem; color:var(--earth); margin-top:0.5rem; line-height:1.7;"><strong>Also:</strong> Hanging strawberry bags (separate from felt bags), 2 raspberry bushes, 2 blueberry bushes (in-ground, acidic soil), wildflower bags, rosemary.</p>
+</div>
+
+<!-- BASIL STRATEGY -->
+<div id="basil" class="panel">
+  <div class="section-title"><span>Distributed model</span>Basil Production Strategy</div>
+  <p style="font-size:0.82rem; color:var(--earth); margin-bottom:1.2rem; line-height:1.7;">Rather than dedicating Bed A space to basil, production is distributed across multiple locations for ~18 plants total — enough for serious pesto freezing.</p>
+  <div class="basil-map">
+    <div class="basil-location">
+      <div class="loc-name">Bed A South End</div>
+      <div class="loc-count">3</div>
+      <div class="loc-detail">Transplants from AeroGarden</div>
+    </div>
+    <div class="basil-location">
+      <div class="loc-name">Tomato Bags (×2)</div>
+      <div class="loc-count">2</div>
+      <div class="loc-detail">1 per bag edge · Companion</div>
+    </div>
+    <div class="basil-location">
+      <div class="loc-name">Pepper Bags (×2)</div>
+      <div class="loc-count">2</div>
+      <div class="loc-detail">1 per bag edge · Companion</div>
+    </div>
+    <div class="basil-location">
+      <div class="loc-name">Herb Bag</div>
+      <div class="loc-count">1</div>
+      <div class="loc-detail">Mixed with parsley, dill, sage</div>
+    </div>
+    <div class="basil-location">
+      <div class="loc-name">AeroGarden Rnd 1</div>
+      <div class="loc-count">30</div>
+      <div class="loc-detail">Sprouted · Transplant late Apr</div>
+    </div>
+    <div class="basil-location">
+      <div class="loc-name">AeroGarden Rnd 2</div>
+      <div class="loc-count">30</div>
+      <div class="loc-detail">Start mid-May · Succession</div>
+    </div>
+  </div>
+  <div class="bed-container" style="border-left:4px solid var(--basil)">
+    <div class="bed-label" style="margin-bottom:0.5rem;">🫙 Pesto Production Estimate</div>
+    <p style="font-size:0.8rem; color:var(--earth); line-height:1.8;">
+      At peak (June–July), 18 mature basil plants can yield 15–40 cups of leaves per week. One batch of pesto uses ~2 packed cups. That's <strong>8–20 freezer pesto portions per week</strong> at peak production.
+    </p>
+    <p style="font-size:0.78rem; color:var(--mulch); margin-top:0.5rem; line-height:1.7;">
+      <strong>Beat the bolt:</strong> In Decatur's summer heat, basil bolts by July. Pinch flower buds immediately. Round 2 AeroGarden plants arrive just as Round 1 declines.
+    </p>
+  </div>
+</div>
+
+<!-- HYDROPONICS -->
+<div id="hydro" class="panel">
+  <div class="section-title"><span>Indoor systems</span>Hydroponics & Indoor Growing</div>
+  <div class="hydro-grid">
+    <div class="hydro-card">
+      <h3>🌱 AeroGarden — Basil Starter</h3>
+      <ul>
+        <li>30-pod starter kit currently running</li>
+        <li>Basil just sprouted — light at lowest level ✓</li>
+        <li>Keep light 1–2" above seedling tops</li>
+        <li>Thin to 1 per pod at transplant time</li>
+        <li>Target transplant: late April</li>
+        <li>Round 2: start mid-May</li>
+      </ul>
+    </div>
+    <div class="hydro-card">
+      <h3>🥒 2nd Hydroponic Unit (9 ports)</h3>
+      <ul>
+        <li><strong>Now:</strong> 4 cucumbers (nursery for Bed B)</li>
+        <li>Transplant best 2 → Bed B trellis</li>
+        <li><strong>After cucumbers:</strong> Tatsoi (permanent indoor)</li>
+        <li>Mustard greens (permanent — too hot outside)</li>
+        <li>No broccoli transition (corrected from earlier)</li>
+      </ul>
+    </div>
+    <div class="hydro-card wide">
+      <h3>🌿 Gardyn Tower — 30 Pods (3 columns × 10 rows)</h3>
+      <ul style="columns:2;">
+        <li>Center column (highest light): Yellow Cherry Tomato, Jalapeño ×2, Purple Cayenne (top rows)</li>
+        <li>Center flanks: Dragon Beans ×2, Green Beans ×2</li>
+        <li>Outer columns upper: Nasturtium ×2, White Dianthus, Purple Campanula, Chamomile</li>
+        <li>Outer columns mid: Lavender, Rosemary, Thyme, Savory, Italian Parsley ×2</li>
+        <li>Bottom rows all columns: Green Bok Choy ×4, Purple Bok Choy ×3, Bunching Onions ×2, Garlic Chives ×2</li>
+        <li>⚠ Cherry tomato may outgrow tower — monitor &amp; prune</li>
+        <li>⚠ Lost 1 jalapeño — replacement reserve noted</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- TIMELINE -->
+<div id="timeline" class="panel">
+  <div class="section-title"><span>Month by month</span>2026 Season Timeline</div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="month">Early April (Now)</div>
+      <div class="action">Direct sow okra (soak seeds 12–24 hrs first, soil 65°F+). Harden off tomato transplants. AeroGarden basil sprouting. Start cucumbers in 2nd hydro unit for Bed B. Apply 2–3" straw mulch to beds after planting.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="month">Mid April</div>
+      <div class="action">Direct sow Blue Lake beans (Bed C) and Stringless Green beans (Bed B) after last frost (~Apr 15). Transplant pepper starts to Bed B. Direct sow cucumbers to Bed B trellis (or transplant from hydro).</div>
+    </div>
+    <div class="timeline-item">
+      <div class="month">Late April</div>
+      <div class="action">Transplant AeroGarden basil: 3 to Bed A south end, 1 per tomato/pepper bag. Plant tomato starts in Bed A — all varieties including San Marzano and Amish Paste.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="month">Mid May</div>
+      <div class="action">Start AeroGarden basil Round 2 for succession. Watch first-round basil for flower buds — pinch immediately. Transition 2nd hydro from cucumbers → tatsoi + mustard greens.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="month">June</div>
+      <div class="action">Peak early summer growth. Tomato staking and training. Pinch basil continuously. First harvests: beans, cucumbers, peppers.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="month">July — August</div>
+      <div class="action">Peak tomato production — harvest heavily for jam making. Freeze pesto batches weekly. Okra hitting full stride. Round 2 basil transplants replacing bolted Round 1.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SPRING HISTORY -->
+<div id="spring" class="panel">
+  <div class="section-title"><span>Completed · Historical reference</span>Spring Season — Bed A</div>
+  <div class="spring-note">This tab documents the completed spring planting in Bed A. Beds B and C were not planted in spring (skipped directly to summer). This is for reference only.</div>
+  <div class="bed-container">
+    <div class="bed-label" style="margin-bottom:0.8rem;">🌱 Bed A — Spring Layout (completed)</div>
+    <svg viewBox="0 0 260 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:400px;display:block;margin:0 auto;">
+      <rect x="10" y="10" width="240" height="460" rx="6" fill="#E8F5E9" stroke="#66BB6A" stroke-width="1"/>
+      <text x="130" y="30" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#2E7D32" letter-spacing="0.1em">NORTH ↑</text>
+      <!-- Trellis peas -->
+      <rect x="18" y="40" width="8" height="410" rx="2" fill="#66BB6A" opacity="0.4"/>
+      <text x="22" y="250" text-anchor="middle" font-family="DM Mono,monospace" font-size="5" fill="#2E7D32" transform="rotate(-90,22,250)" letter-spacing="0.1em">PEAS ON TRELLIS (~24)</text>
+      <!-- Scallion band north -->
+      <rect x="40" y="45" width="200" height="30" rx="3" fill="#81C784" opacity="0.3" stroke="#4CAF50" stroke-width="0.5"/>
+      <text x="140" y="64" text-anchor="middle" font-family="DM Mono,monospace" font-size="6" fill="#2E7D32">SCALLIONS</text>
+      <!-- Garlic chives band -->
+      <rect x="40" y="85" width="200" height="30" rx="3" fill="#A5D6A7" opacity="0.3" stroke="#4CAF50" stroke-width="0.5"/>
+      <text x="140" y="104" text-anchor="middle" font-family="DM Mono,monospace" font-size="6" fill="#2E7D32">GARLIC CHIVES</text>
+      <!-- Early greens zone -->
+      <rect x="40" y="130" width="200" height="180" rx="4" fill="#C8E6C9" opacity="0.3" stroke="#4CAF50" stroke-width="0.5" stroke-dasharray="4,3"/>
+      <text x="140" y="200" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#1B5E20" font-weight="500">EARLY GREENS ZONE</text>
+      <text x="140" y="218" text-anchor="middle" font-family="DM Mono,monospace" font-size="5" fill="#2E7D32">Bok Choy · Tatsoi · Mustards</text>
+      <text x="140" y="232" text-anchor="middle" font-family="DM Mono,monospace" font-size="5" fill="#2E7D32">Wasabi · Baby Lettuce Mix</text>
+      <text x="140" y="246" text-anchor="middle" font-family="DM Mono,monospace" font-size="5" fill="#2E7D32">(cut-and-come-again)</text>
+      <!-- Succession greens south -->
+      <rect x="40" y="330" width="200" height="110" rx="4" fill="#DCEDC8" opacity="0.4" stroke="#8BC34A" stroke-width="0.5" stroke-dasharray="4,3"/>
+      <text x="140" y="385" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#33691E" font-weight="500">SUCCESSION GREENS</text>
+      <text x="140" y="402" text-anchor="middle" font-family="DM Mono,monospace" font-size="5" fill="#558B2F">Multiple sowings through spring</text>
+      <text x="130" y="458" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#2E7D32">SOUTH ↓</text>
+    </svg>
+  </div>
+  <div class="bed-container" style="opacity:0.6;">
+    <div class="bed-label">Beds B & C — Spring</div>
+    <p style="font-size:0.8rem; color:var(--mulch); margin-top:0.4rem;">Not planted in spring. Skipped directly to summer planting.</p>
+  </div>
+</div>
+
+<footer>Luke's Garden · Decatur, GA · Zone 8a · Updated April 2026 · v4 Tomato-First Revision</footer>
+
+<script>
+  function showTab(id) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+  }
+</script>
+</body>
+</html>
