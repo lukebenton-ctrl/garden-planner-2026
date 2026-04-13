@@ -816,8 +816,8 @@
   .garden-map-wrap svg { width: 100%; max-width: 720px; display: block; margin: 0 auto; cursor: pointer; }
   .garden-map-wrap svg .bed-zone { transition: opacity 0.15s, transform 0.15s; cursor: pointer; }
   .garden-map-wrap svg .bed-zone:hover { opacity: 0.85; }
-  .garden-map-wrap svg .plant-dot { cursor: pointer; transition: transform 0.15s; }
-  .garden-map-wrap svg .plant-dot:hover { transform: scale(1.2); }
+  .garden-map-wrap svg .plant-dot { cursor: pointer; transition: opacity 0.15s, filter 0.15s; }
+  .garden-map-wrap svg .plant-dot:hover { opacity: 0.8; filter: brightness(1.2); }
 
   /* ── Collapsible Timeline (Overview) ── */
   .timeline-section { margin-bottom: 1.5rem; }
@@ -1031,9 +1031,9 @@
     </div>
     <div class="summary-card" onclick="showTab('bedbc'); document.querySelector('[onclick*=bedbc]').classList.add('active');" style="cursor:pointer;">
       <div class="icon">&#127798;</div>
-      <div class="number" style="color:var(--orange)">8</div>
+      <div class="number" style="color:var(--orange)">10</div>
       <div class="label">Pepper Plants</div>
-      <div class="detail">Bell, Cajun, Lunchbox, Jalape&ntilde;o</div>
+      <div class="detail">Bell, Cajun, Lunchbox, Jalape&ntilde;o, Better Belle</div>
     </div>
     <div class="summary-card" onclick="showTab('bedbc'); document.querySelector('[onclick*=bedbc]').classList.add('active');" style="cursor:pointer;">
       <div class="icon">&#129753;</div>
@@ -1131,52 +1131,59 @@
         <text x="370" y="72" text-anchor="middle" font-family="Fraunces,serif" font-size="13" fill="#9a3412" font-weight="700">Bed B</text>
         <text x="370" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#ea580c">PEPPERS, BEANS &amp; CUKES &middot; 8&times;4 ft</text>
 
-        <!-- Peppers (west side) -->
-        <circle class="plant-dot" cx="300" cy="110" r="9" fill="#fb923c" data-tip="Orange Bell" onclick="event.stopPropagation(); navigateToPlant('g-orgbell')"/>
-        <text x="300" y="113" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">OB</text>
-        <circle class="plant-dot" cx="340" cy="110" r="9" fill="#fb923c" data-tip="Orange Bell" onclick="event.stopPropagation(); navigateToPlant('g-orgbell')"/>
-        <text x="340" y="113" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">OB</text>
+        <!-- Peppers (west side) — 10 total -->
+        <circle class="plant-dot" cx="298" cy="105" r="8" fill="#fb923c" data-tip="Orange Bell #1" onclick="event.stopPropagation(); navigateToPlant('g-orgbell')"/>
+        <text x="298" y="108" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">OB</text>
+        <circle class="plant-dot" cx="330" cy="105" r="8" fill="#fb923c" data-tip="Orange Bell #2" onclick="event.stopPropagation(); navigateToPlant('g-orgbell')"/>
+        <text x="330" y="108" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">OB</text>
 
-        <circle class="plant-dot" cx="300" cy="155" r="9" fill="#ea580c" data-tip="Cajun Belle" onclick="event.stopPropagation(); navigateToPlant('g-cajun')"/>
-        <text x="300" y="158" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">CB</text>
-        <circle class="plant-dot" cx="340" cy="155" r="9" fill="#ea580c" data-tip="Cajun Belle" onclick="event.stopPropagation(); navigateToPlant('g-cajun')"/>
-        <text x="340" y="158" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">CB</text>
+        <circle class="plant-dot" cx="298" cy="140" r="8" fill="#ea580c" data-tip="Cajun Belle #1" onclick="event.stopPropagation(); navigateToPlant('g-cajun')"/>
+        <text x="298" y="143" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">CB</text>
+        <circle class="plant-dot" cx="330" cy="140" r="8" fill="#ea580c" data-tip="Cajun Belle #2" onclick="event.stopPropagation(); navigateToPlant('g-cajun')"/>
+        <text x="330" y="143" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">CB</text>
 
-        <circle class="plant-dot" cx="300" cy="200" r="9" fill="#f59e0b" data-tip="Lunchbox Orange" onclick="event.stopPropagation(); navigateToPlant('g-lunch')"/>
-        <text x="300" y="203" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">LB</text>
-        <circle class="plant-dot" cx="340" cy="200" r="9" fill="#f59e0b" data-tip="Lunchbox Orange" onclick="event.stopPropagation(); navigateToPlant('g-lunch')"/>
-        <text x="340" y="203" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">LB</text>
+        <circle class="plant-dot" cx="298" cy="175" r="8" fill="#f59e0b" data-tip="Lunchbox Orange #1" onclick="event.stopPropagation(); navigateToPlant('g-lunch')"/>
+        <text x="298" y="178" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">LB</text>
+        <circle class="plant-dot" cx="330" cy="175" r="8" fill="#f59e0b" data-tip="Lunchbox Orange #2" onclick="event.stopPropagation(); navigateToPlant('g-lunch')"/>
+        <text x="330" y="178" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">LB</text>
 
-        <circle class="plant-dot" cx="300" cy="245" r="9" fill="#22c55e" data-tip="Jalape&ntilde;o" onclick="event.stopPropagation(); navigateToPlant('g-jalap')"/>
-        <text x="300" y="248" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">JL</text>
-        <circle class="plant-dot" cx="340" cy="245" r="9" fill="#22c55e" data-tip="Jalape&ntilde;o" onclick="event.stopPropagation(); navigateToPlant('g-jalap')"/>
-        <text x="340" y="248" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">JL</text>
+        <circle class="plant-dot" cx="298" cy="210" r="8" fill="#22c55e" data-tip="Jalape&ntilde;o #1" onclick="event.stopPropagation(); navigateToPlant('g-jalap')"/>
+        <text x="298" y="213" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">JL</text>
+        <circle class="plant-dot" cx="330" cy="210" r="8" fill="#22c55e" data-tip="Jalape&ntilde;o #2" onclick="event.stopPropagation(); navigateToPlant('g-jalap')"/>
+        <text x="330" y="213" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">JL</text>
+
+        <circle class="plant-dot" cx="298" cy="245" r="8" fill="#4ade80" data-tip="Better Belle #1" onclick="event.stopPropagation(); navigateToPlant('g-orgbell')"/>
+        <text x="298" y="248" text-anchor="middle" font-size="3.5" fill="white" font-weight="700" pointer-events="none">BB</text>
+        <circle class="plant-dot" cx="330" cy="245" r="8" fill="#4ade80" data-tip="Better Belle #2" onclick="event.stopPropagation(); navigateToPlant('g-orgbell')"/>
+        <text x="330" y="248" text-anchor="middle" font-size="3.5" fill="white" font-weight="700" pointer-events="none">BB</text>
 
         <!-- Bean zones (center-right) -->
-        <rect x="365" y="100" width="45" height="70" rx="5" fill="#8b5cf6" opacity="0.15" stroke="#8b5cf6" stroke-width="1"/>
-        <text x="387" y="130" text-anchor="middle" font-size="5.5" fill="#7c3aed" font-weight="700">Bean</text>
-        <text x="387" y="140" text-anchor="middle" font-size="5" fill="#7c3aed">Sow1</text>
-        <rect x="365" y="180" width="45" height="70" rx="5" fill="#8b5cf6" opacity="0.10" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="4,3"/>
-        <text x="387" y="210" text-anchor="middle" font-size="5.5" fill="#7c3aed" font-weight="700">Bean</text>
-        <text x="387" y="220" text-anchor="middle" font-size="5" fill="#7c3aed">Sow2</text>
-        <rect x="285" y="280" width="125" height="50" rx="5" fill="#8b5cf6" opacity="0.06" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="4,3"/>
-        <text x="347" y="308" text-anchor="middle" font-size="5.5" fill="#7c3aed" font-weight="700">Bean Sow 3+</text>
+        <rect x="355" y="100" width="45" height="65" rx="5" fill="#8b5cf6" opacity="0.15" stroke="#8b5cf6" stroke-width="1"/>
+        <text x="377" y="130" text-anchor="middle" font-size="5" fill="#7c3aed" font-weight="700">Bean</text>
+        <text x="377" y="140" text-anchor="middle" font-size="4.5" fill="#7c3aed">Sow1</text>
+        <rect x="355" y="175" width="45" height="65" rx="5" fill="#8b5cf6" opacity="0.10" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="377" y="205" text-anchor="middle" font-size="5" fill="#7c3aed" font-weight="700">Bean</text>
+        <text x="377" y="215" text-anchor="middle" font-size="4.5" fill="#7c3aed">Sow2</text>
+        <rect x="285" y="270" width="115" height="55" rx="5" fill="#8b5cf6" opacity="0.06" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="342" y="300" text-anchor="middle" font-size="5" fill="#7c3aed" font-weight="700">Bean Sow 3+ (smaller)</text>
 
-        <!-- East trellis + cucumbers -->
-        <rect x="455" y="95" width="6" height="240" rx="2" fill="#99f6e4" stroke="#14b8a6" stroke-width="1"/>
-        <text x="458" y="215" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="#0f766e" font-weight="600" transform="rotate(90,458,215)">EAST TRELLIS</text>
-        <rect class="plant-dot" x="425" y="105" width="16" height="16" rx="4" fill="#14b8a6" data-tip="Slicer Cucumber" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
-        <text x="433" y="116" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">CK</text>
-        <rect class="plant-dot" x="425" y="135" width="16" height="16" rx="4" fill="#14b8a6" data-tip="Slicer Cucumber" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
-        <text x="433" y="146" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">CK</text>
-        <rect class="plant-dot" x="425" y="170" width="16" height="16" rx="4" fill="#0d9488" data-tip="Pickling CK (Sow 1)" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
-        <text x="433" y="181" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">PK</text>
-        <rect class="plant-dot" x="425" y="200" width="16" height="16" rx="4" fill="#0d9488" data-tip="Pickling CK (Sow 1)" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
-        <text x="433" y="211" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">PK</text>
-        <rect class="plant-dot" x="425" y="235" width="16" height="16" rx="4" fill="#0d9488" stroke="#fbbf24" stroke-width="1.5" data-tip="Pickling CK (Sow 2)" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
-        <text x="433" y="246" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">P2</text>
-        <rect class="plant-dot" x="425" y="265" width="16" height="16" rx="4" fill="#0d9488" stroke="#fbbf24" stroke-width="1.5" data-tip="Pickling CK (Sow 2)" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
-        <text x="433" y="276" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">P2</text>
+        <!-- East trellis — pickling cucumbers only -->
+        <rect x="455" y="95" width="6" height="250" rx="2" fill="#99f6e4" stroke="#14b8a6" stroke-width="1"/>
+        <text x="458" y="220" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="#0f766e" font-weight="600" transform="rotate(90,458,220)">EAST &middot; PICKLING CK</text>
+        <!-- Sow 1 -->
+        <rect class="plant-dot" x="425" y="105" width="16" height="16" rx="4" fill="#0d9488" data-tip="Pickling CK Sow 1" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
+        <text x="433" y="116" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">P1</text>
+        <rect class="plant-dot" x="425" y="130" width="16" height="16" rx="4" fill="#0d9488" data-tip="Pickling CK Sow 1" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
+        <text x="433" y="141" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">P1</text>
+        <rect class="plant-dot" x="425" y="155" width="16" height="16" rx="4" fill="#0d9488" data-tip="Pickling CK Sow 1" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
+        <text x="433" y="166" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">P1</text>
+        <!-- Sow 2 -->
+        <rect class="plant-dot" x="425" y="195" width="16" height="16" rx="4" fill="#0d9488" stroke="#fbbf24" stroke-width="1.5" data-tip="Pickling CK Sow 2" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
+        <text x="433" y="206" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">P2</text>
+        <rect class="plant-dot" x="425" y="220" width="16" height="16" rx="4" fill="#0d9488" stroke="#fbbf24" stroke-width="1.5" data-tip="Pickling CK Sow 2" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
+        <text x="433" y="231" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">P2</text>
+        <rect class="plant-dot" x="425" y="245" width="16" height="16" rx="4" fill="#0d9488" stroke="#fbbf24" stroke-width="1.5" data-tip="Pickling CK Sow 2" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
+        <text x="433" y="256" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">P2</text>
       </g>
 
       <!-- ══ BED C ══ -->
@@ -1529,7 +1536,7 @@
   <div class="section-title">Peppers, Beans &amp; Cucumbers <span class="tag">Bed B &middot; 8&times;4 ft</span></div>
   <div class="bed-container">
     <div class="bed-svg-wrap">
-      <svg viewBox="0 0 340 620" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 340 600" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="bedGradB" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stop-color="#fff7ed"/>
@@ -1542,15 +1549,15 @@
         </defs>
 
         <!-- Bed outline -->
-        <rect x="10" y="10" width="320" height="595" rx="10" fill="url(#bedGradB)" stroke="#fdba74" stroke-width="2"/>
+        <rect x="10" y="10" width="320" height="575" rx="10" fill="url(#bedGradB)" stroke="#fdba74" stroke-width="2"/>
 
         <!-- Direction labels -->
-        <text x="25" y="305" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#9a3412" font-weight="600" transform="rotate(-90,25,305)">&#8592; WEST</text>
-        <text x="320" y="305" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#0f766e" font-weight="600" transform="rotate(90,320,305)">EAST &#8594;</text>
+        <text x="25" y="300" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#9a3412" font-weight="600" transform="rotate(-90,25,300)">&#8592; WEST</text>
+        <text x="320" y="300" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#0f766e" font-weight="600" transform="rotate(90,320,300)">EAST &#8594;</text>
         <text x="170" y="30" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#9a3412" letter-spacing="0.12em" font-weight="600">NORTH</text>
 
-        <!-- ══════ PEPPER ZONE (west / left side) ══════ -->
-        <text x="90" y="50" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#9a3412" font-weight="700" letter-spacing="0.06em">PEPPERS</text>
+        <!-- ══════ PEPPERS (west / left side) ══════ -->
+        <text x="90" y="50" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#9a3412" font-weight="700" letter-spacing="0.06em">PEPPERS (10)</text>
 
         <!-- Row 1: Orange Bell -->
         <g filter="url(#shadowB)">
@@ -1566,137 +1573,134 @@
 
         <!-- Row 2: Cajun Belle -->
         <g filter="url(#shadowB)">
-          <circle cx="60" cy="155" r="18" fill="#ea580c" data-tip="Cajun Belle Pepper #1 &mdash; semi-hot, 100-1,000 SHU"/>
-          <text x="60" y="151" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="white" font-weight="700">Cajun</text>
-          <text x="60" y="161" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="white" font-weight="700">Belle</text>
+          <circle cx="60" cy="145" r="18" fill="#ea580c" data-tip="Cajun Belle Pepper #1 &mdash; semi-hot, 100-1,000 SHU"/>
+          <text x="60" y="141" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="white" font-weight="700">Cajun</text>
+          <text x="60" y="151" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="white" font-weight="700">Belle</text>
         </g>
         <g filter="url(#shadowB)">
-          <circle cx="125" cy="155" r="18" fill="#ea580c" data-tip="Cajun Belle Pepper #2 &mdash; semi-hot, 100-1,000 SHU"/>
-          <text x="125" y="151" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="white" font-weight="700">Cajun</text>
-          <text x="125" y="161" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="white" font-weight="700">Belle</text>
+          <circle cx="125" cy="145" r="18" fill="#ea580c" data-tip="Cajun Belle Pepper #2 &mdash; semi-hot, 100-1,000 SHU"/>
+          <text x="125" y="141" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="white" font-weight="700">Cajun</text>
+          <text x="125" y="151" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="white" font-weight="700">Belle</text>
         </g>
 
         <!-- Row 3: Lunchbox -->
         <g filter="url(#shadowB)">
-          <circle cx="60" cy="225" r="18" fill="#f59e0b" data-tip="Lunchbox Orange Pepper #1 &mdash; sweet snacker"/>
-          <text x="60" y="221" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">Lunch-</text>
-          <text x="60" y="231" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">box</text>
+          <circle cx="60" cy="205" r="18" fill="#f59e0b" data-tip="Lunchbox Orange Pepper #1 &mdash; sweet snacker"/>
+          <text x="60" y="201" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">Lunch-</text>
+          <text x="60" y="211" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">box</text>
         </g>
         <g filter="url(#shadowB)">
-          <circle cx="125" cy="225" r="18" fill="#f59e0b" data-tip="Lunchbox Orange Pepper #2 &mdash; sweet snacker"/>
-          <text x="125" y="221" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">Lunch-</text>
-          <text x="125" y="231" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">box</text>
+          <circle cx="125" cy="205" r="18" fill="#f59e0b" data-tip="Lunchbox Orange Pepper #2 &mdash; sweet snacker"/>
+          <text x="125" y="201" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">Lunch-</text>
+          <text x="125" y="211" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">box</text>
         </g>
 
         <!-- Row 4: Jalapeno -->
         <g filter="url(#shadowB)">
-          <circle cx="60" cy="295" r="18" fill="#22c55e" data-tip="Jalape&ntilde;o Pepper #1 &mdash; 2,500-8,000 SHU"/>
-          <text x="60" y="291" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">Jala-</text>
-          <text x="60" y="301" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">pe&ntilde;o</text>
+          <circle cx="60" cy="265" r="18" fill="#22c55e" data-tip="Jalape&ntilde;o Pepper #1 &mdash; 2,500-8,000 SHU"/>
+          <text x="60" y="261" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">Jala-</text>
+          <text x="60" y="271" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">pe&ntilde;o</text>
         </g>
         <g filter="url(#shadowB)">
-          <circle cx="125" cy="295" r="18" fill="#22c55e" data-tip="Jalape&ntilde;o Pepper #2 &mdash; 2,500-8,000 SHU"/>
-          <text x="125" y="291" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">Jala-</text>
-          <text x="125" y="301" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">pe&ntilde;o</text>
+          <circle cx="125" cy="265" r="18" fill="#22c55e" data-tip="Jalape&ntilde;o Pepper #2 &mdash; 2,500-8,000 SHU"/>
+          <text x="125" y="261" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">Jala-</text>
+          <text x="125" y="271" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">pe&ntilde;o</text>
         </g>
 
-        <!-- ══════ EAST TRELLIS (right side) ══════ -->
-        <rect x="290" y="40" width="12" height="540" rx="4" fill="#99f6e4" stroke="#14b8a6" stroke-width="1.5"/>
-        <text x="296" y="310" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#0f766e" font-weight="700" transform="rotate(90,296,310)" letter-spacing="0.06em">EAST TRELLIS &mdash; CUCUMBERS</text>
+        <!-- Row 5: Better Belle (NEW) -->
+        <g filter="url(#shadowB)">
+          <circle cx="60" cy="325" r="18" fill="#4ade80" data-tip="Better Belle Pepper #1 &mdash; sweet bell, compact plant"/>
+          <text x="60" y="321" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">Better</text>
+          <text x="60" y="331" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">Belle</text>
+        </g>
+        <g filter="url(#shadowB)">
+          <circle cx="125" cy="325" r="18" fill="#4ade80" data-tip="Better Belle Pepper #2 &mdash; sweet bell, compact plant"/>
+          <text x="125" y="321" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">Better</text>
+          <text x="125" y="331" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">Belle</text>
+        </g>
 
-        <!-- Slicer cucumbers -->
-        <text x="254" y="55" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#0f766e" font-weight="700">SLICERS</text>
-        <g filter="url(#shadowB)">
-          <rect x="235" y="62" width="32" height="32" rx="8" fill="#14b8a6" data-tip="Slicer Cucumber #1 &mdash; Transplant from hydro, east trellis"/>
-          <text x="251" y="76" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="white" font-weight="700">Slicer</text>
-          <text x="251" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="white" font-weight="700">CK 1</text>
-        </g>
-        <g filter="url(#shadowB)">
-          <rect x="235" y="108" width="32" height="32" rx="8" fill="#14b8a6" data-tip="Slicer Cucumber #2 &mdash; Transplant from hydro, east trellis"/>
-          <text x="251" y="122" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="white" font-weight="700">Slicer</text>
-          <text x="251" y="132" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="white" font-weight="700">CK 2</text>
-        </g>
+        <!-- ══════ EAST TRELLIS &mdash; PICKLING CUCUMBERS ══════ -->
+        <rect x="290" y="40" width="12" height="530" rx="4" fill="#99f6e4" stroke="#14b8a6" stroke-width="1.5"/>
+        <text x="296" y="310" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#0f766e" font-weight="700" transform="rotate(90,296,310)" letter-spacing="0.06em">EAST TRELLIS &mdash; PICKLING CUCUMBERS</text>
 
         <!-- Pickling cucumbers — sow 1 -->
-        <text x="254" y="162" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#0d9488" font-weight="700">PICKLING 1</text>
+        <text x="254" y="55" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#0d9488" font-weight="700">SOW 1 (mid-Apr)</text>
         <g filter="url(#shadowB)">
-          <rect x="235" y="170" width="32" height="32" rx="8" fill="#0d9488" data-tip="Pickling Cucumber #1 &mdash; 1st sowing, mid-April"/>
-          <text x="251" y="183" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">Pickle</text>
-          <text x="251" y="193" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">CK 1</text>
+          <rect x="235" y="62" width="32" height="32" rx="8" fill="#0d9488" data-tip="Pickling Cucumber #1 &mdash; 1st sowing, mid-April"/>
+          <text x="251" y="76" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">Pickle</text>
+          <text x="251" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">CK 1</text>
         </g>
         <g filter="url(#shadowB)">
-          <rect x="235" y="216" width="32" height="32" rx="8" fill="#0d9488" data-tip="Pickling Cucumber #2 &mdash; 1st sowing, mid-April"/>
-          <text x="251" y="229" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">Pickle</text>
-          <text x="251" y="239" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">CK 2</text>
+          <rect x="235" y="108" width="32" height="32" rx="8" fill="#0d9488" data-tip="Pickling Cucumber #2 &mdash; 1st sowing, mid-April"/>
+          <text x="251" y="122" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">Pickle</text>
+          <text x="251" y="132" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">CK 2</text>
+        </g>
+        <g filter="url(#shadowB)">
+          <rect x="235" y="154" width="32" height="32" rx="8" fill="#0d9488" data-tip="Pickling Cucumber #3 &mdash; 1st sowing, mid-April"/>
+          <text x="251" y="168" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">Pickle</text>
+          <text x="251" y="178" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">CK 3</text>
         </g>
 
         <!-- Pickling cucumbers — sow 2 -->
-        <text x="254" y="270" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#92400e" font-weight="700">PICKLING 2</text>
+        <text x="254" y="210" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#92400e" font-weight="700">SOW 2 (late May)</text>
         <g filter="url(#shadowB)">
-          <rect x="235" y="278" width="32" height="32" rx="8" fill="#0d9488" stroke="#fbbf24" stroke-width="2" data-tip="Pickling Cucumber #3 &mdash; 2nd sowing, late May / early June"/>
-          <text x="251" y="291" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">Pickle</text>
-          <text x="251" y="301" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">Sow 2</text>
+          <rect x="235" y="220" width="32" height="32" rx="8" fill="#0d9488" stroke="#fbbf24" stroke-width="2" data-tip="Pickling Cucumber #4 &mdash; 2nd sowing, late May / early June"/>
+          <text x="251" y="233" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="white" font-weight="700">Pickle</text>
+          <text x="251" y="243" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="white" font-weight="700">S2-1</text>
         </g>
         <g filter="url(#shadowB)">
-          <rect x="235" y="324" width="32" height="32" rx="8" fill="#0d9488" stroke="#fbbf24" stroke-width="2" data-tip="Pickling Cucumber #4 &mdash; 2nd sowing, late May / early June"/>
-          <text x="251" y="337" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">Pickle</text>
-          <text x="251" y="347" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="white" font-weight="700">Sow 2</text>
+          <rect x="235" y="266" width="32" height="32" rx="8" fill="#0d9488" stroke="#fbbf24" stroke-width="2" data-tip="Pickling Cucumber #5 &mdash; 2nd sowing, late May / early June"/>
+          <text x="251" y="279" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="white" font-weight="700">Pickle</text>
+          <text x="251" y="289" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="white" font-weight="700">S2-2</text>
+        </g>
+        <g filter="url(#shadowB)">
+          <rect x="235" y="312" width="32" height="32" rx="8" fill="#0d9488" stroke="#fbbf24" stroke-width="2" data-tip="Pickling Cucumber #6 &mdash; 2nd sowing, late May / early June"/>
+          <text x="251" y="325" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="white" font-weight="700">Pickle</text>
+          <text x="251" y="335" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="white" font-weight="700">S2-3</text>
         </g>
 
-        <!-- ══════ BEAN SUCCESSION ZONE (3 strips, east-center) ══════ -->
-        <!-- Sow 1: next to cucumber trellis at top -->
-        <rect x="155" y="60" width="70" height="110" rx="8" fill="#8b5cf6" opacity="0.15" stroke="#8b5cf6" stroke-width="1.5"/>
-        <text x="190" y="105" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#7c3aed" font-weight="700">BEANS</text>
-        <text x="190" y="117" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#7c3aed" font-weight="600">Sow 1</text>
-        <text x="190" y="130" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="#8b5cf6">Mid-April</text>
-        <text x="190" y="142" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="#a78bfa">Direct sow</text>
+        <!-- ══════ BEAN SUCCESSION ZONE ══════ -->
+        <!-- Sow 1 -->
+        <rect x="155" y="60" width="70" height="120" rx="8" fill="#8b5cf6" opacity="0.15" stroke="#8b5cf6" stroke-width="1.5"/>
+        <text x="190" y="110" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#7c3aed" font-weight="700">BEANS</text>
+        <text x="190" y="123" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#7c3aed" font-weight="600">Sow 1</text>
+        <text x="190" y="136" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="#8b5cf6">Mid-April</text>
 
-        <!-- Arrow 1→2 -->
-        <line x1="190" y1="175" x2="190" y2="195" stroke="#8b5cf6" stroke-width="1.5" marker-end="url(#arrowB)"/>
+        <!-- Arrow 1 to 2 -->
+        <line x1="190" y1="185" x2="190" y2="205" stroke="#8b5cf6" stroke-width="1.5" marker-end="url(#arrowB)"/>
 
-        <!-- Sow 2: just below -->
-        <rect x="155" y="200" width="70" height="110" rx="8" fill="#8b5cf6" opacity="0.10" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="6,4"/>
-        <text x="190" y="245" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#7c3aed" font-weight="700">BEANS</text>
-        <text x="190" y="257" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#7c3aed" font-weight="600">Sow 2</text>
-        <text x="190" y="270" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="#8b5cf6">+2-3 weeks</text>
+        <!-- Sow 2 -->
+        <rect x="155" y="210" width="70" height="120" rx="8" fill="#8b5cf6" opacity="0.10" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="6,4"/>
+        <text x="190" y="260" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#7c3aed" font-weight="700">BEANS</text>
+        <text x="190" y="273" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#7c3aed" font-weight="600">Sow 2</text>
+        <text x="190" y="286" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="#8b5cf6">+2-3 weeks</text>
 
-        <!-- Arrow 2→3 -->
-        <line x1="190" y1="315" x2="190" y2="335" stroke="#8b5cf6" stroke-width="1.5" marker-end="url(#arrowB)"/>
+        <!-- Arrow 2 to 3 -->
+        <line x1="190" y1="335" x2="190" y2="355" stroke="#8b5cf6" stroke-width="1.5" marker-end="url(#arrowB)"/>
 
-        <!-- Sow 3: bottom -->
-        <rect x="40" y="340" width="185" height="110" rx="8" fill="#8b5cf6" opacity="0.06" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="6,4"/>
-        <text x="132" y="385" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#7c3aed" font-weight="700">BEANS &mdash; Sow 3+</text>
-        <text x="132" y="400" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#8b5cf6">Continue every 2-3 weeks</text>
-        <text x="132" y="415" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="#a78bfa" font-style="italic">Fills remaining bed space as season progresses</text>
+        <!-- Sow 3 (smaller — fewer beans, shares south end with Better Belle peppers) -->
+        <rect x="40" y="360" width="185" height="90" rx="8" fill="#8b5cf6" opacity="0.06" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="6,4"/>
+        <text x="132" y="400" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#7c3aed" font-weight="700">BEANS &mdash; Sow 3+</text>
+        <text x="132" y="415" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="#8b5cf6">Fewer beans &middot; Shares space w/ peppers</text>
+        <text x="132" y="430" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="#a78bfa" font-style="italic">Continue succession as space allows</text>
 
-        <!-- Bean zone label -->
-        <text x="132" y="475" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#7c3aed" font-weight="600" letter-spacing="0.05em">STRINGLESS GREEN &mdash; SUCCESSION SOWING</text>
-
-        <!-- Zone labels for orientation -->
-        <rect x="30" y="490" width="105" height="30" rx="6" fill="#fff7ed" stroke="#fdba74" stroke-width="1"/>
-        <text x="82" y="509" text-anchor="middle" font-family="Inter,sans-serif" font-size="6.5" fill="#9a3412" font-weight="600">PEPPER ZONE</text>
-        <rect x="155" y="490" width="70" height="30" rx="6" fill="#f5f3ff" stroke="#c4b5fd" stroke-width="1"/>
-        <text x="190" y="509" text-anchor="middle" font-family="Inter,sans-serif" font-size="6.5" fill="#7c3aed" font-weight="600">BEANS</text>
-        <rect x="235" y="490" width="55" height="30" rx="6" fill="#f0fdfa" stroke="#14b8a6" stroke-width="1"/>
-        <text x="262" y="509" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#0f766e" font-weight="600">CUKES</text>
-
-        <text x="170" y="585" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#9a3412" letter-spacing="0.12em" font-weight="600">SOUTH</text>
+        <text x="170" y="570" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#9a3412" letter-spacing="0.12em" font-weight="600">SOUTH</text>
       </svg>
     </div>
     <div class="legend">
-      <div class="legend-item"><div class="legend-dot" style="background:var(--orange)"></div>Pepper</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#14b8a6"></div>Slicer Cucumber (east trellis)</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#0d9488"></div>Pickling Cucumber</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#0d9488; border-color:#fbbf24;"></div>Pickling CK &mdash; 2nd Sow</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--orange)"></div>Pepper (5 varieties)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#4ade80"></div>Better Belle (new)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#0d9488"></div>Pickling CK &mdash; Sow 1</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#0d9488; border-color:#fbbf24;"></div>Pickling CK &mdash; Sow 2</div>
       <div class="legend-item"><div class="legend-dot" style="background:var(--violet)"></div>Bean succession zone</div>
     </div>
 
     <div style="margin-top:1rem; padding:0.8rem 1rem; background:var(--teal-light); border:1px solid #99f6e4; border-radius:8px; font-size:0.78rem; line-height:1.7; color:#115e59;">
-      <strong>Cucumber Plan:</strong> 2 slicer cucumbers transplanted from hydro unit to east trellis in mid-April. 2 pickling cucumbers direct sown alongside (1st sowing mid-April). <strong>2nd sowing</strong> of 2 more pickling cucumbers in late May/early June for extended harvest into fall.
+      <strong>Cucumber Plan:</strong> Pickling cucumbers only on the east trellis. 3 plants in the 1st sowing (mid-April), 3 more in the <strong>2nd sowing</strong> (late May/early June) for continuous harvest into fall. Fill the trellis as long as there's room.
     </div>
 
     <div style="margin-top:0.6rem; padding:0.8rem 1rem; background:var(--violet-light); border:1px solid #c4b5fd; border-radius:8px; font-size:0.78rem; line-height:1.7; color:#5b21b6;">
-      <strong>Bean Rotation:</strong> Stringless Green beans direct sown in succession waves every 2-3 weeks starting mid-April. Each wave produces for ~3 weeks, so new sowings keep the harvest continuous through summer.
+      <strong>Bean Rotation:</strong> Stringless Green beans in succession waves every 2-3 weeks. Sow 3+ is smaller &mdash; fewer beans at the south end to make room for the 2 new Better Belle peppers.
     </div>
   </div>
 
