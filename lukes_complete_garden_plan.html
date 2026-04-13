@@ -872,6 +872,98 @@
     text-align: right;
   }
 
+  /* ── Bean Dot Map Modal ── */
+  .dot-map-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(4px);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+  .dot-map-overlay.open { display: flex; }
+  .dot-map-panel {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    max-width: 560px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 1.5rem;
+    position: relative;
+  }
+  .dot-map-close {
+    position: absolute;
+    top: 0.8rem;
+    right: 0.8rem;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: var(--surface-alt);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: var(--text-muted);
+    transition: background 0.15s;
+  }
+  .dot-map-close:hover { background: var(--green-100); }
+  .dot-map-panel h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+  .dot-map-panel .dm-sub {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+  .dot-map-svg-wrap {
+    background: linear-gradient(135deg, #f5f3ff, #ede9fe);
+    border: 1px solid #c4b5fd;
+    border-radius: var(--radius);
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  .dot-map-svg-wrap svg { width: 100%; }
+  .dot-map-panel .dm-stats {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+  }
+  .dm-stat {
+    background: var(--violet-light);
+    border: 1px solid #c4b5fd;
+    border-radius: 8px;
+    padding: 0.5rem 0.8rem;
+    text-align: center;
+    flex: 1;
+    min-width: 80px;
+  }
+  .dm-stat .val {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--violet);
+  }
+  .dm-stat .lbl {
+    font-size: 0.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-light);
+  }
+
   /* ── Learn Detail Expandable ── */
   .learn-toggle {
     cursor: pointer;
@@ -1659,30 +1751,38 @@
           <text x="251" y="335" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="white" font-weight="700">S2-3</text>
         </g>
 
-        <!-- ══════ BEAN SUCCESSION ZONE ══════ -->
+        <!-- ══════ BEAN SUCCESSION ZONE (clickable!) ══════ -->
         <!-- Sow 1 -->
-        <rect x="155" y="60" width="70" height="120" rx="8" fill="#8b5cf6" opacity="0.15" stroke="#8b5cf6" stroke-width="1.5"/>
-        <text x="190" y="110" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#7c3aed" font-weight="700">BEANS</text>
-        <text x="190" y="123" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#7c3aed" font-weight="600">Sow 1</text>
-        <text x="190" y="136" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="#8b5cf6">Mid-April</text>
+        <g style="cursor:pointer;" onclick="openDotMap('bedB-sow1')">
+          <rect x="155" y="60" width="70" height="120" rx="8" fill="#8b5cf6" opacity="0.15" stroke="#8b5cf6" stroke-width="1.5"/>
+          <text x="190" y="105" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#7c3aed" font-weight="700">BEANS</text>
+          <text x="190" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#7c3aed" font-weight="600">Sow 1</text>
+          <text x="190" y="131" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="#8b5cf6">Mid-April</text>
+          <text x="190" y="155" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="#a78bfa" font-style="italic">&#128270; tap for dot map</text>
+        </g>
 
         <!-- Arrow 1 to 2 -->
         <line x1="190" y1="185" x2="190" y2="205" stroke="#8b5cf6" stroke-width="1.5" marker-end="url(#arrowB)"/>
 
         <!-- Sow 2 -->
-        <rect x="155" y="210" width="70" height="120" rx="8" fill="#8b5cf6" opacity="0.10" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="6,4"/>
-        <text x="190" y="260" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#7c3aed" font-weight="700">BEANS</text>
-        <text x="190" y="273" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#7c3aed" font-weight="600">Sow 2</text>
-        <text x="190" y="286" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="#8b5cf6">+2-3 weeks</text>
+        <g style="cursor:pointer;" onclick="openDotMap('bedB-sow2')">
+          <rect x="155" y="210" width="70" height="120" rx="8" fill="#8b5cf6" opacity="0.10" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="6,4"/>
+          <text x="190" y="255" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#7c3aed" font-weight="700">BEANS</text>
+          <text x="190" y="268" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#7c3aed" font-weight="600">Sow 2</text>
+          <text x="190" y="281" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="#8b5cf6">+2-3 weeks</text>
+          <text x="190" y="305" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="#a78bfa" font-style="italic">&#128270; tap for dot map</text>
+        </g>
 
         <!-- Arrow 2 to 3 -->
         <line x1="190" y1="335" x2="190" y2="355" stroke="#8b5cf6" stroke-width="1.5" marker-end="url(#arrowB)"/>
 
         <!-- Sow 3 (smaller — fewer beans, shares south end with Better Belle peppers) -->
-        <rect x="40" y="360" width="185" height="90" rx="8" fill="#8b5cf6" opacity="0.06" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="6,4"/>
-        <text x="132" y="400" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#7c3aed" font-weight="700">BEANS &mdash; Sow 3+</text>
-        <text x="132" y="415" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="#8b5cf6">Fewer beans &middot; Shares space w/ peppers</text>
-        <text x="132" y="430" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="#a78bfa" font-style="italic">Continue succession as space allows</text>
+        <g style="cursor:pointer;" onclick="openDotMap('bedB-sow3')">
+          <rect x="40" y="360" width="185" height="90" rx="8" fill="#8b5cf6" opacity="0.06" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="6,4"/>
+          <text x="132" y="395" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#7c3aed" font-weight="700">BEANS &mdash; Sow 3+</text>
+          <text x="132" y="410" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="#8b5cf6">Fewer beans &middot; Shares space</text>
+          <text x="132" y="430" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="#a78bfa" font-style="italic">&#128270; tap for dot map</text>
+        </g>
 
         <text x="170" y="570" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#9a3412" letter-spacing="0.12em" font-weight="600">SOUTH</text>
       </svg>
@@ -1736,10 +1836,13 @@
         </g>
         <text x="140" y="100" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#0f766e">Clemson Spineless &middot; Direct sow &middot; 5-6 ft tall</text>
 
-        <!-- Bean zone -->
-        <rect x="30" y="115" width="220" height="340" rx="10" fill="#8b5cf6" opacity="0.08" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="6,4"/>
-        <text x="140" y="280" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#7c3aed" font-weight="700">BLUE LAKE BEANS</text>
-        <text x="140" y="300" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#8b5cf6">Direct sow &middot; Succession every 2-3 weeks</text>
+        <!-- Bean zone (clickable!) -->
+        <g style="cursor:pointer;" onclick="openDotMap('bedC-bluelake')">
+          <rect x="30" y="115" width="220" height="340" rx="10" fill="#8b5cf6" opacity="0.08" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="6,4"/>
+          <text x="140" y="260" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#7c3aed" font-weight="700">BLUE LAKE BEANS</text>
+          <text x="140" y="280" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#8b5cf6">Direct sow &middot; Succession every 2-3 weeks</text>
+          <text x="140" y="320" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#a78bfa" font-style="italic">&#128270; Tap to see planting dot map</text>
+        </g>
 
         <text x="140" y="468" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#5b21b6" letter-spacing="0.12em" font-weight="600">SOUTH</text>
       </svg>
@@ -3904,6 +4007,11 @@
   </div>
 </div>
 
+<!-- Bean Dot Map Modal -->
+<div class="dot-map-overlay" id="dotMapOverlay" onclick="if(event.target===this)closeDotMap()">
+  <div class="dot-map-panel" id="dotMapPanel"></div>
+</div>
+
 <footer>Luke's Garden &middot; Decatur, GA &middot; Zone 8a &middot; Updated April 2026 &middot; v4 Tomato-First Revision</footer>
 
 <script>
@@ -4069,6 +4177,120 @@
       }
     });
   }
+
+  // ── Bean Dot Map ──
+  const beanMaps = {
+    'bedB-sow1': {
+      title: 'Bed B — Bean Sow 1 (Mid-April)',
+      desc: 'Stringless Green beans, direct sown in the east-center strip of Bed B alongside the cucumber trellis. First succession wave.',
+      width: 24, // inches
+      height: 36, // inches
+      rowSpacing: 18, // inches between rows
+      plantSpacing: 3, // inches between plants in row
+      note: 'Sow seeds 1" deep, 3" apart, in rows 18" apart. Full-size strip alongside cucumber trellis.'
+    },
+    'bedB-sow2': {
+      title: 'Bed B — Bean Sow 2 (+2-3 weeks)',
+      desc: 'Second succession sowing in the same strip. Plant in gaps or below Sow 1 as it matures. Sow 1 will be producing by the time Sow 2 germinates.',
+      width: 24,
+      height: 36,
+      rowSpacing: 18,
+      plantSpacing: 3,
+      note: 'Sow in the same strip or immediately below Sow 1. Stagger timing so harvests overlap.'
+    },
+    'bedB-sow3': {
+      title: 'Bed B — Bean Sow 3+ (South end, smaller)',
+      desc: 'Smaller sowing at the south end of Bed B, sharing space with Better Belle peppers. Fewer beans, tighter area.',
+      width: 48, // wider but shorter
+      height: 24,
+      rowSpacing: 18,
+      plantSpacing: 3,
+      note: 'South end is shared with Better Belle peppers — fewer rows, but still productive. Continue succession as space allows.'
+    },
+    'bedC-bluelake': {
+      title: 'Bed C — Blue Lake Beans (Full bed)',
+      desc: 'Blue Lake bush beans fill the main area of Bed C below the 4 okra plants. Succession sown every 2-3 weeks for continuous harvest.',
+      width: 48, // full 4ft width
+      height: 72, // ~6ft of bed space below okra
+      rowSpacing: 18,
+      plantSpacing: 3,
+      note: 'The largest bean zone. 4 ft wide gives you 3 rows. Succession sow every 2-3 weeks from mid-April through June.'
+    }
+  };
+
+  function openDotMap(mapId) {
+    event.stopPropagation();
+    const cfg = beanMaps[mapId];
+    if (!cfg) return;
+
+    // Calculate grid
+    const rows = Math.floor(cfg.width / cfg.rowSpacing) + 1;
+    const plantsPerRow = Math.floor(cfg.height / cfg.plantSpacing) + 1;
+    const totalPlants = rows * plantsPerRow;
+
+    // Build SVG dot map
+    const svgW = 500;
+    const svgH = Math.max(200, (plantsPerRow * 14) + 60);
+    const marginX = 50;
+    const marginY = 40;
+    const dotR = 5;
+    const gapX = rows > 1 ? (svgW - marginX * 2) / (rows - 1) : 0;
+    const gapY = plantsPerRow > 1 ? Math.min(14, (svgH - marginY * 2) / (plantsPerRow - 1)) : 0;
+    const actualH = marginY * 2 + (plantsPerRow - 1) * gapY;
+
+    let dots = '';
+    for (let r = 0; r < rows; r++) {
+      const x = marginX + r * gapX;
+      // Row label
+      dots += '<text x="' + x + '" y="' + (marginY - 12) + '" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#7c3aed" font-weight="600">Row ' + (r + 1) + '</text>';
+      for (let p = 0; p < plantsPerRow; p++) {
+        const y = marginY + p * gapY;
+        dots += '<circle cx="' + x + '" cy="' + y + '" r="' + dotR + '" fill="#8b5cf6" opacity="0.7"/>';
+      }
+      // Plant count under row
+      dots += '<text x="' + x + '" y="' + (actualH + 5) + '" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#a78bfa">' + plantsPerRow + ' seeds</text>';
+    }
+
+    // Spacing annotations
+    if (rows > 1) {
+      const y1 = marginY - 25;
+      dots += '<line x1="' + marginX + '" y1="' + y1 + '" x2="' + (marginX + gapX) + '" y2="' + y1 + '" stroke="#d6d3d1" stroke-width="1"/>';
+      dots += '<text x="' + (marginX + gapX / 2) + '" y="' + (y1 - 4) + '" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#9ca3af">' + cfg.rowSpacing + '" apart</text>';
+    }
+    // Vertical spacing
+    const xAnno = marginX - 20;
+    dots += '<line x1="' + xAnno + '" y1="' + marginY + '" x2="' + xAnno + '" y2="' + (marginY + gapY) + '" stroke="#d6d3d1" stroke-width="1"/>';
+    dots += '<text x="' + (xAnno - 2) + '" y="' + (marginY + gapY / 2 + 3) + '" text-anchor="end" font-family="Inter,sans-serif" font-size="6" fill="#9ca3af">' + cfg.plantSpacing + '"</text>';
+
+    const html = ''
+      + '<button class="dot-map-close" onclick="closeDotMap()">&times;</button>'
+      + '<h3>' + cfg.title + '</h3>'
+      + '<p class="dm-sub">' + cfg.desc + '</p>'
+      + '<div class="dm-stats">'
+      + '  <div class="dm-stat"><div class="val">' + totalPlants + '</div><div class="lbl">Seeds / Plants</div></div>'
+      + '  <div class="dm-stat"><div class="val">' + rows + '</div><div class="lbl">Rows</div></div>'
+      + '  <div class="dm-stat"><div class="val">' + plantsPerRow + '</div><div class="lbl">Per Row</div></div>'
+      + '  <div class="dm-stat"><div class="val">' + cfg.plantSpacing + '"</div><div class="lbl">Spacing</div></div>'
+      + '</div>'
+      + '<div class="dot-map-svg-wrap">'
+      + '  <svg viewBox="0 0 ' + svgW + ' ' + (actualH + 25) + '" xmlns="http://www.w3.org/2000/svg">'
+      + dots
+      + '  </svg>'
+      + '</div>'
+      + '<p style="font-size:0.75rem; color:var(--text-muted); line-height:1.6;">' + cfg.note + '</p>';
+
+    document.getElementById('dotMapPanel').innerHTML = html;
+    document.getElementById('dotMapOverlay').classList.add('open');
+  }
+
+  function closeDotMap() {
+    document.getElementById('dotMapOverlay').classList.remove('open');
+  }
+
+  // Close on Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeDotMap();
+  });
 
   // ── Init ──
   restoreState();
