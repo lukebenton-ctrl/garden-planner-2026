@@ -4404,58 +4404,46 @@
   // ── Bean Dot Map ──
   const beanMaps = {
     'bedB-sow1': {
-      title: 'Bed B — Bean Sow 1 (Mid-April)',
-      desc: 'Stringless Green beans, direct sown in the east-center strip of Bed B alongside the cucumber trellis. First succession wave.',
-      width: 24, // inches
-      height: 36, // inches
-      rowSpacing: 18, // inches between rows
-      plantSpacing: 3, // inches between plants in row
-      note: 'Sow seeds 1" deep, 3" apart, in rows 18" apart. Full-size strip alongside cucumber trellis.'
+      title: 'Bed B — Bean Sow 1 (~Mar 29)',
+      desc: 'Stringless Green beans in the east-center strip of Bed B alongside the cucumber trellis. 2 rows side by side (E-W), 13 plants running down each row (N-S).',
+      rows: 2, rowDir: 'E-W', plantsPerRow: 13, plantDir: 'N-S',
+      rowSpacing: 18, plantSpacing: 3,
+      note: 'Sow seeds 1" deep, 3" apart. 2 rows 18" apart running N-S alongside the cucumber trellis.'
     },
     'bedB-sow2': {
-      title: 'Bed B — Bean Sow 2 (+2-3 weeks)',
-      desc: 'Second succession sowing in the same strip. Plant in gaps or below Sow 1 as it matures. Sow 1 will be producing by the time Sow 2 germinates.',
-      width: 24,
-      height: 36,
-      rowSpacing: 18,
-      plantSpacing: 3,
+      title: 'Bed B — Bean Sow 2 (Due now ~Apr 12)',
+      desc: 'Second succession sowing in the same strip. Plant in gaps or below Sow 1.',
+      rows: 2, rowDir: 'E-W', plantsPerRow: 13, plantDir: 'N-S',
+      rowSpacing: 18, plantSpacing: 3,
       note: 'Sow in the same strip or immediately below Sow 1. Stagger timing so harvests overlap.'
     },
     'bedB-sow3': {
-      title: 'Bed B — Bean Sow 3+ (South end, smaller)',
-      desc: 'Smaller sowing at the south end of Bed B, sharing space with Better Belle peppers. Fewer beans, tighter area.',
-      width: 48, // wider but shorter
-      height: 24,
-      rowSpacing: 18,
-      plantSpacing: 3,
-      note: 'South end is shared with Better Belle peppers — fewer rows, but still productive. Continue succession as space allows.'
+      title: 'Bed B — Bean Sow 3+ (~Apr 26)',
+      desc: 'South end of Bed B, sharing space with Better Belle peppers. Fewer plants.',
+      rows: 3, rowDir: 'E-W', plantsPerRow: 9, plantDir: 'N-S',
+      rowSpacing: 18, plantSpacing: 3,
+      note: 'South end is shared with Better Belle peppers — fewer plants per row, but still productive.'
     },
     'bedC-sow1': {
-      title: 'Bed C — Blue Lake Sow 1 (Mid-April)',
-      desc: 'First sowing of Blue Lake bush beans. Full 4 ft width of the bed, below the okra plants. This is the largest single bean sowing in your garden.',
-      width: 48,
-      height: 24,
-      rowSpacing: 18,
-      plantSpacing: 3,
-      note: 'Direct sow 1" deep after last frost (~Apr 15). 4 ft wide = 3 rows. Water well after planting. Expect germination in 7-10 days.'
+      title: 'Bed C — Blue Lake Sow 1 (~Mar 29)',
+      desc: 'Full 4 ft width of Bed C below the okra plants. 3 rows running N-S, 9 plants per row running E-W.',
+      rows: 3, rowDir: 'N-S', plantsPerRow: 9, plantDir: 'E-W',
+      rowSpacing: 18, plantSpacing: 3,
+      note: 'Direct sow 1" deep. 3 rows spaced 18" apart, 9 plants per row at 3" spacing.'
     },
     'bedC-sow2': {
-      title: 'Bed C — Blue Lake Sow 2 (+2-3 weeks)',
-      desc: 'Second succession sowing. Plant below Sow 1 or in gaps as Sow 1 matures. By the time Sow 2 starts producing, Sow 1 is wrapping up.',
-      width: 48,
-      height: 24,
-      rowSpacing: 18,
-      plantSpacing: 3,
-      note: 'Sow in early May. Same spacing as Sow 1. By now Sow 1 seedlings are well-established — plant below them or offset rows.'
+      title: 'Bed C — Blue Lake Sow 2 (Due now ~Apr 12)',
+      desc: 'Second succession sowing. Plant below Sow 1 or in gaps as Sow 1 matures.',
+      rows: 3, rowDir: 'N-S', plantsPerRow: 9, plantDir: 'E-W',
+      rowSpacing: 18, plantSpacing: 3,
+      note: 'Same spacing as Sow 1. Plant below or offset from Sow 1 rows.'
     },
     'bedC-sow3': {
-      title: 'Bed C — Blue Lake Sow 3+ (Late May)',
-      desc: 'Third succession sowing and beyond. Continue the cycle as space opens up from earlier harvests. Can also do a fall sowing in late August.',
-      width: 48,
-      height: 24,
-      rowSpacing: 18,
-      plantSpacing: 3,
-      note: 'By Sow 3, you can pull spent Sow 1 plants and replant the same space. Fall sowing (late Aug) gives you an October harvest before first frost.'
+      title: 'Bed C — Blue Lake Sow 3+ (~Apr 26)',
+      desc: 'Third succession sowing. Continue the cycle as space opens up.',
+      rows: 3, rowDir: 'N-S', plantsPerRow: 9, plantDir: 'E-W',
+      rowSpacing: 18, plantSpacing: 3,
+      note: 'Pull spent Sow 1 plants and replant the same space. Fall sowing (late Aug) for October harvest.'
     }
   };
 
@@ -4464,47 +4452,83 @@
     const cfg = beanMaps[mapId];
     if (!cfg) return;
 
-    // Calculate grid
-    const rows = Math.floor(cfg.width / cfg.rowSpacing) + 1;
-    const plantsPerRow = Math.floor(cfg.height / cfg.plantSpacing) + 1;
+    // Use explicit config values
+    const rows = cfg.rows;
+    const plantsPerRow = cfg.plantsPerRow;
     const totalPlants = rows * plantsPerRow;
+    const isVertical = (cfg.plantDir === 'N-S'); // plants run top-to-bottom
 
     // Build SVG dot map
-    // Rows run top-to-bottom (N→S), plants within each row run left-to-right (W→E)
-    const marginX = 50;
+    const marginX = 55;
     const marginY = 50;
     const dotR = 5;
-    const gapX = plantsPerRow > 1 ? Math.min(18, (500 - marginX * 2) / (plantsPerRow - 1)) : 0;
-    const gapY = rows > 1 ? 40 : 0;
-    const svgW = marginX * 2 + (plantsPerRow - 1) * gapX + 20;
-    const svgH = marginY * 2 + (rows - 1) * gapY + 30;
+    let cols, rowCount, gapX, gapY, svgW, svgH;
+
+    if (isVertical) {
+      // Bed B style: rows side by side (E-W), plants run N-S (top to bottom)
+      cols = rows; // columns going left-to-right = number of rows
+      rowCount = plantsPerRow; // dots going top-to-bottom
+      gapX = cols > 1 ? 50 : 0;
+      gapY = Math.min(16, 300 / Math.max(rowCount - 1, 1));
+      svgW = marginX * 2 + (cols - 1) * gapX + 20;
+      svgH = marginY * 2 + (rowCount - 1) * gapY + 30;
+    } else {
+      // Bed C style: rows top-to-bottom (N-S), plants run E-W (left to right)
+      cols = plantsPerRow; // dots going left-to-right
+      rowCount = rows; // rows going top-to-bottom
+      gapX = Math.min(18, (460 - marginX * 2) / Math.max(cols - 1, 1));
+      gapY = rowCount > 1 ? 45 : 0;
+      svgW = marginX * 2 + (cols - 1) * gapX + 20;
+      svgH = marginY * 2 + (rowCount - 1) * gapY + 30;
+    }
 
     let dots = '';
     // Direction labels
     dots += '<text x="' + (svgW / 2) + '" y="15" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#065f46" font-weight="600" letter-spacing="0.06em">&#8592; WEST &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EAST &#8594;</text>';
     dots += '<text x="15" y="' + (svgH / 2) + '" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#065f46" font-weight="600" transform="rotate(-90,15,' + (svgH / 2) + ')">N &#8594; S</text>';
 
-    for (let r = 0; r < rows; r++) {
-      const y = marginY + r * gapY;
-      // Row label on left
-      dots += '<text x="' + (marginX - 8) + '" y="' + (y + 4) + '" text-anchor="end" font-family="Inter,sans-serif" font-size="7" fill="#7c3aed" font-weight="600">Row ' + (r + 1) + '</text>';
-      for (let p = 0; p < plantsPerRow; p++) {
-        const x = marginX + p * gapX;
-        dots += '<circle cx="' + x + '" cy="' + y + '" r="' + dotR + '" fill="#8b5cf6" opacity="0.7"/>';
+    if (isVertical) {
+      // Bed B: columns are rows (E-W), dots run down (N-S)
+      for (let c = 0; c < cols; c++) {
+        const x = marginX + c * gapX;
+        dots += '<text x="' + x + '" y="' + (marginY - 12) + '" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#7c3aed" font-weight="600">Row ' + (c + 1) + '</text>';
+        for (let p = 0; p < rowCount; p++) {
+          const y = marginY + p * gapY;
+          dots += '<circle cx="' + x + '" cy="' + y + '" r="' + dotR + '" fill="#8b5cf6" opacity="0.7"/>';
+        }
+        dots += '<text x="' + x + '" y="' + (marginY + (rowCount - 1) * gapY + 18) + '" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#a78bfa">' + rowCount + ' plants</text>';
       }
-      // Plant count on right
-      dots += '<text x="' + (marginX + (plantsPerRow - 1) * gapX + 15) + '" y="' + (y + 4) + '" font-family="Inter,sans-serif" font-size="6" fill="#a78bfa">' + plantsPerRow + '</text>';
-    }
-
-    // Spacing annotations — horizontal (plant spacing along the row)
-    const annoY = marginY - 18;
-    dots += '<line x1="' + marginX + '" y1="' + annoY + '" x2="' + (marginX + gapX) + '" y2="' + annoY + '" stroke="#d6d3d1" stroke-width="1"/>';
-    dots += '<text x="' + (marginX + gapX / 2) + '" y="' + (annoY - 4) + '" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#9ca3af">' + cfg.plantSpacing + '" apart</text>';
-    // Vertical (row spacing)
-    if (rows > 1) {
-      const annoX = marginX - 25;
-      dots += '<line x1="' + annoX + '" y1="' + marginY + '" x2="' + annoX + '" y2="' + (marginY + gapY) + '" stroke="#d6d3d1" stroke-width="1"/>';
-      dots += '<text x="' + (annoX - 2) + '" y="' + (marginY + gapY / 2 + 3) + '" text-anchor="end" font-family="Inter,sans-serif" font-size="6" fill="#9ca3af">' + cfg.rowSpacing + '"</text>';
+      // Spacing: vertical = plant spacing, horizontal = row spacing
+      if (rowCount > 1) {
+        const ax = marginX - 22;
+        dots += '<line x1="' + ax + '" y1="' + marginY + '" x2="' + ax + '" y2="' + (marginY + gapY) + '" stroke="#d6d3d1" stroke-width="1"/>';
+        dots += '<text x="' + (ax - 2) + '" y="' + (marginY + gapY / 2 + 3) + '" text-anchor="end" font-family="Inter,sans-serif" font-size="6" fill="#9ca3af">' + cfg.plantSpacing + '"</text>';
+      }
+      if (cols > 1) {
+        const ay = marginY - 22;
+        dots += '<line x1="' + marginX + '" y1="' + ay + '" x2="' + (marginX + gapX) + '" y2="' + ay + '" stroke="#d6d3d1" stroke-width="1"/>';
+        dots += '<text x="' + (marginX + gapX / 2) + '" y="' + (ay - 4) + '" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#9ca3af">' + cfg.rowSpacing + '" between rows</text>';
+      }
+    } else {
+      // Bed C: rows top-to-bottom (N-S), dots run left-to-right (E-W)
+      for (let r = 0; r < rowCount; r++) {
+        const y = marginY + r * gapY;
+        dots += '<text x="' + (marginX - 8) + '" y="' + (y + 4) + '" text-anchor="end" font-family="Inter,sans-serif" font-size="7" fill="#7c3aed" font-weight="600">Row ' + (r + 1) + '</text>';
+        for (let p = 0; p < cols; p++) {
+          const x = marginX + p * gapX;
+          dots += '<circle cx="' + x + '" cy="' + y + '" r="' + dotR + '" fill="#8b5cf6" opacity="0.7"/>';
+        }
+        dots += '<text x="' + (marginX + (cols - 1) * gapX + 15) + '" y="' + (y + 4) + '" font-family="Inter,sans-serif" font-size="6" fill="#a78bfa">' + cols + '</text>';
+      }
+      // Spacing: horizontal = plant spacing, vertical = row spacing
+      const annoY = marginY - 18;
+      dots += '<line x1="' + marginX + '" y1="' + annoY + '" x2="' + (marginX + gapX) + '" y2="' + annoY + '" stroke="#d6d3d1" stroke-width="1"/>';
+      dots += '<text x="' + (marginX + gapX / 2) + '" y="' + (annoY - 4) + '" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#9ca3af">' + cfg.plantSpacing + '" apart</text>';
+      if (rowCount > 1) {
+        const annoX = marginX - 30;
+        dots += '<line x1="' + annoX + '" y1="' + marginY + '" x2="' + annoX + '" y2="' + (marginY + gapY) + '" stroke="#d6d3d1" stroke-width="1"/>';
+        dots += '<text x="' + (annoX - 2) + '" y="' + (marginY + gapY / 2 + 3) + '" text-anchor="end" font-family="Inter,sans-serif" font-size="6" fill="#9ca3af">' + cfg.rowSpacing + '"</text>';
+      }
     }
 
     const html = ''
