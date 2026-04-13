@@ -1124,9 +1124,9 @@
     </div>
     <div class="summary-card" onclick="showTab('bedb');" style="cursor:pointer;">
       <div class="icon">&#127798;</div>
-      <div class="number" style="color:var(--orange)">12</div>
+      <div class="number" style="color:var(--orange)">14</div>
       <div class="label">Pepper Plants</div>
-      <div class="detail">10 in Bed B + 2 in grow bags</div>
+      <div class="detail">12 in Bed B (2 TBD) + 2 in grow bags</div>
     </div>
     <div class="summary-card" onclick="showTab('bedb');" style="cursor:pointer;">
       <div class="icon">&#129753;</div>
@@ -1250,15 +1250,22 @@
         <circle class="plant-dot" cx="330" cy="245" r="8" fill="#4ade80" data-tip="Better Belle #2" onclick="event.stopPropagation(); navigateToPlant('g-orgbell')"/>
         <text x="330" y="248" text-anchor="middle" font-size="3.5" fill="white" font-weight="700" pointer-events="none">BB</text>
 
-        <!-- Bean zones (center-right) -->
-        <rect x="355" y="100" width="45" height="65" rx="5" fill="#8b5cf6" opacity="0.15" stroke="#8b5cf6" stroke-width="1"/>
-        <text x="377" y="130" text-anchor="middle" font-size="5" fill="#7c3aed" font-weight="700">Bean</text>
-        <text x="377" y="140" text-anchor="middle" font-size="4.5" fill="#7c3aed">Sow1</text>
-        <rect x="355" y="175" width="45" height="65" rx="5" fill="#8b5cf6" opacity="0.10" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="4,3"/>
-        <text x="377" y="205" text-anchor="middle" font-size="5" fill="#7c3aed" font-weight="700">Bean</text>
-        <text x="377" y="215" text-anchor="middle" font-size="4.5" fill="#7c3aed">Sow2</text>
-        <rect x="285" y="270" width="115" height="55" rx="5" fill="#8b5cf6" opacity="0.06" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="4,3"/>
-        <text x="342" y="300" text-anchor="middle" font-size="5" fill="#7c3aed" font-weight="700">Bean Sow 3+ (smaller)</text>
+        <!-- TBD Peppers -->
+        <circle cx="298" cy="275" r="7" fill="#d4d4d4" stroke="#9ca3af" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="298" y="278" text-anchor="middle" font-size="3.5" fill="#9ca3af" font-weight="600" pointer-events="none">?</text>
+        <circle cx="330" cy="275" r="7" fill="#d4d4d4" stroke="#9ca3af" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="330" y="278" text-anchor="middle" font-size="3.5" fill="#9ca3af" font-weight="600" pointer-events="none">?</text>
+
+        <!-- Bean zones (center-right, stacked vertically) -->
+        <rect x="355" y="100" width="45" height="55" rx="5" fill="#8b5cf6" opacity="0.15" stroke="#8b5cf6" stroke-width="1"/>
+        <text x="377" y="125" text-anchor="middle" font-size="5" fill="#7c3aed" font-weight="700">Bean</text>
+        <text x="377" y="135" text-anchor="middle" font-size="4.5" fill="#7c3aed">Sow1</text>
+        <rect x="355" y="165" width="45" height="55" rx="5" fill="#8b5cf6" opacity="0.10" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="377" y="190" text-anchor="middle" font-size="5" fill="#7c3aed" font-weight="700">Bean</text>
+        <text x="377" y="200" text-anchor="middle" font-size="4.5" fill="#7c3aed">Sow2</text>
+        <rect x="355" y="230" width="45" height="55" rx="5" fill="#8b5cf6" opacity="0.06" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="377" y="255" text-anchor="middle" font-size="5" fill="#7c3aed" font-weight="700">Bean</text>
+        <text x="377" y="265" text-anchor="middle" font-size="4.5" fill="#7c3aed">Sow3+</text>
 
         <!-- East trellis — pickling cucumbers only -->
         <rect x="455" y="95" width="6" height="250" rx="2" fill="#99f6e4" stroke="#14b8a6" stroke-width="1"/>
@@ -1731,7 +1738,7 @@
         <text x="170" y="30" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#9a3412" letter-spacing="0.12em" font-weight="600">NORTH</text>
 
         <!-- ══════ PEPPERS (west / left side, spaced to fill height) ══════ -->
-        <text x="90" y="50" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#9a3412" font-weight="700" letter-spacing="0.06em">PEPPERS (10)</text>
+        <text x="90" y="50" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#9a3412" font-weight="700" letter-spacing="0.06em">PEPPERS (12)</text>
 
         <!-- Row 1: Orange Bell — y=80 -->
         <g filter="url(#shadowB)">
@@ -1858,13 +1865,25 @@
         <!-- Arrow 2→3 -->
         <line x1="190" y1="350" x2="190" y2="370" stroke="#8b5cf6" stroke-width="1.5" marker-end="url(#arrowB)"/>
 
-        <!-- Sow 3: y=375 to y=530 (expanded to fill south) -->
+        <!-- Sow 3: same column as Sow 1 & 2, y=375 to y=505 -->
         <g style="cursor:pointer;" onclick="openDotMap('bedB-sow3')">
-          <rect x="40" y="375" width="185" height="155" rx="8" fill="#8b5cf6" opacity="0.06" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="6,4"/>
-          <text x="132" y="435" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#7c3aed" font-weight="700">BEANS &mdash; Sow 3+</text>
-          <text x="132" y="453" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#8b5cf6">Fewer beans &middot; Shares south with peppers</text>
-          <text x="132" y="470" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="#a78bfa" font-style="italic">Continue succession as space allows</text>
-          <text x="132" y="505" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="#a78bfa" font-style="italic">&#128270; tap for dot map</text>
+          <rect x="155" y="375" width="70" height="130" rx="8" fill="#8b5cf6" opacity="0.06" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="6,4"/>
+          <text x="190" y="425" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#7c3aed" font-weight="700">BEANS</text>
+          <text x="190" y="438" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#7c3aed" font-weight="600">Sow 3+</text>
+          <text x="190" y="451" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="#8b5cf6">+2-3 weeks</text>
+          <text x="190" y="480" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="#a78bfa" font-style="italic">&#128270; tap for dot map</text>
+        </g>
+
+        <!-- ══════ ROW 6: TBD Peppers (south end, west side) ══════ -->
+        <g filter="url(#shadowB)">
+          <circle cx="60" cy="530" r="18" fill="#d4d4d4" stroke="#9ca3af" stroke-width="1.5" stroke-dasharray="4,3" data-tip="Pepper TBD #1 &mdash; variety to be chosen"/>
+          <text x="60" y="527" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#6b7280" font-weight="600">TBD</text>
+          <text x="60" y="537" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="#9ca3af">pepper</text>
+        </g>
+        <g filter="url(#shadowB)">
+          <circle cx="125" cy="530" r="18" fill="#d4d4d4" stroke="#9ca3af" stroke-width="1.5" stroke-dasharray="4,3" data-tip="Pepper TBD #2 &mdash; variety to be chosen"/>
+          <text x="125" y="527" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#6b7280" font-weight="600">TBD</text>
+          <text x="125" y="537" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="#9ca3af">pepper</text>
         </g>
 
         <text x="170" y="570" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#9a3412" letter-spacing="0.12em" font-weight="600">SOUTH</text>
@@ -1872,7 +1891,8 @@
     </div>
     <div class="legend">
       <div class="legend-item"><div class="legend-dot" style="background:var(--orange)"></div>Pepper (5 varieties)</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#4ade80"></div>Better Belle (new)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#4ade80"></div>Better Belle</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#d4d4d4; border-color:#9ca3af"></div>TBD Pepper (2 slots)</div>
       <div class="legend-item"><div class="legend-dot" style="background:#0d9488"></div>Pickling CK &mdash; Sow 1</div>
       <div class="legend-item"><div class="legend-dot" style="background:#0d9488; border-color:#fbbf24;"></div>Pickling CK &mdash; Sow 2</div>
       <div class="legend-item"><div class="legend-dot" style="background:var(--violet)"></div>Bean succession zone</div>
