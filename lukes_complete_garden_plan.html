@@ -804,6 +804,74 @@
     .plant-card-content { grid-template-columns: 1fr; }
   }
 
+  /* ── Garden Map (Overview) ── */
+  .garden-map-wrap {
+    background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #f0fdfa 100%);
+    border: 1px solid var(--green-200);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  .garden-map-wrap svg { width: 100%; max-width: 720px; display: block; margin: 0 auto; cursor: pointer; }
+  .garden-map-wrap svg .bed-zone { transition: opacity 0.15s, transform 0.15s; cursor: pointer; }
+  .garden-map-wrap svg .bed-zone:hover { opacity: 0.85; }
+  .garden-map-wrap svg .plant-dot { cursor: pointer; transition: transform 0.15s; }
+  .garden-map-wrap svg .plant-dot:hover { transform: scale(1.2); }
+
+  /* ── Collapsible Timeline (Overview) ── */
+  .timeline-section { margin-bottom: 1.5rem; }
+  .timeline-month-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.7rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 0.4rem;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s, box-shadow 0.15s;
+  }
+  .timeline-month-header:hover { background: var(--green-50); box-shadow: var(--shadow-sm); }
+  .timeline-month-header.current { border-left: 4px solid var(--green-500); background: var(--green-50); }
+  .timeline-month-header .month-label {
+    font-family: 'Fraunces', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text);
+    flex: 1;
+  }
+  .timeline-month-header .month-badge {
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+  }
+  .month-badge.now { background: var(--green-100); color: var(--green-700); }
+  .month-badge.upcoming { background: var(--amber-light); color: #92400e; }
+  .month-badge.later { background: var(--surface-alt); color: var(--text-light); }
+  .timeline-month-header .expand-arrow {
+    width: 20px; height: 20px;
+    transition: transform 0.2s;
+    stroke: var(--text-light);
+    fill: none;
+    stroke-width: 2;
+  }
+  .timeline-month-header.expanded .expand-arrow { transform: rotate(180deg); }
+  .timeline-month-body { display: none; padding: 0.3rem 0 0.5rem 0.5rem; }
+  .timeline-month-header.expanded + .timeline-month-body { display: block; }
+  .month-progress {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--text-light);
+    min-width: 2.5rem;
+    text-align: right;
+  }
+
   /* ── Learn Detail Expandable ── */
   .learn-toggle {
     cursor: pointer;
@@ -940,60 +1008,46 @@
   <button class="tab" onclick="showTab('bags')" role="tab">Grow Bags</button>
   <button class="tab" onclick="showTab('basil')" role="tab">Basil Strategy</button>
   <button class="tab" onclick="showTab('hydro')" role="tab">Hydroponics</button>
-  <button class="tab" onclick="showTab('timeline')" role="tab">Timeline</button>
   <button class="tab" onclick="showTab('guide')" role="tab">Plant Guide</button>
   <button class="tab" onclick="showTab('spring')" role="tab">Spring (History)</button>
 </div>
 
 <!-- ═══════ OVERVIEW ═══════ -->
 <div id="overview" class="panel active">
-  <div class="change-callout">
-    <strong>v4 Changes (April 2026):</strong>
-    <ul style="line-height:1.9;">
-      <li>Bed A redesigned: 10-12 tomatoes replacing most basil <span class="new-badge">revised</span></li>
-      <li>Added San Marzano + Amish Paste for tomato jam production <span class="new-badge">new</span></li>
-      <li>Basil redistributed to grow bag edges + AeroGarden rounds <span class="new-badge">new</span></li>
-      <li>Total tomato count: 6 &rarr; 14 plants</li>
-      <li>Bed B pepper count corrected to 8 (P9/P10 removed)</li>
-      <li>Variety names on all bed maps (BigBeef, Whopper, etc.)</li>
-      <li>2nd hydro unit: cucumber nursery &rarr; tatsoi + mustard greens permanent</li>
-      <li>Lost 1 jalape&ntilde;o on Gardyn tower noted</li>
-    </ul>
-  </div>
 
   <div class="section-title">Production Summary <span class="tag">At a glance</span></div>
   <div class="summary-grid">
-    <div class="summary-card">
+    <div class="summary-card" onclick="showTab('beda'); document.querySelector('[onclick*=beda]').classList.add('active');" style="cursor:pointer;">
       <div class="icon">&#127813;</div>
       <div class="number" style="color:var(--coral)">14</div>
       <div class="label">Tomato Plants</div>
       <div class="detail">Slicers, paste &amp; heirlooms for jam</div>
     </div>
-    <div class="summary-card">
+    <div class="summary-card" onclick="showTab('basil'); document.querySelector('[onclick*=basil]').classList.add('active');" style="cursor:pointer;">
       <div class="icon">&#127807;</div>
       <div class="number" style="color:var(--green-600)">18</div>
       <div class="label">Basil Plants</div>
       <div class="detail">Distributed: bags + AeroGarden</div>
     </div>
-    <div class="summary-card">
+    <div class="summary-card" onclick="showTab('bedbc'); document.querySelector('[onclick*=bedbc]').classList.add('active');" style="cursor:pointer;">
       <div class="icon">&#127798;</div>
       <div class="number" style="color:var(--orange)">8</div>
       <div class="label">Pepper Plants</div>
       <div class="detail">Bell, Cajun, Lunchbox, Jalape&ntilde;o</div>
     </div>
-    <div class="summary-card">
+    <div class="summary-card" onclick="showTab('bedbc'); document.querySelector('[onclick*=bedbc]').classList.add('active');" style="cursor:pointer;">
       <div class="icon">&#129753;</div>
       <div class="number" style="color:var(--violet)">3</div>
       <div class="label">Bean Zones</div>
       <div class="detail">Stringless + Blue Lake</div>
     </div>
-    <div class="summary-card">
+    <div class="summary-card" onclick="showTab('bedbc'); document.querySelector('[onclick*=bedbc]').classList.add('active');" style="cursor:pointer;">
       <div class="icon">&#129388;</div>
       <div class="number" style="color:var(--teal)">4</div>
       <div class="label">Okra Plants</div>
       <div class="detail">Bed C &middot; Direct sow</div>
     </div>
-    <div class="summary-card">
+    <div class="summary-card" onclick="showTab('bags'); document.querySelector('[onclick*=bags]').classList.add('active');" style="cursor:pointer;">
       <div class="icon">&#127820;</div>
       <div class="number" style="color:var(--sky-dark)">8</div>
       <div class="label">Grow Bags</div>
@@ -1001,37 +1055,337 @@
     </div>
   </div>
 
-  <div class="section-title">Bed Layout Overview <span class="tag">Three raised beds</span></div>
-  <div class="bed-container" style="border-left: 4px solid var(--coral)">
-    <div class="bed-header">
-      <div>
-        <div class="bed-label">&#127813; Bed A &mdash; Tomato Production Bed</div>
-        <div class="bed-note">West trellis &middot; 8&times;4 ft &middot; Heavy tomato focus for jam</div>
-      </div>
-      <div class="bed-meta">8 &times; 4 ft<br>~14 plants</div>
-    </div>
-    <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.7;">Original 6 varieties on west trellis (N&rarr;S: BigBeef, Whopper, Rainbow, Brandy, Cherokee, Yellow Pear). Interior row adds San Marzano + Amish Paste for paste/jam. 2-3 basil at south end only.</p>
+  <!-- ── Interactive Garden Map ── -->
+  <div class="section-title">Garden Layout <span class="tag">Click a bed or plant to explore</span></div>
+  <div class="garden-map-wrap">
+    <svg viewBox="0 0 750 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="mapShadow"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.12"/></filter>
+        <linearGradient id="grassGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#dcfce7"/><stop offset="100%" stop-color="#d1fae5"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Background / yard -->
+      <rect x="0" y="0" width="750" height="400" rx="16" fill="url(#grassGrad)"/>
+      <text x="375" y="22" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#065f46" font-weight="700" letter-spacing="0.1em">&#8593; NORTH</text>
+      <text x="375" y="395" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#065f46" font-weight="600" letter-spacing="0.08em">SOUTH &#8595;</text>
+      <text x="12" y="205" font-family="Inter,sans-serif" font-size="9" fill="#065f46" font-weight="600" transform="rotate(-90,12,205)">&#8592; WEST</text>
+      <text x="740" y="205" font-family="Inter,sans-serif" font-size="9" fill="#065f46" font-weight="600" transform="rotate(90,740,205)">EAST &#8594;</text>
+
+      <!-- ══ BED A ══ -->
+      <g class="bed-zone" onclick="navigateToBed('beda')" filter="url(#mapShadow)">
+        <rect x="40" y="50" width="180" height="320" rx="10" fill="#fff1f2" stroke="#fca5a5" stroke-width="2"/>
+        <text x="130" y="72" text-anchor="middle" font-family="Fraunces,serif" font-size="13" fill="#991b1b" font-weight="700">Bed A</text>
+        <text x="130" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#dc2626">TOMATO PRODUCTION &middot; 8&times;4 ft</text>
+
+        <!-- West trellis -->
+        <rect x="48" y="95" width="6" height="250" rx="2" fill="#fecaca" stroke="#f87171" stroke-width="1"/>
+        <text x="51" y="220" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="#991b1b" font-weight="600" transform="rotate(-90,51,220)">WEST TRELLIS</text>
+
+        <!-- Trellis tomatoes -->
+        <circle class="plant-dot" cx="68" cy="115" r="9" fill="#ef4444" data-tip="Big Beef" onclick="event.stopPropagation(); navigateToPlant('g-bigbeef')"/>
+        <text x="68" y="118" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">BB</text>
+        <circle class="plant-dot" cx="68" cy="155" r="9" fill="#dc2626" data-tip="Whopper" onclick="event.stopPropagation(); navigateToPlant('g-whopper')"/>
+        <text x="68" y="158" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">WH</text>
+        <circle class="plant-dot" cx="68" cy="195" r="9" fill="#f97316" data-tip="Rainbow" onclick="event.stopPropagation(); navigateToPlant('g-rainbow')"/>
+        <text x="68" y="198" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">RB</text>
+        <circle class="plant-dot" cx="68" cy="235" r="9" fill="#ef4444" data-tip="Brandywine" onclick="event.stopPropagation(); navigateToPlant('g-brandy')"/>
+        <text x="68" y="238" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">BW</text>
+        <circle class="plant-dot" cx="68" cy="275" r="9" fill="#991b1b" data-tip="Cherokee Purple" onclick="event.stopPropagation(); navigateToPlant('g-cherokee')"/>
+        <text x="68" y="278" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">CP</text>
+        <circle class="plant-dot" cx="68" cy="315" r="9" fill="#eab308" data-tip="Yellow Pear" onclick="event.stopPropagation(); navigateToPlant('g-yelpear')"/>
+        <text x="68" y="318" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">YP</text>
+
+        <!-- Interior paste tomatoes -->
+        <rect class="plant-dot" x="97" y="108" width="16" height="16" rx="4" fill="#f87171" data-tip="San Marzano" onclick="event.stopPropagation(); navigateToPlant('g-sanm')"/>
+        <text x="105" y="119" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">SM</text>
+        <rect class="plant-dot" x="97" y="148" width="16" height="16" rx="4" fill="#f87171" data-tip="San Marzano" onclick="event.stopPropagation(); navigateToPlant('g-sanm')"/>
+        <text x="105" y="159" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">SM</text>
+        <rect class="plant-dot" x="97" y="188" width="16" height="16" rx="4" fill="#fb923c" data-tip="Amish Paste" onclick="event.stopPropagation(); navigateToPlant('g-amish')"/>
+        <text x="105" y="199" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">AP</text>
+        <rect class="plant-dot" x="97" y="228" width="16" height="16" rx="4" fill="#fb923c" data-tip="Amish Paste" onclick="event.stopPropagation(); navigateToPlant('g-amish')"/>
+        <text x="105" y="239" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">AP</text>
+
+        <rect class="plant-dot" x="130" y="108" width="16" height="16" rx="4" fill="#f87171" data-tip="San Marzano" onclick="event.stopPropagation(); navigateToPlant('g-sanm')"/>
+        <text x="138" y="119" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">SM</text>
+        <rect class="plant-dot" x="130" y="148" width="16" height="16" rx="4" fill="#f87171" data-tip="San Marzano" onclick="event.stopPropagation(); navigateToPlant('g-sanm')"/>
+        <text x="138" y="159" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">SM</text>
+        <rect class="plant-dot" x="130" y="188" width="16" height="16" rx="4" fill="#fb923c" data-tip="Amish Paste" onclick="event.stopPropagation(); navigateToPlant('g-amish')"/>
+        <text x="138" y="199" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">AP</text>
+        <rect class="plant-dot" x="130" y="228" width="16" height="16" rx="4" fill="#fb923c" data-tip="Amish Paste" onclick="event.stopPropagation(); navigateToPlant('g-amish')"/>
+        <text x="138" y="239" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">AP</text>
+
+        <!-- Basil south -->
+        <circle class="plant-dot" cx="105" cy="340" r="7" fill="#10b981" data-tip="Basil" onclick="event.stopPropagation(); navigateToPlant('g-basil')"/>
+        <text x="105" y="343" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">B</text>
+        <circle class="plant-dot" cx="130" cy="340" r="7" fill="#10b981" data-tip="Basil" onclick="event.stopPropagation(); navigateToPlant('g-basil')"/>
+        <text x="130" y="343" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">B</text>
+        <circle class="plant-dot" cx="155" cy="340" r="7" fill="#10b981" data-tip="Basil" onclick="event.stopPropagation(); navigateToPlant('g-basil')"/>
+        <text x="155" y="343" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">B</text>
+      </g>
+
+      <!-- ══ BED B ══ -->
+      <g class="bed-zone" onclick="navigateToBed('bedbc')" filter="url(#mapShadow)">
+        <rect x="270" y="50" width="200" height="320" rx="10" fill="#fff7ed" stroke="#fdba74" stroke-width="2"/>
+        <text x="370" y="72" text-anchor="middle" font-family="Fraunces,serif" font-size="13" fill="#9a3412" font-weight="700">Bed B</text>
+        <text x="370" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#ea580c">PEPPERS, BEANS &amp; CUKES &middot; 8&times;4 ft</text>
+
+        <!-- Peppers (west side) -->
+        <circle class="plant-dot" cx="300" cy="110" r="9" fill="#fb923c" data-tip="Orange Bell" onclick="event.stopPropagation(); navigateToPlant('g-orgbell')"/>
+        <text x="300" y="113" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">OB</text>
+        <circle class="plant-dot" cx="340" cy="110" r="9" fill="#fb923c" data-tip="Orange Bell" onclick="event.stopPropagation(); navigateToPlant('g-orgbell')"/>
+        <text x="340" y="113" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">OB</text>
+
+        <circle class="plant-dot" cx="300" cy="155" r="9" fill="#ea580c" data-tip="Cajun Belle" onclick="event.stopPropagation(); navigateToPlant('g-cajun')"/>
+        <text x="300" y="158" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">CB</text>
+        <circle class="plant-dot" cx="340" cy="155" r="9" fill="#ea580c" data-tip="Cajun Belle" onclick="event.stopPropagation(); navigateToPlant('g-cajun')"/>
+        <text x="340" y="158" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">CB</text>
+
+        <circle class="plant-dot" cx="300" cy="200" r="9" fill="#f59e0b" data-tip="Lunchbox Orange" onclick="event.stopPropagation(); navigateToPlant('g-lunch')"/>
+        <text x="300" y="203" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">LB</text>
+        <circle class="plant-dot" cx="340" cy="200" r="9" fill="#f59e0b" data-tip="Lunchbox Orange" onclick="event.stopPropagation(); navigateToPlant('g-lunch')"/>
+        <text x="340" y="203" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">LB</text>
+
+        <circle class="plant-dot" cx="300" cy="245" r="9" fill="#22c55e" data-tip="Jalape&ntilde;o" onclick="event.stopPropagation(); navigateToPlant('g-jalap')"/>
+        <text x="300" y="248" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">JL</text>
+        <circle class="plant-dot" cx="340" cy="245" r="9" fill="#22c55e" data-tip="Jalape&ntilde;o" onclick="event.stopPropagation(); navigateToPlant('g-jalap')"/>
+        <text x="340" y="248" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">JL</text>
+
+        <!-- Bean zones (center-right) -->
+        <rect x="365" y="100" width="45" height="70" rx="5" fill="#8b5cf6" opacity="0.15" stroke="#8b5cf6" stroke-width="1"/>
+        <text x="387" y="130" text-anchor="middle" font-size="5.5" fill="#7c3aed" font-weight="700">Bean</text>
+        <text x="387" y="140" text-anchor="middle" font-size="5" fill="#7c3aed">Sow1</text>
+        <rect x="365" y="180" width="45" height="70" rx="5" fill="#8b5cf6" opacity="0.10" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="387" y="210" text-anchor="middle" font-size="5.5" fill="#7c3aed" font-weight="700">Bean</text>
+        <text x="387" y="220" text-anchor="middle" font-size="5" fill="#7c3aed">Sow2</text>
+        <rect x="285" y="280" width="125" height="50" rx="5" fill="#8b5cf6" opacity="0.06" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="347" y="308" text-anchor="middle" font-size="5.5" fill="#7c3aed" font-weight="700">Bean Sow 3+</text>
+
+        <!-- East trellis + cucumbers -->
+        <rect x="455" y="95" width="6" height="240" rx="2" fill="#99f6e4" stroke="#14b8a6" stroke-width="1"/>
+        <text x="458" y="215" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="#0f766e" font-weight="600" transform="rotate(90,458,215)">EAST TRELLIS</text>
+        <rect class="plant-dot" x="425" y="105" width="16" height="16" rx="4" fill="#14b8a6" data-tip="Slicer Cucumber" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
+        <text x="433" y="116" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">CK</text>
+        <rect class="plant-dot" x="425" y="135" width="16" height="16" rx="4" fill="#14b8a6" data-tip="Slicer Cucumber" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
+        <text x="433" y="146" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">CK</text>
+        <rect class="plant-dot" x="425" y="170" width="16" height="16" rx="4" fill="#0d9488" data-tip="Pickling CK (Sow 1)" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
+        <text x="433" y="181" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">PK</text>
+        <rect class="plant-dot" x="425" y="200" width="16" height="16" rx="4" fill="#0d9488" data-tip="Pickling CK (Sow 1)" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
+        <text x="433" y="211" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">PK</text>
+        <rect class="plant-dot" x="425" y="235" width="16" height="16" rx="4" fill="#0d9488" stroke="#fbbf24" stroke-width="1.5" data-tip="Pickling CK (Sow 2)" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
+        <text x="433" y="246" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">P2</text>
+        <rect class="plant-dot" x="425" y="265" width="16" height="16" rx="4" fill="#0d9488" stroke="#fbbf24" stroke-width="1.5" data-tip="Pickling CK (Sow 2)" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
+        <text x="433" y="276" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">P2</text>
+      </g>
+
+      <!-- ══ BED C ══ -->
+      <g class="bed-zone" onclick="navigateToBed('bedbc')" filter="url(#mapShadow)">
+        <rect x="520" y="50" width="180" height="320" rx="10" fill="#f5f3ff" stroke="#c4b5fd" stroke-width="2"/>
+        <text x="610" y="72" text-anchor="middle" font-family="Fraunces,serif" font-size="13" fill="#5b21b6" font-weight="700">Bed C</text>
+        <text x="610" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#7c3aed">BEANS &amp; OKRA &middot; 8&times;4 ft</text>
+
+        <!-- Okra at north -->
+        <circle class="plant-dot" cx="555" cy="110" r="9" fill="#14b8a6" data-tip="Okra (Clemson Spineless)" onclick="event.stopPropagation(); navigateToPlant('g-okra')"/>
+        <text x="555" y="113" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">O1</text>
+        <circle class="plant-dot" cx="590" cy="110" r="9" fill="#14b8a6" data-tip="Okra (Clemson Spineless)" onclick="event.stopPropagation(); navigateToPlant('g-okra')"/>
+        <text x="590" y="113" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">O2</text>
+        <circle class="plant-dot" cx="625" cy="110" r="9" fill="#14b8a6" data-tip="Okra (Clemson Spineless)" onclick="event.stopPropagation(); navigateToPlant('g-okra')"/>
+        <text x="625" y="113" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">O3</text>
+        <circle class="plant-dot" cx="660" cy="110" r="9" fill="#14b8a6" data-tip="Okra (Clemson Spineless)" onclick="event.stopPropagation(); navigateToPlant('g-okra')"/>
+        <text x="660" y="113" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">O4</text>
+
+        <!-- Blue Lake bean zone -->
+        <rect x="538" y="135" width="144" height="210" rx="8" fill="#8b5cf6" opacity="0.08" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="6,4"/>
+        <text x="610" y="230" text-anchor="middle" font-size="9" fill="#7c3aed" font-weight="700">BLUE LAKE</text>
+        <text x="610" y="244" text-anchor="middle" font-size="9" fill="#7c3aed" font-weight="700">BEANS</text>
+        <text x="610" y="260" text-anchor="middle" font-size="6" fill="#8b5cf6">Succession every 2-3 wks</text>
+      </g>
+
+      <!-- ══ GROW BAGS (below beds) ══ -->
+      <g class="bed-zone" onclick="navigateToBed('bags')" filter="url(#mapShadow)" style="cursor:pointer;">
+        <rect x="40" y="385" width="660" height="10" rx="4" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1" opacity="0.6"/>
+      </g>
+    </svg>
+    <div style="text-align:center; margin-top:0.5rem; font-size:0.7rem; color:var(--text-light);">Click any bed to see its detailed map. Click a plant dot to jump to its Plant Guide entry.</div>
   </div>
-  <div class="bed-container" style="border-left: 4px solid var(--orange)">
-    <div class="bed-header">
-      <div>
-        <div class="bed-label">&#127798; Bed B &mdash; Peppers, Beans &amp; Cucumbers</div>
-        <div class="bed-note">8 peppers + stringless bean succession + cucumbers on east trellis</div>
-      </div>
-      <div class="bed-meta">8 &times; 4 ft</div>
+
+  <!-- ── Collapsible Timeline ── -->
+  <div class="section-title">Season Timeline <span class="tag">Check off as you go</span></div>
+  <div class="timeline-section">
+
+    <div class="timeline-month-header current expanded" onclick="toggleTimelineMonth(this)">
+      <span class="month-label">Early April (Now)</span>
+      <span class="month-badge now">Current</span>
+      <span class="month-progress" data-months="t-1,t-2,t-3,t-4,t-5"></span>
+      <svg class="expand-arrow" viewBox="0 0 14 14"><polyline points="3,5 7,9 11,5"/></svg>
     </div>
-    <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.7;">N&rarr;S: Orange Bell &times;2, Cajun Belle &times;2, Lunchbox Orange &times;2, Jalape&ntilde;o &times;2. Stringless Green beans in succession waves (sow every 2-3 wks). East trellis: 2 slicer cucumbers + pickling cucumbers (2 sowings).</p>
-  </div>
-  <div class="bed-container" style="border-left: 4px solid var(--violet)">
-    <div class="bed-header">
-      <div>
-        <div class="bed-label">&#129753; Bed C &mdash; Beans &amp; Okra</div>
-        <div class="bed-note">Blue Lake beans + 4 okra (direct sow)</div>
-      </div>
-      <div class="bed-meta">8 &times; 4 ft</div>
+    <div class="timeline-month-body">
+      <ul class="checklist">
+        <li class="checklist-item" data-check="t-1" onclick="toggleCheck(this)">
+          <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="check-label">Direct sow okra <span class="sub">Soak seeds 12-24 hrs first, soil 65 F+</span></div>
+        </li>
+        <li class="checklist-item" data-check="t-2" onclick="toggleCheck(this)">
+          <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="check-label">Harden off tomato transplants</div>
+        </li>
+        <li class="checklist-item" data-check="t-3" onclick="toggleCheck(this)">
+          <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="check-label">AeroGarden basil sprouting <span class="sub">Keep light at lowest level</span></div>
+        </li>
+        <li class="checklist-item" data-check="t-4" onclick="toggleCheck(this)">
+          <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="check-label">Start cucumbers in 2nd hydro unit for Bed B</div>
+        </li>
+        <li class="checklist-item" data-check="t-5" onclick="toggleCheck(this)">
+          <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="check-label">Apply 2-3" straw mulch to beds after planting</div>
+        </li>
+      </ul>
     </div>
-    <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.7;">Blue Lake bush beans filling the main area. 4 okra (Clemson Spineless) direct sown at north end &mdash; they grow 5-6 ft tall, placed to avoid shading beans.</p>
+
+    <div class="timeline-month-header expanded" onclick="toggleTimelineMonth(this)">
+      <span class="month-label">Mid April</span>
+      <span class="month-badge upcoming">Upcoming</span>
+      <span class="month-progress" data-months="t-6,t-7,t-8,t-9"></span>
+      <svg class="expand-arrow" viewBox="0 0 14 14"><polyline points="3,5 7,9 11,5"/></svg>
+    </div>
+    <div class="timeline-month-body">
+      <ul class="checklist">
+        <li class="checklist-item" data-check="t-6" onclick="toggleCheck(this)">
+          <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="check-label">Direct sow Blue Lake beans (Bed C) <span class="sub">After last frost ~Apr 15</span></div>
+        </li>
+        <li class="checklist-item" data-check="t-7" onclick="toggleCheck(this)">
+          <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="check-label">Direct sow Stringless Green beans (Bed B)</div>
+        </li>
+        <li class="checklist-item" data-check="t-8" onclick="toggleCheck(this)">
+          <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="check-label">Transplant pepper starts to Bed B</div>
+        </li>
+        <li class="checklist-item" data-check="t-9" onclick="toggleCheck(this)">
+          <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="check-label">Transplant slicer cucumbers + direct sow pickling CKs to Bed B east trellis <span class="sub">1st sowing of pickling cucumbers</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="timeline-month-header" onclick="toggleTimelineMonth(this)">
+      <span class="month-label">Late April</span>
+      <span class="month-badge upcoming">Upcoming</span>
+      <span class="month-progress" data-months="t-10,t-11"></span>
+      <svg class="expand-arrow" viewBox="0 0 14 14"><polyline points="3,5 7,9 11,5"/></svg>
+    </div>
+    <div class="timeline-month-body">
+      <ul class="checklist">
+        <li class="checklist-item" data-check="t-10" onclick="toggleCheck(this)">
+          <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="check-label">Transplant AeroGarden basil <span class="sub">3 to Bed A south, 1 per tomato/pepper bag</span></div>
+        </li>
+        <li class="checklist-item" data-check="t-11" onclick="toggleCheck(this)">
+          <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="check-label">Plant tomato starts in Bed A <span class="sub">All varieties including San Marzano &amp; Amish Paste</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="timeline-month-header" onclick="toggleTimelineMonth(this)">
+      <span class="month-label">Mid May</span>
+      <span class="month-badge later">Later</span>
+      <span class="month-progress" data-months="t-12,t-13,t-14,t-14b"></span>
+      <svg class="expand-arrow" viewBox="0 0 14 14"><polyline points="3,5 7,9 11,5"/></svg>
+    </div>
+    <div class="timeline-month-body">
+      <ul class="checklist">
+        <li class="checklist-item" data-check="t-12" onclick="toggleCheck(this)">
+          <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="check-label">Start AeroGarden basil Round 2 <span class="sub">Succession planting</span></div>
+        </li>
+        <li class="checklist-item" data-check="t-13" onclick="toggleCheck(this)">
+          <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="check-label">Pinch basil flower buds on Round 1 plants</div>
+        </li>
+        <li class="checklist-item" data-check="t-14" onclick="toggleCheck(this)">
+          <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="check-label">Transition 2nd hydro: cucumbers &rarr; tatsoi + mustard greens</div>
+        </li>
+        <li class="checklist-item" data-check="t-14b" onclick="toggleCheck(this)">
+          <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="check-label">Direct sow pickling cucumbers &mdash; 2nd sowing on east trellis <span class="sub">Late May / early June for extended harvest</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="timeline-month-header" onclick="toggleTimelineMonth(this)">
+      <span class="month-label">June</span>
+      <span class="month-badge later">Later</span>
+      <span class="month-progress" data-months="t-15,t-16,t-17"></span>
+      <svg class="expand-arrow" viewBox="0 0 14 14"><polyline points="3,5 7,9 11,5"/></svg>
+    </div>
+    <div class="timeline-month-body">
+      <ul class="checklist">
+        <li class="checklist-item" data-check="t-15" onclick="toggleCheck(this)">
+          <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="check-label">Tomato staking and training</div>
+        </li>
+        <li class="checklist-item" data-check="t-16" onclick="toggleCheck(this)">
+          <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="check-label">Pinch basil continuously</div>
+        </li>
+        <li class="checklist-item" data-check="t-17" onclick="toggleCheck(this)">
+          <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="check-label">First harvests: beans, cucumbers, peppers</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="timeline-month-header" onclick="toggleTimelineMonth(this)">
+      <span class="month-label">July &mdash; August</span>
+      <span class="month-badge later">Later</span>
+      <span class="month-progress" data-months="t-18,t-19,t-20,t-21"></span>
+      <svg class="expand-arrow" viewBox="0 0 14 14"><polyline points="3,5 7,9 11,5"/></svg>
+    </div>
+    <div class="timeline-month-body">
+      <ul class="checklist">
+        <li class="checklist-item" data-check="t-18" onclick="toggleCheck(this)">
+          <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="check-label">Peak tomato production &mdash; harvest for jam</div>
+        </li>
+        <li class="checklist-item" data-check="t-19" onclick="toggleCheck(this)">
+          <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="check-label">Freeze pesto batches weekly</div>
+        </li>
+        <li class="checklist-item" data-check="t-20" onclick="toggleCheck(this)">
+          <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="check-label">Round 2 basil transplants replacing bolted Round 1</div>
+        </li>
+        <li class="checklist-item" data-check="t-21" onclick="toggleCheck(this)">
+          <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="check-label">Okra at full stride &mdash; harvest regularly</div>
+        </li>
+      </ul>
+    </div>
+
   </div>
+
+  <!-- v4 changes callout (collapsed by default) -->
+  <details style="margin-top:1rem;">
+    <summary style="cursor:pointer; font-size:0.78rem; font-weight:600; color:var(--green-600); padding:0.5rem 0;">View v4 Change Log (April 2026)</summary>
+    <div class="change-callout" style="margin-top:0.5rem;">
+      <ul style="line-height:1.9;">
+        <li>Bed A redesigned: 10-12 tomatoes replacing most basil <span class="new-badge">revised</span></li>
+        <li>Added San Marzano + Amish Paste for tomato jam production <span class="new-badge">new</span></li>
+        <li>Basil redistributed to grow bag edges + AeroGarden rounds <span class="new-badge">new</span></li>
+        <li>Total tomato count: 6 &rarr; 14 plants</li>
+        <li>Bed B pepper count corrected to 8 (P9/P10 removed)</li>
+        <li>Variety names on all bed maps (BigBeef, Whopper, etc.)</li>
+        <li>2nd hydro unit: cucumber nursery &rarr; tatsoi + mustard greens permanent</li>
+        <li>Lost 1 jalape&ntilde;o on Gardyn tower noted</li>
+      </ul>
+    </div>
+  </details>
 </div>
 
 <!-- ═══════ BED A ═══════ -->
@@ -1687,6 +2041,8 @@
     </div>
   </div>
 </div>
+
+<!-- The timeline is now embedded in the Overview tab above -->
 
 <!-- ═══════ PLANT GUIDE ═══════ -->
 <div id="guide" class="panel">
@@ -3144,6 +3500,7 @@
     state[key] = el.classList.contains('checked');
     saveState(state);
     updateProgress();
+    updateMonthProgress();
   }
 
   // ── Bag toggle ──
@@ -3203,6 +3560,58 @@
     }
   });
 
+  // ── Navigate to bed tab ──
+  function navigateToBed(tabId) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    document.querySelectorAll('.tab').forEach(t => {
+      if (t.getAttribute('onclick') && t.getAttribute('onclick').includes(tabId)) t.classList.add('active');
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── Navigate to plant in Plant Guide ──
+  function navigateToPlant(plantPrefix) {
+    // Switch to guide tab
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('guide').classList.add('active');
+    document.querySelectorAll('.tab').forEach(t => {
+      if (t.getAttribute('onclick') && t.getAttribute('onclick').includes('guide')) t.classList.add('active');
+    });
+    // Reset filter to All
+    document.querySelectorAll('.guide-filter').forEach(f => f.classList.remove('active'));
+    document.querySelector('.guide-filter').classList.add('active');
+    document.querySelectorAll('.plant-card').forEach(c => c.style.display = '');
+    // Find the plant card with a matching data-check and open it
+    const target = document.querySelector('[data-check="' + plantPrefix + '-1"]');
+    if (target) {
+      const card = target.closest('.plant-card');
+      if (card) {
+        card.classList.add('open');
+        setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+      }
+    }
+  }
+
+  // ── Timeline month toggle ──
+  function toggleTimelineMonth(header) {
+    header.classList.toggle('expanded');
+    updateMonthProgress();
+  }
+
+  // ── Update month-level progress counters ──
+  function updateMonthProgress() {
+    const state = loadState();
+    document.querySelectorAll('.month-progress').forEach(el => {
+      const ids = el.dataset.months.split(',');
+      let done = 0;
+      ids.forEach(id => { if (state[id]) done++; });
+      el.textContent = done + '/' + ids.length;
+    });
+  }
+
   // ── Plant card accordion ──
   function togglePlantCard(card) {
     card.classList.toggle('open');
@@ -3230,6 +3639,7 @@
 
   // ── Init ──
   restoreState();
+  updateMonthProgress();
 </script>
 </body>
 </html>
