@@ -4470,38 +4470,42 @@
     const totalPlants = rows * plantsPerRow;
 
     // Build SVG dot map
-    const svgW = 500;
-    const svgH = Math.max(200, (plantsPerRow * 14) + 60);
+    // Rows run top-to-bottom (N→S), plants within each row run left-to-right (W→E)
     const marginX = 50;
-    const marginY = 40;
+    const marginY = 50;
     const dotR = 5;
-    const gapX = rows > 1 ? (svgW - marginX * 2) / (rows - 1) : 0;
-    const gapY = plantsPerRow > 1 ? Math.min(14, (svgH - marginY * 2) / (plantsPerRow - 1)) : 0;
-    const actualH = marginY * 2 + (plantsPerRow - 1) * gapY;
+    const gapX = plantsPerRow > 1 ? Math.min(18, (500 - marginX * 2) / (plantsPerRow - 1)) : 0;
+    const gapY = rows > 1 ? 40 : 0;
+    const svgW = marginX * 2 + (plantsPerRow - 1) * gapX + 20;
+    const svgH = marginY * 2 + (rows - 1) * gapY + 30;
 
     let dots = '';
+    // Direction labels
+    dots += '<text x="' + (svgW / 2) + '" y="15" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#065f46" font-weight="600" letter-spacing="0.06em">&#8592; WEST &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EAST &#8594;</text>';
+    dots += '<text x="15" y="' + (svgH / 2) + '" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#065f46" font-weight="600" transform="rotate(-90,15,' + (svgH / 2) + ')">N &#8594; S</text>';
+
     for (let r = 0; r < rows; r++) {
-      const x = marginX + r * gapX;
-      // Row label
-      dots += '<text x="' + x + '" y="' + (marginY - 12) + '" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#7c3aed" font-weight="600">Row ' + (r + 1) + '</text>';
+      const y = marginY + r * gapY;
+      // Row label on left
+      dots += '<text x="' + (marginX - 8) + '" y="' + (y + 4) + '" text-anchor="end" font-family="Inter,sans-serif" font-size="7" fill="#7c3aed" font-weight="600">Row ' + (r + 1) + '</text>';
       for (let p = 0; p < plantsPerRow; p++) {
-        const y = marginY + p * gapY;
+        const x = marginX + p * gapX;
         dots += '<circle cx="' + x + '" cy="' + y + '" r="' + dotR + '" fill="#8b5cf6" opacity="0.7"/>';
       }
-      // Plant count under row
-      dots += '<text x="' + x + '" y="' + (actualH + 5) + '" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#a78bfa">' + plantsPerRow + ' seeds</text>';
+      // Plant count on right
+      dots += '<text x="' + (marginX + (plantsPerRow - 1) * gapX + 15) + '" y="' + (y + 4) + '" font-family="Inter,sans-serif" font-size="6" fill="#a78bfa">' + plantsPerRow + '</text>';
     }
 
-    // Spacing annotations
+    // Spacing annotations — horizontal (plant spacing along the row)
+    const annoY = marginY - 18;
+    dots += '<line x1="' + marginX + '" y1="' + annoY + '" x2="' + (marginX + gapX) + '" y2="' + annoY + '" stroke="#d6d3d1" stroke-width="1"/>';
+    dots += '<text x="' + (marginX + gapX / 2) + '" y="' + (annoY - 4) + '" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#9ca3af">' + cfg.plantSpacing + '" apart</text>';
+    // Vertical (row spacing)
     if (rows > 1) {
-      const y1 = marginY - 25;
-      dots += '<line x1="' + marginX + '" y1="' + y1 + '" x2="' + (marginX + gapX) + '" y2="' + y1 + '" stroke="#d6d3d1" stroke-width="1"/>';
-      dots += '<text x="' + (marginX + gapX / 2) + '" y="' + (y1 - 4) + '" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#9ca3af">' + cfg.rowSpacing + '" apart</text>';
+      const annoX = marginX - 25;
+      dots += '<line x1="' + annoX + '" y1="' + marginY + '" x2="' + annoX + '" y2="' + (marginY + gapY) + '" stroke="#d6d3d1" stroke-width="1"/>';
+      dots += '<text x="' + (annoX - 2) + '" y="' + (marginY + gapY / 2 + 3) + '" text-anchor="end" font-family="Inter,sans-serif" font-size="6" fill="#9ca3af">' + cfg.rowSpacing + '"</text>';
     }
-    // Vertical spacing
-    const xAnno = marginX - 20;
-    dots += '<line x1="' + xAnno + '" y1="' + marginY + '" x2="' + xAnno + '" y2="' + (marginY + gapY) + '" stroke="#d6d3d1" stroke-width="1"/>';
-    dots += '<text x="' + (xAnno - 2) + '" y="' + (marginY + gapY / 2 + 3) + '" text-anchor="end" font-family="Inter,sans-serif" font-size="6" fill="#9ca3af">' + cfg.plantSpacing + '"</text>';
 
     const html = ''
       + '<button class="dot-map-close" onclick="closeDotMap()">&times;</button>'
@@ -4514,7 +4518,7 @@
       + '  <div class="dm-stat"><div class="val">' + cfg.plantSpacing + '"</div><div class="lbl">Spacing</div></div>'
       + '</div>'
       + '<div class="dot-map-svg-wrap">'
-      + '  <svg viewBox="0 0 ' + svgW + ' ' + (actualH + 25) + '" xmlns="http://www.w3.org/2000/svg">'
+      + '  <svg viewBox="0 0 ' + svgW + ' ' + svgH + '" xmlns="http://www.w3.org/2000/svg">'
       + dots
       + '  </svg>'
       + '</div>'
