@@ -1151,7 +1151,7 @@
   <!-- ── Interactive Garden Map ── -->
   <div class="section-title">Garden Layout <span class="tag">Click a bed or plant to explore</span></div>
   <div class="garden-map-wrap">
-    <svg viewBox="0 0 750 400" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 750 580" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <filter id="mapShadow"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.12"/></filter>
         <linearGradient id="grassGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1160,161 +1160,259 @@
       </defs>
 
       <!-- Background / yard -->
-      <rect x="0" y="0" width="750" height="400" rx="16" fill="url(#grassGrad)"/>
+      <rect x="0" y="0" width="750" height="580" rx="16" fill="url(#grassGrad)"/>
       <text x="375" y="22" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#065f46" font-weight="700" letter-spacing="0.1em">&#8593; NORTH</text>
-      <text x="375" y="395" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#065f46" font-weight="600" letter-spacing="0.08em">SOUTH &#8595;</text>
-      <text x="12" y="205" font-family="Inter,sans-serif" font-size="9" fill="#065f46" font-weight="600" transform="rotate(-90,12,205)">&#8592; WEST</text>
-      <text x="740" y="205" font-family="Inter,sans-serif" font-size="9" fill="#065f46" font-weight="600" transform="rotate(90,740,205)">EAST &#8594;</text>
+      <text x="375" y="575" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#065f46" font-weight="600" letter-spacing="0.08em">SOUTH &#8595;</text>
+      <text x="12" y="280" font-family="Inter,sans-serif" font-size="9" fill="#065f46" font-weight="600" transform="rotate(-90,12,280)">&#8592; WEST</text>
+      <text x="740" y="280" font-family="Inter,sans-serif" font-size="9" fill="#065f46" font-weight="600" transform="rotate(90,740,280)">EAST &#8594;</text>
 
-      <!-- ══ BED A ══ -->
+      <!-- ══ BED A (wider, centered in its third) ══ -->
       <g class="bed-zone" onclick="navigateToBed('beda')" filter="url(#mapShadow)">
-        <rect x="40" y="50" width="180" height="320" rx="10" fill="#fff1f2" stroke="#fca5a5" stroke-width="2"/>
-        <text x="130" y="72" text-anchor="middle" font-family="Fraunces,serif" font-size="13" fill="#991b1b" font-weight="700">Bed A</text>
-        <text x="130" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#dc2626">TOMATO PRODUCTION &middot; 8&times;4 ft</text>
+        <rect x="30" y="40" width="210" height="330" rx="10" fill="#fff1f2" stroke="#fca5a5" stroke-width="2"/>
+        <text x="135" y="62" text-anchor="middle" font-family="Fraunces,serif" font-size="13" fill="#991b1b" font-weight="700">Bed A</text>
+        <text x="135" y="76" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#dc2626">TOMATO PRODUCTION &middot; 8&times;4 ft</text>
 
         <!-- West trellis -->
-        <rect x="48" y="95" width="6" height="250" rx="2" fill="#fecaca" stroke="#f87171" stroke-width="1"/>
-        <text x="51" y="220" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="#991b1b" font-weight="600" transform="rotate(-90,51,220)">WEST TRELLIS</text>
+        <rect x="40" y="90" width="6" height="255" rx="2" fill="#fecaca" stroke="#f87171" stroke-width="1"/>
+        <text x="43" y="218" text-anchor="middle" font-family="Inter,sans-serif" font-size="5.5" fill="#991b1b" font-weight="600" transform="rotate(-90,43,218)">WEST TRELLIS</text>
 
-        <!-- Trellis tomatoes -->
-        <circle class="plant-dot" cx="68" cy="115" r="9" fill="#ef4444" data-tip="Big Beef" onclick="event.stopPropagation(); navigateToPlant('g-bigbeef')"/>
-        <text x="68" y="118" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">BB</text>
-        <circle class="plant-dot" cx="68" cy="155" r="9" fill="#dc2626" data-tip="Whopper" onclick="event.stopPropagation(); navigateToPlant('g-whopper')"/>
-        <text x="68" y="158" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">WH</text>
-        <circle class="plant-dot" cx="68" cy="195" r="9" fill="#f97316" data-tip="Rainbow" onclick="event.stopPropagation(); navigateToPlant('g-rainbow')"/>
-        <text x="68" y="198" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">RB</text>
-        <circle class="plant-dot" cx="68" cy="235" r="9" fill="#ef4444" data-tip="Brandywine" onclick="event.stopPropagation(); navigateToPlant('g-brandy')"/>
-        <text x="68" y="238" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">BW</text>
-        <circle class="plant-dot" cx="68" cy="275" r="9" fill="#991b1b" data-tip="Cherokee Purple" onclick="event.stopPropagation(); navigateToPlant('g-cherokee')"/>
-        <text x="68" y="278" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">CP</text>
-        <circle class="plant-dot" cx="68" cy="315" r="9" fill="#eab308" data-tip="Yellow Pear" onclick="event.stopPropagation(); navigateToPlant('g-yelpear')"/>
-        <text x="68" y="318" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">YP</text>
+        <!-- Trellis tomatoes (spaced evenly) -->
+        <circle class="plant-dot" cx="62" cy="108" r="9" fill="#ef4444" data-tip="Big Beef" onclick="event.stopPropagation(); navigateToPlant('g-bigbeef')"/>
+        <text x="62" y="111" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">BB</text>
+        <circle class="plant-dot" cx="62" cy="150" r="9" fill="#dc2626" data-tip="Whopper" onclick="event.stopPropagation(); navigateToPlant('g-whopper')"/>
+        <text x="62" y="153" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">WH</text>
+        <circle class="plant-dot" cx="62" cy="192" r="9" fill="#f97316" data-tip="Rainbow" onclick="event.stopPropagation(); navigateToPlant('g-rainbow')"/>
+        <text x="62" y="195" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">RB</text>
+        <circle class="plant-dot" cx="62" cy="234" r="9" fill="#ef4444" data-tip="Brandywine" onclick="event.stopPropagation(); navigateToPlant('g-brandy')"/>
+        <text x="62" y="237" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">BW</text>
+        <circle class="plant-dot" cx="62" cy="276" r="9" fill="#991b1b" data-tip="Cherokee Purple" onclick="event.stopPropagation(); navigateToPlant('g-cherokee')"/>
+        <text x="62" y="279" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">CP</text>
+        <circle class="plant-dot" cx="62" cy="318" r="9" fill="#eab308" data-tip="Yellow Pear" onclick="event.stopPropagation(); navigateToPlant('g-yelpear')"/>
+        <text x="62" y="321" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">YP</text>
 
-        <!-- Interior paste tomatoes -->
-        <rect class="plant-dot" x="97" y="108" width="16" height="16" rx="4" fill="#f87171" data-tip="San Marzano" onclick="event.stopPropagation(); navigateToPlant('g-sanm')"/>
-        <text x="105" y="119" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">SM</text>
-        <rect class="plant-dot" x="97" y="148" width="16" height="16" rx="4" fill="#f87171" data-tip="San Marzano" onclick="event.stopPropagation(); navigateToPlant('g-sanm')"/>
-        <text x="105" y="159" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">SM</text>
-        <rect class="plant-dot" x="97" y="188" width="16" height="16" rx="4" fill="#fb923c" data-tip="Amish Paste" onclick="event.stopPropagation(); navigateToPlant('g-amish')"/>
-        <text x="105" y="199" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">AP</text>
-        <rect class="plant-dot" x="97" y="228" width="16" height="16" rx="4" fill="#fb923c" data-tip="Amish Paste" onclick="event.stopPropagation(); navigateToPlant('g-amish')"/>
-        <text x="105" y="239" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">AP</text>
+        <!-- Interior paste tomatoes — col 1 -->
+        <rect class="plant-dot" x="90" y="100" width="16" height="16" rx="4" fill="#f87171" data-tip="San Marzano" onclick="event.stopPropagation(); navigateToPlant('g-sanm')"/>
+        <text x="98" y="111" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">SM</text>
+        <rect class="plant-dot" x="90" y="142" width="16" height="16" rx="4" fill="#f87171" data-tip="San Marzano" onclick="event.stopPropagation(); navigateToPlant('g-sanm')"/>
+        <text x="98" y="153" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">SM</text>
+        <rect class="plant-dot" x="90" y="184" width="16" height="16" rx="4" fill="#fb923c" data-tip="Amish Paste" onclick="event.stopPropagation(); navigateToPlant('g-amish')"/>
+        <text x="98" y="195" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">AP</text>
+        <rect class="plant-dot" x="90" y="226" width="16" height="16" rx="4" fill="#fb923c" data-tip="Amish Paste" onclick="event.stopPropagation(); navigateToPlant('g-amish')"/>
+        <text x="98" y="237" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">AP</text>
 
-        <rect class="plant-dot" x="130" y="108" width="16" height="16" rx="4" fill="#f87171" data-tip="San Marzano" onclick="event.stopPropagation(); navigateToPlant('g-sanm')"/>
-        <text x="138" y="119" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">SM</text>
-        <rect class="plant-dot" x="130" y="148" width="16" height="16" rx="4" fill="#f87171" data-tip="San Marzano" onclick="event.stopPropagation(); navigateToPlant('g-sanm')"/>
-        <text x="138" y="159" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">SM</text>
-        <rect class="plant-dot" x="130" y="188" width="16" height="16" rx="4" fill="#fb923c" data-tip="Amish Paste" onclick="event.stopPropagation(); navigateToPlant('g-amish')"/>
-        <text x="138" y="199" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">AP</text>
-        <rect class="plant-dot" x="130" y="228" width="16" height="16" rx="4" fill="#fb923c" data-tip="Amish Paste" onclick="event.stopPropagation(); navigateToPlant('g-amish')"/>
-        <text x="138" y="239" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">AP</text>
+        <!-- Interior paste tomatoes — col 2 -->
+        <rect class="plant-dot" x="125" y="100" width="16" height="16" rx="4" fill="#f87171" data-tip="San Marzano" onclick="event.stopPropagation(); navigateToPlant('g-sanm')"/>
+        <text x="133" y="111" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">SM</text>
+        <rect class="plant-dot" x="125" y="142" width="16" height="16" rx="4" fill="#f87171" data-tip="San Marzano" onclick="event.stopPropagation(); navigateToPlant('g-sanm')"/>
+        <text x="133" y="153" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">SM</text>
+        <rect class="plant-dot" x="125" y="184" width="16" height="16" rx="4" fill="#fb923c" data-tip="Amish Paste" onclick="event.stopPropagation(); navigateToPlant('g-amish')"/>
+        <text x="133" y="195" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">AP</text>
+        <rect class="plant-dot" x="125" y="226" width="16" height="16" rx="4" fill="#fb923c" data-tip="Amish Paste" onclick="event.stopPropagation(); navigateToPlant('g-amish')"/>
+        <text x="133" y="237" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">AP</text>
 
         <!-- Basil south -->
-        <circle class="plant-dot" cx="105" cy="340" r="7" fill="#10b981" data-tip="Basil" onclick="event.stopPropagation(); navigateToPlant('g-basil')"/>
-        <text x="105" y="343" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">B</text>
-        <circle class="plant-dot" cx="130" cy="340" r="7" fill="#10b981" data-tip="Basil" onclick="event.stopPropagation(); navigateToPlant('g-basil')"/>
-        <text x="130" y="343" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">B</text>
-        <circle class="plant-dot" cx="155" cy="340" r="7" fill="#10b981" data-tip="Basil" onclick="event.stopPropagation(); navigateToPlant('g-basil')"/>
-        <text x="155" y="343" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">B</text>
+        <circle class="plant-dot" cx="105" cy="342" r="7" fill="#10b981" data-tip="Basil" onclick="event.stopPropagation(); navigateToPlant('g-basil')"/>
+        <text x="105" y="345" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">B</text>
+        <circle class="plant-dot" cx="135" cy="342" r="7" fill="#10b981" data-tip="Basil" onclick="event.stopPropagation(); navigateToPlant('g-basil')"/>
+        <text x="135" y="345" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">B</text>
+        <circle class="plant-dot" cx="165" cy="342" r="7" fill="#10b981" data-tip="Basil" onclick="event.stopPropagation(); navigateToPlant('g-basil')"/>
+        <text x="165" y="345" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">B</text>
       </g>
 
       <!-- ══ BED B ══ -->
       <g class="bed-zone" onclick="navigateToBed('bedb')" filter="url(#mapShadow)">
-        <rect x="270" y="50" width="200" height="320" rx="10" fill="#fff7ed" stroke="#fdba74" stroke-width="2"/>
-        <text x="370" y="72" text-anchor="middle" font-family="Fraunces,serif" font-size="13" fill="#9a3412" font-weight="700">Bed B</text>
-        <text x="370" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#ea580c">PEPPERS, BEANS &amp; CUKES &middot; 8&times;4 ft</text>
+        <rect x="270" y="40" width="210" height="330" rx="10" fill="#fff7ed" stroke="#fdba74" stroke-width="2"/>
+        <text x="375" y="62" text-anchor="middle" font-family="Fraunces,serif" font-size="13" fill="#9a3412" font-weight="700">Bed B</text>
+        <text x="375" y="76" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#ea580c">PEPPERS, BEANS &amp; CUKES &middot; 8&times;4 ft</text>
 
-        <!-- Peppers (west side) — 10 total -->
-        <circle class="plant-dot" cx="298" cy="105" r="8" fill="#fb923c" data-tip="Orange Bell #1" onclick="event.stopPropagation(); navigateToPlant('g-orgbell')"/>
-        <text x="298" y="108" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">OB</text>
-        <circle class="plant-dot" cx="330" cy="105" r="8" fill="#fb923c" data-tip="Orange Bell #2" onclick="event.stopPropagation(); navigateToPlant('g-orgbell')"/>
-        <text x="330" y="108" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">OB</text>
+        <!-- Peppers (west side) — 12 total -->
+        <circle class="plant-dot" cx="298" cy="98" r="8" fill="#fb923c" data-tip="Orange Bell" onclick="event.stopPropagation(); navigateToPlant('g-orgbell')"/>
+        <text x="298" y="101" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">OB</text>
+        <circle class="plant-dot" cx="330" cy="98" r="8" fill="#fb923c" data-tip="Orange Bell" onclick="event.stopPropagation(); navigateToPlant('g-orgbell')"/>
+        <text x="330" y="101" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">OB</text>
+        <circle class="plant-dot" cx="298" cy="133" r="8" fill="#ea580c" data-tip="Cajun Belle" onclick="event.stopPropagation(); navigateToPlant('g-cajun')"/>
+        <text x="298" y="136" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">CB</text>
+        <circle class="plant-dot" cx="330" cy="133" r="8" fill="#ea580c" data-tip="Cajun Belle" onclick="event.stopPropagation(); navigateToPlant('g-cajun')"/>
+        <text x="330" y="136" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">CB</text>
+        <circle class="plant-dot" cx="298" cy="168" r="8" fill="#f59e0b" data-tip="Lunchbox Orange" onclick="event.stopPropagation(); navigateToPlant('g-lunch')"/>
+        <text x="298" y="171" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">LB</text>
+        <circle class="plant-dot" cx="330" cy="168" r="8" fill="#f59e0b" data-tip="Lunchbox Orange" onclick="event.stopPropagation(); navigateToPlant('g-lunch')"/>
+        <text x="330" y="171" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">LB</text>
+        <circle class="plant-dot" cx="298" cy="203" r="8" fill="#22c55e" data-tip="Jalape&ntilde;o" onclick="event.stopPropagation(); navigateToPlant('g-jalap')"/>
+        <text x="298" y="206" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">JL</text>
+        <circle class="plant-dot" cx="330" cy="203" r="8" fill="#22c55e" data-tip="Jalape&ntilde;o" onclick="event.stopPropagation(); navigateToPlant('g-jalap')"/>
+        <text x="330" y="206" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">JL</text>
+        <circle class="plant-dot" cx="298" cy="238" r="8" fill="#4ade80" data-tip="Better Belle" onclick="event.stopPropagation(); navigateToPlant('g-orgbell')"/>
+        <text x="298" y="241" text-anchor="middle" font-size="3.5" fill="white" font-weight="700" pointer-events="none">BB</text>
+        <circle class="plant-dot" cx="330" cy="238" r="8" fill="#4ade80" data-tip="Better Belle" onclick="event.stopPropagation(); navigateToPlant('g-orgbell')"/>
+        <text x="330" y="241" text-anchor="middle" font-size="3.5" fill="white" font-weight="700" pointer-events="none">BB</text>
+        <!-- TBD -->
+        <circle cx="298" cy="270" r="7" fill="#d4d4d4" stroke="#9ca3af" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="298" y="273" text-anchor="middle" font-size="3.5" fill="#9ca3af" font-weight="600" pointer-events="none">?</text>
+        <circle cx="330" cy="270" r="7" fill="#d4d4d4" stroke="#9ca3af" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="330" y="273" text-anchor="middle" font-size="3.5" fill="#9ca3af" font-weight="600" pointer-events="none">?</text>
 
-        <circle class="plant-dot" cx="298" cy="140" r="8" fill="#ea580c" data-tip="Cajun Belle #1" onclick="event.stopPropagation(); navigateToPlant('g-cajun')"/>
-        <text x="298" y="143" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">CB</text>
-        <circle class="plant-dot" cx="330" cy="140" r="8" fill="#ea580c" data-tip="Cajun Belle #2" onclick="event.stopPropagation(); navigateToPlant('g-cajun')"/>
-        <text x="330" y="143" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">CB</text>
+        <!-- Bean zones -->
+        <rect x="355" y="93" width="50" height="60" rx="5" fill="#8b5cf6" opacity="0.15" stroke="#8b5cf6" stroke-width="1"/>
+        <text x="380" y="121" text-anchor="middle" font-size="5" fill="#7c3aed" font-weight="700">Bean 1</text>
+        <rect x="355" y="163" width="50" height="60" rx="5" fill="#8b5cf6" opacity="0.10" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="380" y="191" text-anchor="middle" font-size="5" fill="#7c3aed" font-weight="700">Bean 2</text>
+        <rect x="355" y="233" width="50" height="60" rx="5" fill="#8b5cf6" opacity="0.06" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="380" y="261" text-anchor="middle" font-size="5" fill="#7c3aed" font-weight="700">Bean 3+</text>
 
-        <circle class="plant-dot" cx="298" cy="175" r="8" fill="#f59e0b" data-tip="Lunchbox Orange #1" onclick="event.stopPropagation(); navigateToPlant('g-lunch')"/>
-        <text x="298" y="178" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">LB</text>
-        <circle class="plant-dot" cx="330" cy="175" r="8" fill="#f59e0b" data-tip="Lunchbox Orange #2" onclick="event.stopPropagation(); navigateToPlant('g-lunch')"/>
-        <text x="330" y="178" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">LB</text>
-
-        <circle class="plant-dot" cx="298" cy="210" r="8" fill="#22c55e" data-tip="Jalape&ntilde;o #1" onclick="event.stopPropagation(); navigateToPlant('g-jalap')"/>
-        <text x="298" y="213" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">JL</text>
-        <circle class="plant-dot" cx="330" cy="210" r="8" fill="#22c55e" data-tip="Jalape&ntilde;o #2" onclick="event.stopPropagation(); navigateToPlant('g-jalap')"/>
-        <text x="330" y="213" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">JL</text>
-
-        <circle class="plant-dot" cx="298" cy="245" r="8" fill="#4ade80" data-tip="Better Belle #1" onclick="event.stopPropagation(); navigateToPlant('g-orgbell')"/>
-        <text x="298" y="248" text-anchor="middle" font-size="3.5" fill="white" font-weight="700" pointer-events="none">BB</text>
-        <circle class="plant-dot" cx="330" cy="245" r="8" fill="#4ade80" data-tip="Better Belle #2" onclick="event.stopPropagation(); navigateToPlant('g-orgbell')"/>
-        <text x="330" y="248" text-anchor="middle" font-size="3.5" fill="white" font-weight="700" pointer-events="none">BB</text>
-
-        <!-- TBD Peppers -->
-        <circle cx="298" cy="275" r="7" fill="#d4d4d4" stroke="#9ca3af" stroke-width="1" stroke-dasharray="3,2"/>
-        <text x="298" y="278" text-anchor="middle" font-size="3.5" fill="#9ca3af" font-weight="600" pointer-events="none">?</text>
-        <circle cx="330" cy="275" r="7" fill="#d4d4d4" stroke="#9ca3af" stroke-width="1" stroke-dasharray="3,2"/>
-        <text x="330" y="278" text-anchor="middle" font-size="3.5" fill="#9ca3af" font-weight="600" pointer-events="none">?</text>
-
-        <!-- Bean zones (center-right, stacked vertically) -->
-        <rect x="355" y="100" width="45" height="55" rx="5" fill="#8b5cf6" opacity="0.15" stroke="#8b5cf6" stroke-width="1"/>
-        <text x="377" y="125" text-anchor="middle" font-size="5" fill="#7c3aed" font-weight="700">Bean</text>
-        <text x="377" y="135" text-anchor="middle" font-size="4.5" fill="#7c3aed">Sow1</text>
-        <rect x="355" y="165" width="45" height="55" rx="5" fill="#8b5cf6" opacity="0.10" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="4,3"/>
-        <text x="377" y="190" text-anchor="middle" font-size="5" fill="#7c3aed" font-weight="700">Bean</text>
-        <text x="377" y="200" text-anchor="middle" font-size="4.5" fill="#7c3aed">Sow2</text>
-        <rect x="355" y="230" width="45" height="55" rx="5" fill="#8b5cf6" opacity="0.06" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="4,3"/>
-        <text x="377" y="255" text-anchor="middle" font-size="5" fill="#7c3aed" font-weight="700">Bean</text>
-        <text x="377" y="265" text-anchor="middle" font-size="4.5" fill="#7c3aed">Sow3+</text>
-
-        <!-- East trellis — pickling cucumbers only -->
-        <rect x="455" y="95" width="6" height="250" rx="2" fill="#99f6e4" stroke="#14b8a6" stroke-width="1"/>
-        <text x="458" y="220" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="#0f766e" font-weight="600" transform="rotate(90,458,220)">EAST &middot; PICKLING CK</text>
-        <!-- Sow 1 -->
-        <rect class="plant-dot" x="425" y="105" width="16" height="16" rx="4" fill="#0d9488" data-tip="Pickling CK Sow 1" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
-        <text x="433" y="116" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">P1</text>
-        <rect class="plant-dot" x="425" y="130" width="16" height="16" rx="4" fill="#0d9488" data-tip="Pickling CK Sow 1" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
-        <text x="433" y="141" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">P1</text>
-        <rect class="plant-dot" x="425" y="155" width="16" height="16" rx="4" fill="#0d9488" data-tip="Pickling CK Sow 1" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
-        <text x="433" y="166" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">P1</text>
-        <!-- Sow 2 -->
-        <rect class="plant-dot" x="425" y="195" width="16" height="16" rx="4" fill="#0d9488" stroke="#fbbf24" stroke-width="1.5" data-tip="Pickling CK Sow 2" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
-        <text x="433" y="206" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">P2</text>
-        <rect class="plant-dot" x="425" y="220" width="16" height="16" rx="4" fill="#0d9488" stroke="#fbbf24" stroke-width="1.5" data-tip="Pickling CK Sow 2" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
-        <text x="433" y="231" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">P2</text>
-        <rect class="plant-dot" x="425" y="245" width="16" height="16" rx="4" fill="#0d9488" stroke="#fbbf24" stroke-width="1.5" data-tip="Pickling CK Sow 2" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
-        <text x="433" y="256" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">P2</text>
+        <!-- East trellis — pickling cucumbers -->
+        <rect x="462" y="85" width="6" height="265" rx="2" fill="#99f6e4" stroke="#14b8a6" stroke-width="1"/>
+        <text x="465" y="218" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="#0f766e" font-weight="600" transform="rotate(90,465,218)">EAST &middot; PICKLING CK</text>
+        <rect class="plant-dot" x="432" y="98" width="16" height="16" rx="4" fill="#0d9488" data-tip="Pickling CK Sow 1" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
+        <text x="440" y="109" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">P1</text>
+        <rect class="plant-dot" x="432" y="125" width="16" height="16" rx="4" fill="#0d9488" data-tip="Pickling CK Sow 1" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
+        <text x="440" y="136" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">P1</text>
+        <rect class="plant-dot" x="432" y="152" width="16" height="16" rx="4" fill="#0d9488" data-tip="Pickling CK Sow 1" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
+        <text x="440" y="163" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">P1</text>
+        <rect class="plant-dot" x="432" y="192" width="16" height="16" rx="4" fill="#0d9488" stroke="#fbbf24" stroke-width="1.5" data-tip="Pickling CK Sow 2" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
+        <text x="440" y="203" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">P2</text>
+        <rect class="plant-dot" x="432" y="219" width="16" height="16" rx="4" fill="#0d9488" stroke="#fbbf24" stroke-width="1.5" data-tip="Pickling CK Sow 2" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
+        <text x="440" y="230" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">P2</text>
+        <rect class="plant-dot" x="432" y="246" width="16" height="16" rx="4" fill="#0d9488" stroke="#fbbf24" stroke-width="1.5" data-tip="Pickling CK Sow 2" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
+        <text x="440" y="257" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">P2</text>
       </g>
 
       <!-- ══ BED C ══ -->
       <g class="bed-zone" onclick="navigateToBed('bedc')" filter="url(#mapShadow)">
-        <rect x="520" y="50" width="180" height="320" rx="10" fill="#f5f3ff" stroke="#c4b5fd" stroke-width="2"/>
-        <text x="610" y="72" text-anchor="middle" font-family="Fraunces,serif" font-size="13" fill="#5b21b6" font-weight="700">Bed C</text>
-        <text x="610" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#7c3aed">BEANS &amp; OKRA &middot; 8&times;4 ft</text>
+        <rect x="510" y="40" width="210" height="330" rx="10" fill="#f5f3ff" stroke="#c4b5fd" stroke-width="2"/>
+        <text x="615" y="62" text-anchor="middle" font-family="Fraunces,serif" font-size="13" fill="#5b21b6" font-weight="700">Bed C</text>
+        <text x="615" y="76" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#7c3aed">BEANS &amp; OKRA &middot; 8&times;4 ft</text>
 
         <!-- Okra at north -->
-        <circle class="plant-dot" cx="555" cy="110" r="9" fill="#14b8a6" data-tip="Okra (Clemson Spineless)" onclick="event.stopPropagation(); navigateToPlant('g-okra')"/>
-        <text x="555" y="113" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">O1</text>
-        <circle class="plant-dot" cx="590" cy="110" r="9" fill="#14b8a6" data-tip="Okra (Clemson Spineless)" onclick="event.stopPropagation(); navigateToPlant('g-okra')"/>
-        <text x="590" y="113" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">O2</text>
-        <circle class="plant-dot" cx="625" cy="110" r="9" fill="#14b8a6" data-tip="Okra (Clemson Spineless)" onclick="event.stopPropagation(); navigateToPlant('g-okra')"/>
-        <text x="625" y="113" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">O3</text>
-        <circle class="plant-dot" cx="660" cy="110" r="9" fill="#14b8a6" data-tip="Okra (Clemson Spineless)" onclick="event.stopPropagation(); navigateToPlant('g-okra')"/>
-        <text x="660" y="113" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">O4</text>
+        <circle class="plant-dot" cx="548" cy="100" r="9" fill="#14b8a6" data-tip="Okra #1" onclick="event.stopPropagation(); navigateToPlant('g-okra')"/>
+        <text x="548" y="103" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">O1</text>
+        <circle class="plant-dot" cx="585" cy="100" r="9" fill="#14b8a6" data-tip="Okra #2" onclick="event.stopPropagation(); navigateToPlant('g-okra')"/>
+        <text x="585" y="103" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">O2</text>
+        <circle class="plant-dot" cx="645" cy="100" r="9" fill="#14b8a6" data-tip="Okra #3" onclick="event.stopPropagation(); navigateToPlant('g-okra')"/>
+        <text x="645" y="103" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">O3</text>
+        <circle class="plant-dot" cx="682" cy="100" r="9" fill="#14b8a6" data-tip="Okra #4" onclick="event.stopPropagation(); navigateToPlant('g-okra')"/>
+        <text x="682" y="103" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">O4</text>
 
-        <!-- Blue Lake bean zone -->
-        <rect x="538" y="135" width="144" height="210" rx="8" fill="#8b5cf6" opacity="0.08" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="6,4"/>
-        <text x="610" y="230" text-anchor="middle" font-size="9" fill="#7c3aed" font-weight="700">BLUE LAKE</text>
-        <text x="610" y="244" text-anchor="middle" font-size="9" fill="#7c3aed" font-weight="700">BEANS</text>
-        <text x="610" y="260" text-anchor="middle" font-size="6" fill="#8b5cf6">Succession every 2-3 wks</text>
+        <!-- Blue Lake bean zones (3 stacked) -->
+        <rect x="528" y="120" width="174" height="60" rx="6" fill="#8b5cf6" opacity="0.12" stroke="#8b5cf6" stroke-width="1"/>
+        <text x="615" y="148" text-anchor="middle" font-size="7" fill="#7c3aed" font-weight="700">Blue Lake &mdash; Sow 1</text>
+        <text x="615" y="160" text-anchor="middle" font-size="5" fill="#8b5cf6">Mid-April</text>
+        <rect x="528" y="190" width="174" height="60" rx="6" fill="#8b5cf6" opacity="0.08" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="615" y="218" text-anchor="middle" font-size="7" fill="#7c3aed" font-weight="700">Blue Lake &mdash; Sow 2</text>
+        <text x="615" y="230" text-anchor="middle" font-size="5" fill="#8b5cf6">+2 weeks</text>
+        <rect x="528" y="260" width="174" height="60" rx="6" fill="#8b5cf6" opacity="0.05" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="615" y="288" text-anchor="middle" font-size="7" fill="#7c3aed" font-weight="700">Blue Lake &mdash; Sow 3+</text>
+        <text x="615" y="300" text-anchor="middle" font-size="5" fill="#8b5cf6">+2 weeks</text>
       </g>
 
-      <!-- ══ GROW BAGS (below beds) ══ -->
-      <g class="bed-zone" onclick="navigateToBed('bags')" filter="url(#mapShadow)" style="cursor:pointer;">
-        <rect x="40" y="385" width="660" height="10" rx="4" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1" opacity="0.6"/>
+      <!-- ══════════════════════════════════════════════ -->
+      <!-- ══ GROW BAGS & OTHER PLANTS (below beds) ══ -->
+      <!-- ══════════════════════════════════════════════ -->
+      <text x="375" y="400" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#065f46" font-weight="700" letter-spacing="0.08em">GROW BAGS &amp; OTHER PLANTS</text>
+
+      <!-- Row 1: 8 Grow Bags -->
+      <g class="bed-zone" onclick="navigateToBed('bags')" style="cursor:pointer;">
+        <!-- Bag 1: Onions -->
+        <circle cx="65" cy="435" r="20" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5" filter="url(#mapShadow)"/>
+        <text x="65" y="432" text-anchor="middle" font-size="5" fill="#92400e" font-weight="700">Onion</text>
+        <text x="65" y="441" text-anchor="middle" font-size="4.5" fill="#b45309">Bag 1</text>
+        <!-- Bag 2: Onions -->
+        <circle cx="115" cy="435" r="20" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5" filter="url(#mapShadow)"/>
+        <text x="115" y="432" text-anchor="middle" font-size="5" fill="#92400e" font-weight="700">Onion</text>
+        <text x="115" y="441" text-anchor="middle" font-size="4.5" fill="#b45309">Bag 2</text>
+        <!-- Bag 3: Garlic -->
+        <circle cx="165" cy="435" r="20" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5" filter="url(#mapShadow)"/>
+        <text x="165" y="432" text-anchor="middle" font-size="5" fill="#92400e" font-weight="700">Garlic</text>
+        <text x="165" y="441" text-anchor="middle" font-size="4.5" fill="#b45309">Bag 3</text>
+        <!-- Bag 4: Herbs -->
+        <circle cx="225" cy="435" r="20" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5" filter="url(#mapShadow)"/>
+        <text x="225" y="432" text-anchor="middle" font-size="5" fill="#065f46" font-weight="700">Herbs</text>
+        <text x="225" y="441" text-anchor="middle" font-size="4.5" fill="#047857">Bag 4</text>
+        <!-- Bag 5: Tomato -->
+        <circle cx="305" cy="435" r="20" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5" filter="url(#mapShadow)"/>
+        <text x="305" y="432" text-anchor="middle" font-size="5" fill="#991b1b" font-weight="700">Tomato</text>
+        <text x="305" y="441" text-anchor="middle" font-size="4.5" fill="#dc2626">Bag 5</text>
+        <!-- Bag 6: Tomato -->
+        <circle cx="365" cy="435" r="20" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5" filter="url(#mapShadow)"/>
+        <text x="365" y="432" text-anchor="middle" font-size="5" fill="#991b1b" font-weight="700">Tomato</text>
+        <text x="365" y="441" text-anchor="middle" font-size="4.5" fill="#dc2626">Bag 6</text>
+        <!-- Bag 7: Pepper -->
+        <circle cx="435" cy="435" r="20" fill="#fff7ed" stroke="#fb923c" stroke-width="1.5" filter="url(#mapShadow)"/>
+        <text x="435" y="432" text-anchor="middle" font-size="5" fill="#9a3412" font-weight="700">Pepper</text>
+        <text x="435" y="441" text-anchor="middle" font-size="4.5" fill="#ea580c">Bag 7</text>
+        <!-- Bag 8: Pepper -->
+        <circle cx="495" cy="435" r="20" fill="#fff7ed" stroke="#fb923c" stroke-width="1.5" filter="url(#mapShadow)"/>
+        <text x="495" y="432" text-anchor="middle" font-size="5" fill="#9a3412" font-weight="700">Pepper</text>
+        <text x="495" y="441" text-anchor="middle" font-size="4.5" fill="#ea580c">Bag 8</text>
+      </g>
+
+      <!-- Row 2: Berries, strawberries, wildflowers, rosemary -->
+      <!-- Blueberry bushes -->
+      <g filter="url(#mapShadow)">
+        <circle cx="580" cy="435" r="18" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+        <text x="580" y="432" text-anchor="middle" font-size="5" fill="#1e40af" font-weight="700">Blue-</text>
+        <text x="580" y="441" text-anchor="middle" font-size="5" fill="#1e40af" font-weight="700">berry</text>
+      </g>
+      <g filter="url(#mapShadow)">
+        <circle cx="625" cy="435" r="18" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+        <text x="625" y="432" text-anchor="middle" font-size="5" fill="#1e40af" font-weight="700">Blue-</text>
+        <text x="625" y="441" text-anchor="middle" font-size="5" fill="#1e40af" font-weight="700">berry</text>
+      </g>
+
+      <!-- Raspberry bushes -->
+      <g filter="url(#mapShadow)">
+        <circle cx="680" cy="435" r="18" fill="#fdf2f8" stroke="#ec4899" stroke-width="1.5"/>
+        <text x="680" y="432" text-anchor="middle" font-size="5" fill="#9d174d" font-weight="700">Rasp-</text>
+        <text x="680" y="441" text-anchor="middle" font-size="5" fill="#9d174d" font-weight="700">berry</text>
+      </g>
+      <g filter="url(#mapShadow)">
+        <circle cx="720" cy="435" r="18" fill="#fdf2f8" stroke="#ec4899" stroke-width="1.5"/>
+        <text x="720" y="432" text-anchor="middle" font-size="5" fill="#9d174d" font-weight="700">Rasp-</text>
+        <text x="720" y="441" text-anchor="middle" font-size="5" fill="#9d174d" font-weight="700">berry</text>
+      </g>
+
+      <!-- Hanging strawberry bags -->
+      <g filter="url(#mapShadow)">
+        <rect x="50" y="480" width="55" height="30" rx="8" fill="#fef2f2" stroke="#f87171" stroke-width="1.5"/>
+        <text x="77" y="495" text-anchor="middle" font-size="5.5" fill="#dc2626" font-weight="700">Strawberry</text>
+        <text x="77" y="504" text-anchor="middle" font-size="4.5" fill="#f87171">Hanging bags</text>
+      </g>
+
+      <!-- Wildflower bags -->
+      <g filter="url(#mapShadow)">
+        <rect x="120" y="480" width="55" height="30" rx="8" fill="#faf5ff" stroke="#a855f7" stroke-width="1.5"/>
+        <text x="147" y="495" text-anchor="middle" font-size="5.5" fill="#7c3aed" font-weight="700">Wildflower</text>
+        <text x="147" y="504" text-anchor="middle" font-size="4.5" fill="#a855f7">Bags</text>
+      </g>
+
+      <!-- Rosemary -->
+      <g filter="url(#mapShadow)">
+        <rect x="190" y="480" width="50" height="30" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+        <text x="215" y="499" text-anchor="middle" font-size="5.5" fill="#065f46" font-weight="700">Rosemary</text>
+      </g>
+
+      <!-- Indoor label -->
+      <text x="500" y="490" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#0284c7" font-weight="700" letter-spacing="0.05em">INDOOR / HYDRO</text>
+      <!-- AeroGarden -->
+      <g filter="url(#mapShadow)">
+        <rect x="420" y="498" width="60" height="30" rx="8" fill="#f0f9ff" stroke="#38bdf8" stroke-width="1.5"/>
+        <text x="450" y="512" text-anchor="middle" font-size="5" fill="#0284c7" font-weight="700">AeroGarden</text>
+        <text x="450" y="521" text-anchor="middle" font-size="4.5" fill="#38bdf8">Basil starter</text>
+      </g>
+      <!-- Gardyn Tower -->
+      <g filter="url(#mapShadow)">
+        <rect x="495" y="498" width="60" height="30" rx="8" fill="#f0f9ff" stroke="#38bdf8" stroke-width="1.5"/>
+        <text x="525" y="512" text-anchor="middle" font-size="5" fill="#0284c7" font-weight="700">Gardyn Tower</text>
+        <text x="525" y="521" text-anchor="middle" font-size="4.5" fill="#38bdf8">30 pods</text>
+      </g>
+      <!-- 2nd Hydro -->
+      <g filter="url(#mapShadow)">
+        <rect x="570" y="498" width="60" height="30" rx="8" fill="#f0f9ff" stroke="#38bdf8" stroke-width="1.5"/>
+        <text x="600" y="512" text-anchor="middle" font-size="5" fill="#0284c7" font-weight="700">2nd Hydro</text>
+        <text x="600" y="521" text-anchor="middle" font-size="4.5" fill="#38bdf8">Tatsoi/Greens</text>
       </g>
     </svg>
-    <div style="text-align:center; margin-top:0.5rem; font-size:0.7rem; color:var(--text-light);">Click any bed to see its detailed map. Click a plant dot to jump to its Plant Guide entry.</div>
+    <div style="text-align:center; margin-top:0.5rem; font-size:0.7rem; color:var(--text-light);">Click any bed or grow bag to see details. Click a plant dot to jump to its Plant Guide entry.</div>
   </div>
 
   <!-- ── Collapsible Timeline ── -->
