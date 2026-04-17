@@ -1112,9 +1112,9 @@
   <div class="summary-grid">
     <div class="summary-card" onclick="showTab('beda'); document.querySelector('[onclick*=beda]').classList.add('active');" style="cursor:pointer;">
       <div class="icon">&#127813;</div>
-      <div class="number" style="color:var(--coral)">14</div>
+      <div class="number" style="color:var(--coral)">16</div>
       <div class="label">Tomato Plants</div>
-      <div class="detail">12 in Bed A + 2 in grow bags</div>
+      <div class="detail">14 in Bed A + 2 in grow bags</div>
     </div>
     <div class="summary-card" onclick="showTab('basil'); document.querySelector('[onclick*=basil]').classList.add('active');" style="cursor:pointer;">
       <div class="icon">&#127807;</div>
@@ -1190,21 +1190,25 @@
         <circle class="plant-dot" cx="62" cy="318" r="9" fill="#eab308" data-tip="Yellow Pear" onclick="event.stopPropagation(); navigateToPlant('g-yelpear')"/>
         <text x="62" y="321" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">YP</text>
 
-        <!-- Interior Roma tomatoes — col 1 -->
+        <!-- Interior tomatoes — col 1 -->
         <rect class="plant-dot" x="90" y="100" width="16" height="16" rx="4" fill="#f87171" data-tip="Roma" onclick="event.stopPropagation(); navigateToPlant('g-roma')"/>
         <text x="98" y="111" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">Ro</text>
-        <rect class="plant-dot" x="90" y="142" width="16" height="16" rx="4" fill="#f87171" data-tip="Roma" onclick="event.stopPropagation(); navigateToPlant('g-roma')"/>
-        <text x="98" y="153" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">Ro</text>
+        <rect class="plant-dot" x="90" y="142" width="16" height="16" rx="4" fill="#ec4899" data-tip="Sweet 150" onclick="event.stopPropagation(); navigateToPlant('g-sw150')"/>
+        <text x="98" y="153" text-anchor="middle" font-size="3.5" fill="white" font-weight="700" pointer-events="none">S150</text>
         <rect class="plant-dot" x="90" y="184" width="16" height="16" rx="4" fill="#f87171" data-tip="Roma" onclick="event.stopPropagation(); navigateToPlant('g-roma')"/>
         <text x="98" y="195" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">Ro</text>
+        <rect class="plant-dot" x="90" y="226" width="16" height="16" rx="4" fill="#f87171" data-tip="Roma" onclick="event.stopPropagation(); navigateToPlant('g-roma')"/>
+        <text x="98" y="237" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">Ro</text>
 
-        <!-- Interior Roma tomatoes — col 2 -->
+        <!-- Interior tomatoes — col 2 -->
         <rect class="plant-dot" x="125" y="100" width="16" height="16" rx="4" fill="#f87171" data-tip="Roma" onclick="event.stopPropagation(); navigateToPlant('g-roma')"/>
         <text x="133" y="111" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">Ro</text>
-        <rect class="plant-dot" x="125" y="142" width="16" height="16" rx="4" fill="#f87171" data-tip="Roma" onclick="event.stopPropagation(); navigateToPlant('g-roma')"/>
-        <text x="133" y="153" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">Ro</text>
+        <rect class="plant-dot" x="125" y="142" width="16" height="16" rx="4" fill="#ec4899" data-tip="Sweet 150" onclick="event.stopPropagation(); navigateToPlant('g-sw150')"/>
+        <text x="133" y="153" text-anchor="middle" font-size="3.5" fill="white" font-weight="700" pointer-events="none">S150</text>
         <rect class="plant-dot" x="125" y="184" width="16" height="16" rx="4" fill="#f87171" data-tip="Roma" onclick="event.stopPropagation(); navigateToPlant('g-roma')"/>
         <text x="133" y="195" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">Ro</text>
+        <rect class="plant-dot" x="125" y="226" width="16" height="16" rx="4" fill="#f87171" data-tip="Roma" onclick="event.stopPropagation(); navigateToPlant('g-roma')"/>
+        <text x="133" y="237" text-anchor="middle" font-size="4.5" fill="white" font-weight="700" pointer-events="none">Ro</text>
 
         <!-- Basil south -->
         <circle class="plant-dot" cx="105" cy="342" r="7" fill="#10b981" data-tip="Basil" onclick="event.stopPropagation(); navigateToPlant('g-basil')"/>
@@ -1495,7 +1499,7 @@
         </li>
         <li class="checklist-item" data-check="t-11" onclick="toggleCheck(this)">
           <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
-          <div class="check-label">Plant tomato starts in Bed A <span class="sub">All varieties including Roma &mdash; done</span></div>
+          <div class="check-label">Plant tomato starts in Bed A <span class="sub">All varieties including Roma &amp; Sweet 150 &mdash; done</span></div>
         </li>
         <li class="checklist-item" data-check="t-24" onclick="toggleCheck(this)">
           <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
@@ -1646,9 +1650,10 @@
     <summary style="cursor:pointer; font-size:0.78rem; font-weight:600; color:var(--green-600); padding:0.5rem 0;">View v5 Change Log (April 2026)</summary>
     <div class="change-callout" style="margin-top:0.5rem;">
       <ul style="line-height:1.9;">
-        <li>Swapped San Marzano + Amish Paste &rarr; 6 Roma in Bed A interior <span class="new-badge">revised</span></li>
+        <li>Swapped San Marzano + Amish Paste &rarr; 6 Roma + 2 Sweet 150 in Bed A interior <span class="new-badge">revised</span></li>
         <li>Roma: determinate paste tomato, concentrated 4&ndash;6 week harvest window ideal for batch jam <span class="new-badge">new</span></li>
-        <li>Tomato count in Bed A: 14 &rarr; 12 (6 trellis + 6 Roma)</li>
+        <li>Sweet 150: Bonnie Plants hybrid cherry, 150+ fruits/plant, super sweet <span class="new-badge">new</span></li>
+        <li>Tomato count in Bed A: 14 &rarr; 14 (6 trellis + 6 Roma + 2 Sweet 150)</li>
         <li>Basil companions in all tomato &amp; pepper felt bags + additional available blocks <span class="new-badge">new</span></li>
         <li>Updated variety table, SVG maps, and overview description</li>
       </ul>
@@ -1725,32 +1730,42 @@
           <text x="52" y="370" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="white" font-weight="700">Pear</text>
         </g>
 
-        <!-- Interior Roma tomatoes - column 1 -->
+        <!-- Interior tomatoes - column 1 -->
         <g filter="url(#plantShadow)">
           <rect x="102" y="80" width="28" height="28" rx="6" fill="#f87171" data-tip="Roma — Determinate paste, meaty &amp; dense. Best for jam!"/>
           <text x="116" y="98" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="white" font-weight="700">Roma</text>
         </g>
         <g filter="url(#plantShadow)">
-          <rect x="102" y="145" width="28" height="28" rx="6" fill="#f87171" data-tip="Roma — Determinate paste, meaty &amp; dense. Best for jam!"/>
-          <text x="116" y="163" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="white" font-weight="700">Roma</text>
+          <rect x="102" y="145" width="28" height="28" rx="6" fill="#ec4899" data-tip="Sweet 150 — Hybrid cherry, 150+ fruits per plant. Super sweet!"/>
+          <text x="116" y="160" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="white" font-weight="700">Sweet</text>
+          <text x="116" y="168" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="white" font-weight="700">150</text>
         </g>
         <g filter="url(#plantShadow)">
           <rect x="102" y="210" width="28" height="28" rx="6" fill="#f87171" data-tip="Roma — Determinate paste, meaty &amp; dense. Best for jam!"/>
           <text x="116" y="228" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="white" font-weight="700">Roma</text>
         </g>
+        <g filter="url(#plantShadow)">
+          <rect x="102" y="275" width="28" height="28" rx="6" fill="#f87171" data-tip="Roma — Determinate paste, meaty &amp; dense. Best for jam!"/>
+          <text x="116" y="293" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="white" font-weight="700">Roma</text>
+        </g>
 
-        <!-- Interior Roma tomatoes - column 2 -->
+        <!-- Interior tomatoes - column 2 -->
         <g filter="url(#plantShadow)">
           <rect x="160" y="80" width="28" height="28" rx="6" fill="#f87171" data-tip="Roma — Determinate paste, meaty &amp; dense. Best for jam!"/>
           <text x="174" y="98" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="white" font-weight="700">Roma</text>
         </g>
         <g filter="url(#plantShadow)">
-          <rect x="160" y="145" width="28" height="28" rx="6" fill="#f87171" data-tip="Roma — Determinate paste, meaty &amp; dense. Best for jam!"/>
-          <text x="174" y="163" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="white" font-weight="700">Roma</text>
+          <rect x="160" y="145" width="28" height="28" rx="6" fill="#ec4899" data-tip="Sweet 150 — Hybrid cherry, 150+ fruits per plant. Super sweet!"/>
+          <text x="174" y="160" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="white" font-weight="700">Sweet</text>
+          <text x="174" y="168" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="white" font-weight="700">150</text>
         </g>
         <g filter="url(#plantShadow)">
           <rect x="160" y="210" width="28" height="28" rx="6" fill="#f87171" data-tip="Roma — Determinate paste, meaty &amp; dense. Best for jam!"/>
           <text x="174" y="228" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="white" font-weight="700">Roma</text>
+        </g>
+        <g filter="url(#plantShadow)">
+          <rect x="160" y="275" width="28" height="28" rx="6" fill="#f87171" data-tip="Roma — Determinate paste, meaty &amp; dense. Best for jam!"/>
+          <text x="174" y="293" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="white" font-weight="700">Roma</text>
         </g>
 
         <!-- Basil at south end -->
@@ -1773,6 +1788,7 @@
     <div class="legend">
       <div class="legend-item"><div class="legend-dot" style="background:var(--coral)"></div>Tomato (trellis)</div>
       <div class="legend-item"><div class="legend-dot" style="background:#f87171"></div>Roma (paste)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#ec4899"></div>Sweet 150 (cherry)</div>
       <div class="legend-item"><div class="legend-dot" style="background:var(--green-500)"></div>Basil</div>
     </div>
     <table class="variety-table">
@@ -1784,6 +1800,7 @@
         <tr><td>Brandywine</td><td>Heirloom</td><td>Trellis</td><td>Good &mdash; rich flavor</td></tr>
         <tr><td>Cherokee Purple</td><td>Heirloom</td><td>Trellis</td><td>Good &mdash; complex, smoky</td></tr>
         <tr><td>Yellow Pear</td><td>Cherry</td><td>Trellis S</td><td>Great &mdash; sweet jam</td></tr>
+        <tr><td>Sweet 150</td><td>Cherry (indeterminate)</td><td>Interior</td><td>Great &mdash; super sweet, snacking &amp; roasting</td></tr>
         <tr><td>Roma</td><td>Paste (determinate)</td><td>Interior</td><td>&#9733; Best &mdash; meaty, dense, low moisture</td></tr>
       </tbody>
     </table>
@@ -2297,7 +2314,7 @@
         </li>
         <li class="checklist-item" data-check="t-11" onclick="toggleCheck(this)">
           <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
-          <div class="check-label">Plant tomato starts in Bed A <span class="sub">All varieties including Roma</span></div>
+          <div class="check-label">Plant tomato starts in Bed A <span class="sub">All varieties including Roma &amp; Sweet 150</span></div>
         </li>
       </ul>
     </div>
@@ -2534,7 +2551,7 @@
                       <li><strong>For hybrids (Big Beef, Whopper, Lunchbox):</strong> Buy new seed/transplants each year</li>
                       <li><strong>For open-pollinated/heirloom (Brandywine, Cherokee Purple, Roma):</strong> Save seeds freely! They grow true</li>
                     </ul>
-                    <div class="key-point">Your garden has <strong>both</strong> types. Save seeds from your heirlooms (Brandywine, Cherokee, Yellow Pear, Roma) and buy fresh seed for hybrids (Big Beef, Whopper).</div>
+                    <div class="key-point">Your garden has <strong>both</strong> types. Save seeds from your heirlooms (Brandywine, Cherokee, Yellow Pear, Roma) and buy fresh seed for hybrids (Big Beef, Whopper, Sweet 150).</div>
                   </div>
                 </div>
               </li>
@@ -2979,6 +2996,57 @@
                     <a href="https://www.youtube.com/results?search_query=yellow+tomato+jam+recipe+canning" target="_blank" class="resource-link">&#9654; Watch: Yellow tomato jam recipe</a>
                   </div>
                 </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SWEET 150 ── -->
+    <div class="plant-card" data-category="tomato">
+      <div class="plant-card-header" onclick="togglePlantCard(this.parentElement)">
+        <div class="plant-card-icon" style="background:#fce7f3">&#127813;</div>
+        <div class="plant-card-title">
+          <div class="plant-type">Cherry Tomato &middot; Hybrid (Bonnie Plants)</div>
+          <h3>Sweet 150</h3>
+        </div>
+        <div class="plant-card-expand"><svg viewBox="0 0 14 14"><polyline points="3,5 7,9 11,5"/></svg></div>
+      </div>
+      <div class="plant-card-body">
+        <div class="plant-card-content">
+          <div class="plant-info-section">
+            <h4>Growing Profile</h4>
+            <ul>
+              <li><strong>Days to maturity:</strong> 65-70 days from transplant</li>
+              <li><strong>Plant type:</strong> Indeterminate &mdash; produces all season until frost</li>
+              <li><strong>Fruit:</strong> Small red cherry, ~1" diameter, in long cascading trusses</li>
+              <li><strong>Flavor:</strong> Very sweet &mdash; one of the sweetest cherry varieties</li>
+              <li><strong>Yield:</strong> 150+ fruits per plant under good conditions</li>
+              <li><strong>Support:</strong> Needs staking or caging &mdash; vigorous grower</li>
+              <li><strong>Best use:</strong> Fresh snacking, salads, roasting, dehydrating</li>
+            </ul>
+          </div>
+          <div class="plant-info-section">
+            <h4>Growing Tips</h4>
+            <ul>
+              <li><strong>Pruning:</strong> Remove suckers below first flower cluster for stronger main stems</li>
+              <li><strong>Harvest:</strong> Pick when fully red and slightly soft to touch &mdash; they slip off the truss easily when ripe</li>
+              <li><strong>Continuous production:</strong> Keep picking to encourage more fruiting all season</li>
+              <li><strong>Companion:</strong> Planted in Bed A interior with Roma tomatoes around them</li>
+            </ul>
+          </div>
+          <div class="plant-info-section">
+            <h4>Seed Saving</h4>
+            <div class="seed-save-badge hybrid">Hybrid &mdash; Buy new seed each year</div>
+            <p>Sweet 150 is a hybrid (F1) variety. Seeds saved from fruits will not grow true to type. Purchase new transplants each season from Bonnie Plants or similar retailers.</p>
+          </div>
+          <div class="plant-info-section full">
+            <h4>Learn More</h4>
+            <ul class="checklist" style="margin-top:0.3rem;">
+              <li class="checklist-item" data-check="g-sw150-1" onclick="toggleCheck(this)">
+                <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+                <div class="check-label">Watch: Sweet cherry tomato growing tips<span class="sub"><a href="https://www.youtube.com/results?search_query=sweet+cherry+tomato+growing+tips" target="_blank" style="color:var(--green-600);">Search YouTube</a></span></div>
               </li>
             </ul>
           </div>
