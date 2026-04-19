@@ -1140,6 +1140,12 @@
       <div class="label">Okra Plants</div>
       <div class="detail">Bed C &middot; Direct sow</div>
     </div>
+    <div class="summary-card" style="cursor:default;">
+      <div class="icon">&#127803;</div>
+      <div class="number" style="color:#f59e0b">24</div>
+      <div class="label">Companion Flowers</div>
+      <div class="detail">~16 marigold + ~8 nasturtium spots</div>
+    </div>
     <div class="summary-card" onclick="showTab('bags'); document.querySelector('[onclick*=bags]').classList.add('active');" style="cursor:pointer;">
       <div class="icon">&#127820;</div>
       <div class="number" style="color:var(--sky-dark)">8</div>
@@ -1217,6 +1223,18 @@
         <text x="135" y="345" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">B</text>
         <circle class="plant-dot" cx="165" cy="342" r="7" fill="#10b981" data-tip="Basil" onclick="event.stopPropagation(); navigateToPlant('g-basil')"/>
         <text x="165" y="345" text-anchor="middle" font-size="5" fill="white" font-weight="700" pointer-events="none">B</text>
+
+        <!-- Companion flowers — north edge marigolds -->
+        <circle cx="60" cy="50" r="4" fill="#fbbf24" data-tip="Marigold Sparky" onclick="event.stopPropagation()"/>
+        <circle cx="100" cy="50" r="4" fill="#fbbf24" data-tip="Marigold Sparky" onclick="event.stopPropagation()"/>
+        <circle cx="140" cy="50" r="4" fill="#fbbf24" data-tip="Marigold Sparky" onclick="event.stopPropagation()"/>
+        <circle cx="180" cy="50" r="4" fill="#fbbf24" data-tip="Marigold Sparky" onclick="event.stopPropagation()"/>
+        <!-- South corner marigolds flanking basil -->
+        <circle cx="80" cy="360" r="4" fill="#fbbf24" data-tip="Marigold Sparky" onclick="event.stopPropagation()"/>
+        <circle cx="190" cy="360" r="4" fill="#fbbf24" data-tip="Marigold Sparky" onclick="event.stopPropagation()"/>
+        <!-- South corner nasturtiums -->
+        <circle cx="55" cy="360" r="4" fill="#f97316" data-tip="Nasturtium Alaska" onclick="event.stopPropagation()"/>
+        <circle cx="215" cy="360" r="4" fill="#f97316" data-tip="Nasturtium Alaska" onclick="event.stopPropagation()"/>
       </g>
 
       <!-- ══ BED B ══ -->
@@ -1275,6 +1293,20 @@
         <text x="440" y="230" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">P2</text>
         <rect class="plant-dot" x="432" y="246" width="16" height="16" rx="4" fill="#0d9488" stroke="#fbbf24" stroke-width="1.5" data-tip="Pickling CK Sow 2" onclick="event.stopPropagation(); navigateToPlant('g-cuke')"/>
         <text x="440" y="257" text-anchor="middle" font-size="4" fill="white" font-weight="700" pointer-events="none">P2</text>
+
+        <!-- Companion flowers — north edge marigolds -->
+        <circle cx="295" cy="50" r="4" fill="#fbbf24" data-tip="Marigold Sparky" onclick="event.stopPropagation()"/>
+        <circle cx="335" cy="50" r="4" fill="#fbbf24" data-tip="Marigold Sparky" onclick="event.stopPropagation()"/>
+        <circle cx="375" cy="50" r="4" fill="#fbbf24" data-tip="Marigold Sparky" onclick="event.stopPropagation()"/>
+        <circle cx="415" cy="50" r="4" fill="#fbbf24" data-tip="Marigold Sparky" onclick="event.stopPropagation()"/>
+        <!-- South corner marigolds -->
+        <circle cx="290" cy="360" r="4" fill="#fbbf24" data-tip="Marigold Sparky" onclick="event.stopPropagation()"/>
+        <circle cx="460" cy="360" r="4" fill="#fbbf24" data-tip="Marigold Sparky" onclick="event.stopPropagation()"/>
+        <!-- South corner nasturtiums -->
+        <circle cx="305" cy="360" r="4" fill="#f97316" data-tip="Nasturtium Alaska" onclick="event.stopPropagation()"/>
+        <circle cx="445" cy="360" r="4" fill="#f97316" data-tip="Nasturtium Alaska" onclick="event.stopPropagation()"/>
+        <!-- North-center nasturtium -->
+        <circle cx="375" cy="360" r="4" fill="#f97316" data-tip="Nasturtium Alaska" onclick="event.stopPropagation()"/>
       </g>
 
       <!-- ══ BED C ══ -->
@@ -1505,6 +1537,10 @@
           <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
           <div class="check-label">Bean Sow 3 &mdash; Stringless Green (Bed B south end) <span class="sub">~2 weeks after Sow 2</span></div>
         </li>
+        <li class="checklist-item" data-check="t-30" onclick="toggleCheck(this)">
+          <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="check-label">Direct sow companion flowers <span class="sub">Marigold Sparky + Nasturtium Alaska &mdash; Beds A &amp; B edges + grow bag corners &mdash; Apr 20</span></div>
+        </li>
         <li class="checklist-item" data-check="t-25" onclick="toggleCheck(this)">
           <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
           <div class="check-label">Bean Sow 3 &mdash; Blue Lake (Bed C) <span class="sub">~2 weeks after Sow 2</span></div>
@@ -1654,7 +1690,10 @@
         <li>Roma: determinate paste tomato, concentrated 4&ndash;6 week harvest window ideal for batch jam <span class="new-badge">new</span></li>
         <li>Sweet 150: Bonnie Plants hybrid cherry, 150+ fruits/plant, super sweet <span class="new-badge">new</span></li>
         <li>Tomato count in Bed A: 14 &rarr; 14 (6 trellis + 6 Roma + 2 Sweet 150)</li>
-        <li>Basil companions in all tomato &amp; pepper felt bags + additional available blocks <span class="new-badge">new</span></li>
+        <li>Companion flowers: Marigold &lsquo;Sparky&rsquo; (~16 spots) + Nasturtium &lsquo;Alaska&rsquo; (~8 spots) <span class="new-badge">new</span></li>
+        <li>Flowers in Bed A (6M + 2N), Bed B (6M + 3N), grow bags (4M + 2&ndash;3N) <span class="new-badge">new</span></li>
+        <li>Direct sow April 20 &mdash; germination expected April 25&ndash;27, first blooms late May <span class="new-badge">new</span></li>
+        <li>Basil companions in all tomato &amp; pepper felt bags + additional available blocks</li>
         <li>Updated variety table, SVG maps, and overview description</li>
       </ul>
     </div>
@@ -1782,6 +1821,42 @@
           <text x="183" y="430" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="white" font-weight="700">B</text>
         </g>
 
+        <!-- Companion flowers — north edge marigolds -->
+        <g filter="url(#plantShadow)">
+          <circle cx="60" cy="55" r="7" fill="#fbbf24" data-tip="Marigold Sparky &mdash; Attracts hoverflies &amp; parasitic wasps"/>
+          <text x="60" y="58" text-anchor="middle" font-family="Inter,sans-serif" font-size="4.5" fill="white" font-weight="700">M</text>
+        </g>
+        <g filter="url(#plantShadow)">
+          <circle cx="105" cy="55" r="7" fill="#fbbf24" data-tip="Marigold Sparky"/>
+          <text x="105" y="58" text-anchor="middle" font-family="Inter,sans-serif" font-size="4.5" fill="white" font-weight="700">M</text>
+        </g>
+        <g filter="url(#plantShadow)">
+          <circle cx="150" cy="55" r="7" fill="#fbbf24" data-tip="Marigold Sparky"/>
+          <text x="150" y="58" text-anchor="middle" font-family="Inter,sans-serif" font-size="4.5" fill="white" font-weight="700">M</text>
+        </g>
+        <g filter="url(#plantShadow)">
+          <circle cx="195" cy="55" r="7" fill="#fbbf24" data-tip="Marigold Sparky"/>
+          <text x="195" y="58" text-anchor="middle" font-family="Inter,sans-serif" font-size="4.5" fill="white" font-weight="700">M</text>
+        </g>
+        <!-- South corner marigolds flanking basil -->
+        <g filter="url(#plantShadow)">
+          <circle cx="55" cy="450" r="7" fill="#fbbf24" data-tip="Marigold Sparky &mdash; south corner"/>
+          <text x="55" y="453" text-anchor="middle" font-family="Inter,sans-serif" font-size="4.5" fill="white" font-weight="700">M</text>
+        </g>
+        <g filter="url(#plantShadow)">
+          <circle cx="220" cy="450" r="7" fill="#fbbf24" data-tip="Marigold Sparky &mdash; south corner"/>
+          <text x="220" y="453" text-anchor="middle" font-family="Inter,sans-serif" font-size="4.5" fill="white" font-weight="700">M</text>
+        </g>
+        <!-- South corner nasturtiums -->
+        <g filter="url(#plantShadow)">
+          <circle cx="35" cy="450" r="7" fill="#f97316" data-tip="Nasturtium Alaska &mdash; aphid trap crop, cascades over bed edge"/>
+          <text x="35" y="453" text-anchor="middle" font-family="Inter,sans-serif" font-size="4.5" fill="white" font-weight="700">N</text>
+        </g>
+        <g filter="url(#plantShadow)">
+          <circle cx="240" cy="450" r="7" fill="#f97316" data-tip="Nasturtium Alaska &mdash; aphid trap crop, cascades over bed edge"/>
+          <text x="240" y="453" text-anchor="middle" font-family="Inter,sans-serif" font-size="4.5" fill="white" font-weight="700">N</text>
+        </g>
+
         <text x="140" y="468" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#065f46" letter-spacing="0.12em" font-weight="600">SOUTH</text>
       </svg>
     </div>
@@ -1790,6 +1865,8 @@
       <div class="legend-item"><div class="legend-dot" style="background:#f87171"></div>Roma (paste)</div>
       <div class="legend-item"><div class="legend-dot" style="background:#ec4899"></div>Sweet 150 (cherry)</div>
       <div class="legend-item"><div class="legend-dot" style="background:var(--green-500)"></div>Basil</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#fbbf24"></div>Marigold Sparky</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#f97316"></div>Nasturtium Alaska</div>
     </div>
     <table class="variety-table">
       <thead><tr><th>Variety</th><th>Type</th><th>Position</th><th>Jam Suitability</th></tr></thead>
@@ -1981,6 +2058,47 @@
           <text x="125" y="537" text-anchor="middle" font-family="Inter,sans-serif" font-size="5" fill="#9ca3af">pepper</text>
         </g>
 
+        <!-- Companion flowers — north edge marigolds (along bed perimeter) -->
+        <g filter="url(#shadowB)">
+          <circle cx="40" cy="22" r="7" fill="#fbbf24" data-tip="Marigold Sparky &mdash; Attracts hoverflies &amp; parasitic wasps"/>
+          <text x="40" y="25" text-anchor="middle" font-family="Inter,sans-serif" font-size="4.5" fill="white" font-weight="700">M</text>
+        </g>
+        <g filter="url(#shadowB)">
+          <circle cx="120" cy="22" r="7" fill="#fbbf24" data-tip="Marigold Sparky"/>
+          <text x="120" y="25" text-anchor="middle" font-family="Inter,sans-serif" font-size="4.5" fill="white" font-weight="700">M</text>
+        </g>
+        <g filter="url(#shadowB)">
+          <circle cx="220" cy="22" r="7" fill="#fbbf24" data-tip="Marigold Sparky"/>
+          <text x="220" y="25" text-anchor="middle" font-family="Inter,sans-serif" font-size="4.5" fill="white" font-weight="700">M</text>
+        </g>
+        <g filter="url(#shadowB)">
+          <circle cx="300" cy="22" r="7" fill="#fbbf24" data-tip="Marigold Sparky"/>
+          <text x="300" y="25" text-anchor="middle" font-family="Inter,sans-serif" font-size="4.5" fill="white" font-weight="700">M</text>
+        </g>
+        <!-- South corner marigolds -->
+        <g filter="url(#shadowB)">
+          <circle cx="40" cy="560" r="7" fill="#fbbf24" data-tip="Marigold Sparky &mdash; south corner"/>
+          <text x="40" y="563" text-anchor="middle" font-family="Inter,sans-serif" font-size="4.5" fill="white" font-weight="700">M</text>
+        </g>
+        <g filter="url(#shadowB)">
+          <circle cx="300" cy="560" r="7" fill="#fbbf24" data-tip="Marigold Sparky &mdash; south corner"/>
+          <text x="300" y="563" text-anchor="middle" font-family="Inter,sans-serif" font-size="4.5" fill="white" font-weight="700">M</text>
+        </g>
+        <!-- South corner nasturtiums -->
+        <g filter="url(#shadowB)">
+          <circle cx="60" cy="560" r="7" fill="#f97316" data-tip="Nasturtium Alaska &mdash; aphid trap crop"/>
+          <text x="60" y="563" text-anchor="middle" font-family="Inter,sans-serif" font-size="4.5" fill="white" font-weight="700">N</text>
+        </g>
+        <g filter="url(#shadowB)">
+          <circle cx="280" cy="560" r="7" fill="#f97316" data-tip="Nasturtium Alaska &mdash; aphid trap crop"/>
+          <text x="280" y="563" text-anchor="middle" font-family="Inter,sans-serif" font-size="4.5" fill="white" font-weight="700">N</text>
+        </g>
+        <!-- North-center nasturtium -->
+        <g filter="url(#shadowB)">
+          <circle cx="170" cy="22" r="7" fill="#f97316" data-tip="Nasturtium Alaska &mdash; north-center edge, aphid trap"/>
+          <text x="170" y="25" text-anchor="middle" font-family="Inter,sans-serif" font-size="4.5" fill="white" font-weight="700">N</text>
+        </g>
+
         <text x="170" y="570" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#9a3412" letter-spacing="0.12em" font-weight="600">SOUTH</text>
       </svg>
     </div>
@@ -1991,6 +2109,8 @@
       <div class="legend-item"><div class="legend-dot" style="background:#0d9488"></div>Pickling CK &mdash; Sow 1</div>
       <div class="legend-item"><div class="legend-dot" style="background:#0d9488; border-color:#fbbf24;"></div>Pickling CK &mdash; Sow 2</div>
       <div class="legend-item"><div class="legend-dot" style="background:var(--violet)"></div>Bean succession zone</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#fbbf24"></div>Marigold Sparky</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#f97316"></div>Nasturtium Alaska</div>
     </div>
 
     <div style="margin-top:1rem; padding:0.8rem 1rem; background:var(--teal-light); border:1px solid #99f6e4; border-radius:8px; font-size:0.78rem; line-height:1.7; color:#115e59;">
@@ -2130,7 +2250,7 @@
       <div class="bag-number" style="background:var(--coral)">5</div>
       <div class="bag-info">
         <div class="bag-name">Tomato (extra variety)</div>
-        <div class="bag-detail">1 basil at edge</div>
+        <div class="bag-detail">1 basil + 1 marigold at edge</div>
         <div class="bag-status pending">Apr transplant</div>
       </div>
       <div class="bag-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
@@ -2139,7 +2259,7 @@
       <div class="bag-number" style="background:var(--coral)">6</div>
       <div class="bag-info">
         <div class="bag-name">Tomato (extra variety)</div>
-        <div class="bag-detail">1 basil at edge</div>
+        <div class="bag-detail">1 basil + 1 marigold at edge</div>
         <div class="bag-status pending">Apr transplant</div>
       </div>
       <div class="bag-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
@@ -2148,7 +2268,7 @@
       <div class="bag-number" style="background:var(--orange)">7</div>
       <div class="bag-info">
         <div class="bag-name">Pepper (extra variety)</div>
-        <div class="bag-detail">1 basil at edge</div>
+        <div class="bag-detail">1 basil + 1 marigold + 1 nasturtium at edge</div>
         <div class="bag-status pending">Apr transplant</div>
       </div>
       <div class="bag-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
@@ -2157,7 +2277,7 @@
       <div class="bag-number" style="background:var(--orange)">8</div>
       <div class="bag-info">
         <div class="bag-name">Pepper (extra variety)</div>
-        <div class="bag-detail">1 basil at edge</div>
+        <div class="bag-detail">1 basil + 1 marigold + 1 nasturtium at edge</div>
         <div class="bag-status pending">Apr transplant</div>
       </div>
       <div class="bag-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
@@ -2315,6 +2435,10 @@
         <li class="checklist-item" data-check="t-11" onclick="toggleCheck(this)">
           <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
           <div class="check-label">Plant tomato starts in Bed A <span class="sub">All varieties including Roma &amp; Sweet 150</span></div>
+        </li>
+        <li class="checklist-item" data-check="t-30" onclick="toggleCheck(this)">
+          <div class="check-box"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="check-label">Direct sow companion flowers <span class="sub">Marigold Sparky + Nasturtium Alaska &mdash; Beds A &amp; B edges + grow bag corners &mdash; Apr 20</span></div>
         </li>
       </ul>
     </div>
@@ -3998,6 +4122,106 @@
                 <div class="check-label">Learn: Saving basil seeds from bolted plants<span class="sub"><a href="https://www.youtube.com/results?search_query=saving+basil+seeds+from+flower" target="_blank" style="color:var(--green-600);">Search YouTube</a></span></div>
               </li>
             </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── MARIGOLD SPARKY ── -->
+    <div class="plant-card" data-category="flower">
+      <div class="plant-card-header" onclick="togglePlantCard(this.parentElement)">
+        <div class="plant-card-icon" style="background:#fef3c7">&#127803;</div>
+        <div class="plant-card-title">
+          <div class="plant-type">Companion Flower &middot; Heirloom / Open-Pollinated</div>
+          <h3>Marigold &lsquo;Sparky&rsquo;</h3>
+        </div>
+        <div class="plant-card-expand"><svg viewBox="0 0 14 14"><polyline points="3,5 7,9 11,5"/></svg></div>
+      </div>
+      <div class="plant-card-body">
+        <div class="plant-card-content">
+          <div class="plant-info-section">
+            <h4>Growing Profile</h4>
+            <ul>
+              <li><strong>Species:</strong> Tagetes patula (French marigold)</li>
+              <li><strong>Seed source:</strong> Back to the Roots &mdash; USDA Organic, heirloom</li>
+              <li><strong>Height:</strong> 10&ndash;12"</li>
+              <li><strong>Bloom:</strong> Continuous from ~6 weeks after sow through first frost</li>
+              <li><strong>Sowing:</strong> Direct sow 1/4" deep, no soaking needed</li>
+              <li><strong>Germination:</strong> 5&ndash;7 days</li>
+              <li><strong>Spacing:</strong> ~12" apart along bed edges</li>
+            </ul>
+          </div>
+          <div class="plant-info-section">
+            <h4>Pest Management Benefits</h4>
+            <ul>
+              <li><strong>Attracts:</strong> Hoverflies and parasitic wasps (aphid predators)</li>
+              <li><strong>Deters:</strong> Some beetles, whiteflies</li>
+              <li><strong>Nematodes:</strong> Mild root-knot nematode suppression</li>
+              <li><strong>Season-long:</strong> Continuous bloom = continuous beneficial insect presence</li>
+            </ul>
+          </div>
+          <div class="plant-info-section">
+            <h4>Placement (16 spots)</h4>
+            <ul>
+              <li><strong>Bed A:</strong> 4 along north edge + 2 at south corners = 6</li>
+              <li><strong>Bed B:</strong> 4 along north edge + 2 at south corners = 6</li>
+              <li><strong>Grow bags:</strong> 1 in corner of 4 sunniest tomato/pepper bags = 4</li>
+            </ul>
+          </div>
+          <div class="plant-info-section">
+            <h4>Seed Saving</h4>
+            <div class="seed-save-badge easy">Open-Pollinated &mdash; Save seeds!</div>
+            <p>Let a few marigolds go to seed in October for volunteer plants next year. Deadheads dry on the plant &mdash; pull petals apart to find the long, narrow seeds inside.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── NASTURTIUM ALASKA ── -->
+    <div class="plant-card" data-category="flower">
+      <div class="plant-card-header" onclick="togglePlantCard(this.parentElement)">
+        <div class="plant-card-icon" style="background:#ffedd5">&#127803;</div>
+        <div class="plant-card-title">
+          <div class="plant-type">Companion Flower &middot; Open-Pollinated</div>
+          <h3>Nasturtium &lsquo;Alaska&rsquo;</h3>
+        </div>
+        <div class="plant-card-expand"><svg viewBox="0 0 14 14"><polyline points="3,5 7,9 11,5"/></svg></div>
+      </div>
+      <div class="plant-card-body">
+        <div class="plant-card-content">
+          <div class="plant-info-section">
+            <h4>Growing Profile</h4>
+            <ul>
+              <li><strong>Seed source:</strong> Ferry-Morse</li>
+              <li><strong>Foliage:</strong> Variegated (green + white splash) &mdash; ornamental even before bloom</li>
+              <li><strong>Habit:</strong> Bush type, ~12" tall</li>
+              <li><strong>Days to bloom:</strong> 32 days from sow</li>
+              <li><strong>Sowing:</strong> Soak seeds 12&ndash;24 hours, then direct sow 1/2" deep</li>
+              <li><strong>Germination:</strong> 5&ndash;7 days (post-soak)</li>
+              <li><strong>Heat note:</strong> May pause blooming in July/Aug heat, flushes again Sep&ndash;Oct</li>
+            </ul>
+          </div>
+          <div class="plant-info-section">
+            <h4>Pest Management Benefits</h4>
+            <ul>
+              <li><strong>Trap crop:</strong> Aphids prefer nasturtium over tomatoes/peppers &mdash; pulls them away</li>
+              <li><strong>Pollinators:</strong> Attracts bees, butterflies, hummingbirds</li>
+              <li><strong>Edible:</strong> Leaves (peppery) and flowers are edible &mdash; great in salads</li>
+              <li><strong>Bonus harvest:</strong> Seed pods can be pickled like capers</li>
+            </ul>
+          </div>
+          <div class="plant-info-section">
+            <h4>Placement (7&ndash;8 spots)</h4>
+            <ul>
+              <li><strong>Bed A:</strong> 2 at south corners (cascade over bed edge)</li>
+              <li><strong>Bed B:</strong> 2 at south corners + 1 at north-center edge = 3</li>
+              <li><strong>Grow bags:</strong> 1 in corner of each pepper bag (aphid priority) = 2&ndash;3</li>
+            </ul>
+          </div>
+          <div class="plant-info-section">
+            <h4>Seed Saving</h4>
+            <div class="seed-save-badge easy">Open-Pollinated &mdash; Save seeds!</div>
+            <p>Seeds are large and easy to collect. Let pods dry on the plant, then harvest. Consider a second sowing in late August for a fall flush after summer heat dieback.</p>
           </div>
         </div>
       </div>
