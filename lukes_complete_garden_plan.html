@@ -1056,12 +1056,77 @@
     padding: 2rem;
   }
 
+  /* ── Jam & Products ── */
+  .jam-card { padding: 1.2rem 1.4rem; margin-bottom: 1rem; }
+  .jam-card .bed-header h2 { display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; }
+  .jam-desc { font-size: 0.84rem; line-height: 1.7; color: var(--text); margin-bottom: 0.6rem; }
+  .jam-server { font-size: 0.82rem; line-height: 1.6; color: var(--text-muted); font-style: italic; padding: 0.6rem 0.8rem; background: var(--green-50); border-left: 3px solid var(--green-500); border-radius: 4px; margin-bottom: 0.6rem; }
+  .jam-server strong { font-style: normal; color: var(--green-800); }
+  .jam-meta { font-size: 0.78rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 0.4rem; }
+  .jam-meta strong { color: var(--text); }
+  .jam-why { font-size: 0.78rem; line-height: 1.6; color: var(--text-muted); padding: 0.6rem 0.8rem; background: var(--amber-light); border-left: 3px solid var(--amber); border-radius: 4px; margin-top: 0.6rem; }
+  .jam-why strong { color: #92400e; }
+
+  .recipe-details { margin-top: 0.8rem; border-top: 1px dashed var(--border); padding-top: 0.6rem; }
+  .recipe-details summary {
+    cursor: pointer;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--green-700);
+    padding: 0.5rem 0.8rem;
+    background: var(--green-50);
+    border: 1px solid var(--green-200);
+    border-radius: 6px;
+    list-style: none;
+    user-select: none;
+    transition: background 0.15s;
+  }
+  .recipe-details summary::-webkit-details-marker { display: none; }
+  .recipe-details summary::before { content: "▸ "; display: inline-block; margin-right: 0.3rem; transition: transform 0.15s; }
+  .recipe-details[open] summary::before { transform: rotate(90deg); }
+  .recipe-details summary:hover { background: var(--green-100); }
+  .recipe-body { padding: 0.8rem 0.4rem 0.2rem; font-size: 0.8rem; line-height: 1.7; }
+  .recipe-body h4 { font-size: 0.82rem; margin-top: 0.8rem; margin-bottom: 0.3rem; color: var(--green-800); }
+  .recipe-body h4:first-child { margin-top: 0.2rem; }
+  .recipe-body ul, .recipe-body ol { padding-left: 1.3rem; margin: 0.2rem 0; }
+  .recipe-body li { margin-bottom: 0.2rem; }
+  .jam-yield { margin-top: 0.8rem; font-weight: 600; color: var(--green-800); padding: 0.5rem 0.8rem; background: var(--green-50); border-radius: 4px; display: inline-block; }
+
+  /* ── Production Guide ── */
+  .practice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.9rem; margin-bottom: 1rem; }
+  .practice-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.1rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .practice-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+  .practice-card .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--green-500), var(--green-600));
+    color: white;
+    font-weight: 700;
+    font-size: 0.78rem;
+    margin-right: 0.5rem;
+  }
+  .practice-card h3 { font-size: 0.92rem; margin-bottom: 0.5rem; display: flex; align-items: center; }
+  .practice-card p { font-size: 0.78rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 0.4rem; }
+  .practice-card ul { padding-left: 1.1rem; font-size: 0.78rem; line-height: 1.6; color: var(--text-muted); }
+  .practice-card li { margin-bottom: 0.2rem; }
+
   /* ── Responsive ── */
   @media (max-width: 700px) {
     .hydro-grid { grid-template-columns: 1fr; }
     .summary-grid { grid-template-columns: repeat(2, 1fr); }
     .basil-map { grid-template-columns: 1fr 1fr; }
     .bag-grid { grid-template-columns: 1fr; }
+    .practice-grid { grid-template-columns: 1fr; }
     .tabs { padding: 0 1rem; }
     .panel { padding: 1rem 1rem 2rem; }
     .progress-bar-wrap { padding: 0 1rem; }
@@ -1102,6 +1167,8 @@
   <button class="tab" onclick="showTab('basil')" role="tab">Basil Strategy</button>
   <button class="tab" onclick="showTab('hydro')" role="tab">Hydroponics</button>
   <button class="tab" onclick="showTab('guide')" role="tab">Plant Guide</button>
+  <button class="tab" onclick="showTab('production')" role="tab">Production Guide</button>
+  <button class="tab" onclick="showTab('jam')" role="tab">Jam &amp; Products</button>
   <button class="tab" onclick="showTab('spring')" role="tab">Spring (History)</button>
 </div>
 
@@ -4538,6 +4605,453 @@
     </div>
 
   </div><!-- end .plant-cards -->
+</div>
+
+<!-- ═══════ TOMATO PRODUCTION GUIDE ═══════ -->
+<div id="production" class="panel">
+  <div class="section-title">Increasing Tomato Production <span class="tag">Push Roma yields 25 &rarr; 40-50 lbs/plant</span></div>
+
+  <div class="change-callout">
+    <strong>Goal:</strong> Push baseline yields from <strong>~25 lbs/plant toward 40&ndash;50 lbs/plant</strong> on the 6 Roma plants, potentially boosting total Roma harvest from <strong>150 lbs to 240&ndash;300 lbs per season</strong>.
+  </div>
+
+  <div class="section-title">Key Production Practices <span class="tag">12 techniques</span></div>
+  <div class="practice-grid">
+
+    <div class="practice-card">
+      <h3><span class="num">1</span>Consistent Deep Watering</h3>
+      <p>Irregular watering is the #1 cause of lost tomato production.</p>
+      <ul>
+        <li>Aim for 1&ndash;2&Prime; per week, deep soaks rather than shallow frequent watering</li>
+        <li>Drip irrigation is highly recommended</li>
+        <li>Uneven moisture causes blossom end rot and fruit cracking</li>
+      </ul>
+    </div>
+
+    <div class="practice-card">
+      <h3><span class="num">2</span>Calcium Supplementation</h3>
+      <ul>
+        <li>Crush eggshells and mix into planting hole</li>
+        <li>OR use gypsum at bloom time</li>
+        <li>Prevents blossom end rot, which can destroy 30%+ of yield</li>
+      </ul>
+    </div>
+
+    <div class="practice-card">
+      <h3><span class="num">3</span>Feeding Schedule</h3>
+      <ul>
+        <li>Use balanced 10-10-10 fertilizer at planting</li>
+        <li>Switch to higher-phosphorus/potassium formula (5-10-10 or tomato-specific) once flowering begins</li>
+        <li>Feed every 2&ndash;3 weeks during growing season</li>
+        <li>Excess nitrogen produces lots of leaves but few tomatoes</li>
+      </ul>
+    </div>
+
+    <div class="practice-card">
+      <h3><span class="num">4</span>Heavy Mulching</h3>
+      <ul>
+        <li>2&ndash;3&Prime; of straw mulch (EZ Straw works well)</li>
+        <li>Retains moisture, regulates soil temperature</li>
+        <li>Prevents soil splash (disease prevention)</li>
+        <li>Suppresses weeds</li>
+      </ul>
+    </div>
+
+    <div class="practice-card">
+      <h3><span class="num">5</span>Pruning Indeterminates (NOT Roma)</h3>
+      <ul>
+        <li>On slicing/heirloom plants, remove suckers (shoots in leaf axils) to direct energy to fruit</li>
+        <li>Remove lower leaves touching the ground to prevent disease spread</li>
+        <li><strong>Do NOT prune determinate Roma plants</strong> &mdash; every flower is a potential fruit</li>
+      </ul>
+    </div>
+
+    <div class="practice-card">
+      <h3><span class="num">6</span>Hand-Pollination</h3>
+      <ul>
+        <li>Tomatoes are self-pollinating but need vibration</li>
+        <li>On calm mornings, gently shake flower clusters or tap stakes</li>
+        <li>Some gardeners use an electric toothbrush on flower stems</li>
+        <li>Increases fruit set dramatically</li>
+      </ul>
+    </div>
+
+    <div class="practice-card">
+      <h3><span class="num">7</span>Magnesium (Epsom Salt)</h3>
+      <ul>
+        <li>1 tbsp per plant at transplant</li>
+        <li>Repeat at first fruit set</li>
+        <li>Supports chlorophyll production and fruit development</li>
+      </ul>
+    </div>
+
+    <div class="practice-card">
+      <h3><span class="num">8</span>First Flower Cluster Removal</h3>
+      <p><em>Young plants only.</em></p>
+      <ul>
+        <li>Pinching the very first flowers on young plants encourages stronger root/plant development before fruiting</li>
+        <li>Already a current practice &mdash; continue</li>
+      </ul>
+    </div>
+
+    <div class="practice-card">
+      <h3><span class="num">9</span>Succession Planting</h3>
+      <p><em>Indeterminates only.</em></p>
+      <ul>
+        <li>Plant a second wave of indeterminate starts in mid-June</li>
+        <li>Provides late summer/fall harvest after first wave slows</li>
+      </ul>
+    </div>
+
+    <div class="practice-card">
+      <h3><span class="num">10</span>Companion Planting</h3>
+      <ul>
+        <li>Basil (already implemented across bags and beds)</li>
+        <li>Marigolds, nasturtiums also help</li>
+        <li>Avoid planting near brassicas or fennel</li>
+      </ul>
+    </div>
+
+    <div class="practice-card">
+      <h3><span class="num">11</span>Disease Prevention</h3>
+      <ul>
+        <li>Maintain good airflow between plants</li>
+        <li>Remove yellowing leaves promptly</li>
+        <li>Water at soil level, not on foliage</li>
+        <li>Apply copper spray if early blight appears</li>
+      </ul>
+    </div>
+
+    <div class="practice-card">
+      <h3><span class="num">12</span>Foliar Feeding</h3>
+      <ul>
+        <li>Weak seaweed/kelp spray every 2 weeks</li>
+        <li>Provides micronutrient boost that soil feeding can miss</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════ JAM & PRODUCTS ═══════ -->
+<div id="jam" class="panel">
+  <div class="section-title">Jam &amp; Products Line <span class="tag">3 restaurants &middot; 3 retail products</span></div>
+
+  <div class="change-callout">
+    <strong>Overview:</strong> Tomato production from the 2026 garden supports <strong>3 restaurant clients + 3 retail products</strong>. Custom jams tied to specific restaurants provide brand identity and a strong sales pitch. Beverage products add premium SKUs to the lineup.
+  </div>
+
+  <div class="section-title">Restaurant Partnerships <span class="tag">Signature jams</span></div>
+  <div class="hydro-grid">
+    <div class="hydro-card">
+      <h3>&#127801; Cherokee Rose Restaurant</h3>
+      <p style="font-weight:600; color:var(--green-700); font-size:0.85rem; margin-bottom:0.4rem;">Signature jam: <em>Cherokee Rose</em> &mdash; Cherokee Purple hero</p>
+      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">A smoky, complex Southern-style jam featuring Cherokee Purple as the namesake star.</p>
+    </div>
+    <div class="hydro-card">
+      <h3>&#127795; Live Oak Tap</h3>
+      <p style="font-weight:600; color:var(--green-700); font-size:0.85rem; margin-bottom:0.4rem;">Signature jam: <em>Live Oak Orchard</em> &mdash; bourbon peach with heirloom twist</p>
+      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">Bar-friendly jam with Yellow Pear sweetness, Big Rainbow color, Roma body, and bourbon to tie it to the Tap's beverage identity. Also: premium tomato water for cocktail program.</p>
+    </div>
+    <div class="hydro-card">
+      <h3>&#128293; Las Brasas Peruvian</h3>
+      <p style="font-weight:600; color:var(--green-700); font-size:0.85rem; margin-bottom:0.4rem;">Signature jam: <em>Las Brasas</em> &mdash; bright, spicy, ají amarillo</p>
+      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">Authentic Peruvian-inspired jam featuring ají amarillo, lime, and Cherokee Purple for smoky depth.</p>
+    </div>
+  </div>
+
+  <div class="section-title">Signature Jam Recipes <span class="tag">4 jams</span></div>
+
+  <!-- Original Tomato Jam -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#127813; Original Tomato Jam <span class="bed-size">Base &middot; Farmers Market</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> A rich, savory-sweet tomato jam with bright lime, warm cinnamon, and a slow-building heat from red pepper flakes. The classic tomato jam &mdash; equally at home on a cheese board, alongside grilled meats, or spread on a breakfast biscuit.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> Our flagship savory-sweet tomato jam &mdash; sweet up front, with garlic, lime, and a touch of cinnamon, finishing with a gentle red pepper kick.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Tomatoes, sugar, garlic, apple cider vinegar, lime juice, salt, red pepper flakes, cinnamon.</p>
+    <p class="jam-meta"><strong>Tomato allocation:</strong> Any mix of varieties</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>10 lbs tomatoes, cored and chopped</li>
+          <li>6 cups sugar</li>
+          <li>16 cloves garlic, minced</li>
+          <li>1 cup apple cider vinegar</li>
+          <li>1/2 cup lime juice</li>
+          <li>4 tsp salt</li>
+          <li>4 tsp red pepper flakes</li>
+          <li>1.5 tsp cinnamon</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>Combine all ingredients in a large heavy-bottomed pot.</li>
+          <li>Bring to a boil, then reduce to a simmer.</li>
+          <li>Cook uncovered, stirring frequently, for 2&ndash;3 hours until thick and jammy.</li>
+          <li>Jar in sterilized half-pint jars, water bath process 15 minutes.</li>
+        </ol>
+        <p class="jam-yield">Yield: 10&ndash;12 half-pint jars</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Cherokee Rose Jam -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#127801; Cherokee Rose Jam <span class="bed-size">Cherokee Rose Restaurant</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> A smoky, soulful tomato jam built around the Cherokee Purple heirloom &mdash; an earthy, dusky variety with deep complexity. Layered with brown sugar, smoked paprika, fresh thyme, and a whisper of bourbon, this is a jam that tastes like Sunday supper at a Southern table. Made exclusively to honor Cherokee Rose Restaurant.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> Our restaurant's signature tomato jam, made with the smoky Cherokee Purple heirloom tomato and finished with thyme, smoked paprika, and a touch of bourbon.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Cherokee Purple tomatoes, Brandywine tomatoes, Roma tomatoes, sugar, brown sugar, garlic, apple cider vinegar, lemon juice, salt, red pepper flakes, smoked paprika, black pepper, fresh thyme, bourbon (optional).</p>
+    <p class="jam-meta"><strong>Tomato allocation:</strong> 4 lbs Cherokee Purple &middot; 3 lbs Brandywine &middot; 3 lbs Roma</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>4 lbs Cherokee Purple tomatoes, cored and chopped</li>
+          <li>3 lbs Brandywine tomatoes, cored and chopped</li>
+          <li>3 lbs Roma tomatoes, cored and chopped</li>
+          <li>5 cups sugar</li>
+          <li>1 cup brown sugar</li>
+          <li>16 cloves garlic, minced</li>
+          <li>1 cup apple cider vinegar</li>
+          <li>1/2 cup lemon juice</li>
+          <li>4 tsp salt</li>
+          <li>2 tsp red pepper flakes</li>
+          <li>2 tsp smoked paprika</li>
+          <li>1 tsp black pepper, freshly ground</li>
+          <li>3 sprigs fresh thyme (removed before jarring)</li>
+          <li>2 tbsp bourbon (optional)</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>Combine all ingredients in a large pot.</li>
+          <li>Boil, then simmer 2.5&ndash;3 hours, stirring frequently.</li>
+          <li>Remove thyme sprigs.</li>
+          <li>Jar in half-pints, water bath 15 minutes.</li>
+        </ol>
+        <p class="jam-yield">Yield: 12&ndash;14 half-pint jars</p>
+      </div>
+    </details>
+    <p class="jam-why"><strong>Why it works:</strong> Cherokee Purple's smoky, earthy flavor is the hero. Brandywine adds rich complexity. Roma provides body and reduces cooking time. Smoked paprika and thyme echo the Southern/Appalachian vibe of the Cherokee Rose name.</p>
+  </div>
+
+  <!-- Live Oak Orchard Jam -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#127795; Live Oak Orchard Jam <span class="bed-size">Live Oak Tap</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> A bright, sun-soaked jam born from a Georgia orchard meets the bar. Yellow Pear and Big Rainbow heirloom tomatoes give it a luminous golden color and natural sweetness, balanced by ripe peaches and a measured pour of bourbon. Vanilla and ginger round it out into something that drinks as well as it spreads. Made exclusively for Live Oak Tap.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> Our bourbon-and-peach tomato jam, made with golden heirloom tomatoes, Georgia peaches, and a splash of bourbon &mdash; perfect on a cheese board or alongside our charcuterie.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Roma tomatoes, Big Rainbow tomatoes, Yellow Pear tomatoes, peaches, sugar, garlic, white balsamic vinegar, lemon juice, bourbon, salt, red pepper flakes, fresh ginger, vanilla extract.</p>
+    <p class="jam-meta"><strong>Tomato allocation:</strong> 5 lbs Roma &middot; 2 lbs Big Rainbow &middot; 1 lb Yellow Pear &middot; 2 lbs peaches</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>5 lbs Roma tomatoes, cored and chopped</li>
+          <li>2 lbs Big Rainbow tomatoes, cored and chopped</li>
+          <li>1 lb Yellow Pear tomatoes, halved</li>
+          <li>2 lbs peaches, peeled and chopped</li>
+          <li>5 cups sugar</li>
+          <li>12 cloves garlic, minced</li>
+          <li>1 cup white balsamic vinegar</li>
+          <li>1/2 cup lemon juice</li>
+          <li>1/2 cup bourbon</li>
+          <li>3 tsp salt</li>
+          <li>2 tsp red pepper flakes</li>
+          <li>2 tbsp fresh ginger, grated</li>
+          <li>1 tsp vanilla extract (added at end)</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>In a separate small pan, simmer bourbon 3&ndash;4 minutes to mellow alcohol harshness. Set aside.</li>
+          <li>Combine all other ingredients except vanilla in a large pot.</li>
+          <li>Bring to boil, reduce to simmer, cook 2 hours.</li>
+          <li>Add bourbon reduction, cook 45 more minutes until thick.</li>
+          <li>Stir in vanilla in final 5 minutes.</li>
+          <li>Jar in half-pints, water bath 15 minutes.</li>
+        </ol>
+        <p class="jam-yield">Yield: 13&ndash;15 half-pint jars</p>
+      </div>
+    </details>
+    <p class="jam-why"><strong>Why it works:</strong> Yellow Pear adds sweetness that plays beautifully with peach. Big Rainbow's stunning color and low acidity make the jam visually striking &mdash; bright orange-gold rather than dark red. Roma keeps the body substantial. Bourbon ties it to the Tap's beverage identity.</p>
+  </div>
+
+  <!-- Las Brasas Jam -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#128293; Las Brasas Jam <span class="bed-size">Las Brasas Peruvian</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> A vibrant, fire-kissed tomato jam built on the bright, fruity heat of ají amarillo and the smoky depth of ají panca. Roma and Park's Whopper tomatoes give it body, Cherokee Purple lends a smoky undercurrent, and lime and orange juice keep it lively and crisp. Made exclusively for Las Brasas to honor the spirit of Peruvian fire-cooking.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> Our house-made Peruvian-inspired tomato jam, featuring ají amarillo, ají panca, and citrus &mdash; the perfect counterpoint to our pollo a la brasa or yuca frita.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Roma tomatoes, Park's Whopper tomatoes, Cherokee Purple tomatoes, red bell peppers, sugar, garlic, apple cider vinegar, lime juice, orange juice, salt, ají amarillo paste, ají panca paste, ground cumin, dried oregano, ground cloves.</p>
+    <p class="jam-meta"><strong>Tomato allocation:</strong> 5 lbs Roma &middot; 2 lbs Park's Whopper &middot; 2 lbs Cherokee Purple</p>
+    <p class="jam-meta"><strong>Source for Peruvian ingredients:</strong> Buford Highway Farmers Market (Atlanta) or online specialty retailers.</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>5 lbs Roma tomatoes, cored and chopped</li>
+          <li>2 lbs Park's Whopper tomatoes, cored and chopped</li>
+          <li>2 lbs Cherokee Purple tomatoes, cored and chopped</li>
+          <li>1 lb red bell peppers, chopped (rocoto substitute)</li>
+          <li>5 cups sugar</li>
+          <li>16 cloves garlic, minced</li>
+          <li>1 cup apple cider vinegar</li>
+          <li>1/2 cup fresh lime juice</li>
+          <li>1/4 cup fresh orange juice</li>
+          <li>4 tsp salt</li>
+          <li>2 tbsp ají amarillo paste</li>
+          <li>2 tsp ají panca paste (or substitute: 1 tsp smoked paprika + 1 tsp ancho chile powder)</li>
+          <li>2 tsp ground cumin</li>
+          <li>1 tsp dried oregano</li>
+          <li>1/2 tsp ground cloves</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>Combine all ingredients in a large pot.</li>
+          <li>Boil, then simmer 2.5&ndash;3 hours until thick.</li>
+          <li>Jar in half-pints, water bath 15 minutes.</li>
+        </ol>
+        <p class="jam-yield">Yield: 13&ndash;15 half-pint jars</p>
+      </div>
+    </details>
+    <p class="jam-why"><strong>Why it works:</strong> Ají amarillo is the defining Peruvian chile &mdash; bright, fruity heat. Cherokee Purple's smokiness mirrors the pollo a la brasa char. Lime + orange reflects Peruvian citrus traditions.</p>
+  </div>
+
+  <div class="section-title">Tomato Beverage Products <span class="tag">3 retail SKUs</span></div>
+
+  <!-- Tomato Vodka Infusion -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#127864; Tomato Vodka Infusion <span class="bed-size">Specialty Retail</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> A small-batch tomato-infused vodka built on heirloom Cherokee Purple and Brandywine tomatoes, with a whisper of sea salt and optional aromatics. Savory, complex, and bracingly clean &mdash; designed for serious bartenders and adventurous home cocktail makers.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> A house-infused tomato vodka made with our heirloom Cherokee Purple and Brandywine tomatoes &mdash; the bones of an exceptional martini or bloody mary.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Vodka, Cherokee Purple tomatoes, Brandywine tomatoes, sea salt; optional: fresh basil, black peppercorns, jalape&ntilde;o.</p>
+    <p class="jam-meta"><strong>Tomato allocation:</strong> Cherokee Purple + Brandywine</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>1 bottle (750ml) good vodka</li>
+          <li>2 lbs ripe Cherokee Purple + Brandywine tomatoes</li>
+          <li>1 tsp sea salt</li>
+          <li>Optional: 1 tbsp fresh basil, 1 tsp black peppercorns, 1 halved jalape&ntilde;o</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>Quarter tomatoes, combine with vodka and salt in a large glass jar.</li>
+          <li>Seal and infuse at room temperature for 3&ndash;5 days, shaking daily.</li>
+          <li>Strain through fine mesh, then through coffee filter for clarity.</li>
+          <li>Store refrigerated up to 2 months.</li>
+        </ol>
+        <p class="jam-yield">Yield: 1 bottle &middot; refrigerate up to 2 months</p>
+      </div>
+    </details>
+    <p class="jam-why"><strong>Note:</strong> Infusion only &mdash; home distillation is legally restricted in Georgia (fuel use only, not consumption).</p>
+  </div>
+
+  <!-- Bloody Mary Mix -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#129346; Artisan Bloody Mary Mix <span class="bed-size">Flagship Retail + Live Oak Tap</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> A handcrafted bloody mary mix built from 10 pounds of heirloom tomatoes per batch &mdash; Roma for body, Cherokee Purple for smoky depth, and Brandywine for richness. Spiked with horseradish, smoked paprika, Worcestershire, and citrus, this is the most flavorful mix you'll find on any shelf.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> Our house-made bloody mary mix, built from heirloom tomatoes, smoked paprika, fresh horseradish, and citrus &mdash; bold, savory, and far above the mass-market stuff.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Roma tomatoes, Cherokee Purple tomatoes, Brandywine tomatoes, lemon juice, lime juice, Worcestershire sauce, prepared horseradish, hot sauce, celery salt, black pepper, smoked paprika, garlic powder, onion powder, salt; optional: pickle brine.</p>
+    <p class="jam-meta"><strong>Tomato allocation:</strong> 5 lbs Roma &middot; 3 lbs Cherokee Purple &middot; 2 lbs Brandywine</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>10 lbs tomatoes (mix above)</li>
+          <li>1 cup fresh lemon juice</li>
+          <li>1/2 cup fresh lime juice</li>
+          <li>1/4 cup Worcestershire sauce</li>
+          <li>3 tbsp prepared horseradish</li>
+          <li>2 tbsp hot sauce (heat to preference)</li>
+          <li>2 tbsp celery salt</li>
+          <li>1 tbsp black pepper</li>
+          <li>1 tbsp smoked paprika</li>
+          <li>2 tsp garlic powder</li>
+          <li>2 tsp onion powder</li>
+          <li>1 tbsp salt</li>
+          <li>Optional: 2 tbsp pickle brine for tang</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>Core and roughly chop tomatoes. Simmer 45 minutes until broken down.</li>
+          <li>Pur&eacute;e with immersion blender, then strain through fine mesh.</li>
+          <li>Return to pot, add all seasonings, simmer 15 minutes.</li>
+          <li>Hot-pack into sterilized pint jars, water bath process 40 minutes.</li>
+        </ol>
+        <p class="jam-yield">Yield: ~8 pint jars &middot; each makes ~4 bloody marys</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Tomato Water -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#128142; Tomato Water <span class="bed-size">Premium &middot; Live Oak Tap</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> A crystal-clear, intensely tomato-flavored liquid extracted slowly from our finest heirloom tomatoes by gravity alone &mdash; no pressing, no shortcuts. The result is a savory, almost umami-rich water that's stunning in martinis, gimlets, or as a base for high-end cocktails.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> A clear, savory tomato water made from our heirloom tomatoes &mdash; perfect in a clear bloody martini or a savory gimlet, with all the flavor of a tomato and none of the color.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Heirloom tomatoes (Brandywine and Cherokee Purple), sea salt.</p>
+    <p class="jam-meta"><strong>Tomato allocation:</strong> Heirloom premium (Brandywine + Cherokee Purple ideal)</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>5 lbs very ripe heirloom tomatoes</li>
+          <li>1 tsp sea salt</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>Roughly chop tomatoes, pur&eacute;e briefly with salt.</li>
+          <li>Line a large fine-mesh strainer with cheesecloth, set over a bowl.</li>
+          <li>Pour pur&eacute;e into strainer, let drip in refrigerator for 12&ndash;24 hours (<strong>do not press or squeeze</strong> &mdash; gravity only).</li>
+          <li>The resulting liquid is crystal clear but intensely tomato-flavored.</li>
+        </ol>
+        <h4>Uses</h4>
+        <p>Martini/red snapper base, aguachile, savory cocktails, premium cocktail program at Live Oak Tap.</p>
+        <p class="jam-yield">Yield: ~2 cups from 5 lbs &middot; refrigerate up to 5 days or freeze in ice cube trays</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="section-title">Freezing Strategy <span class="tag">Production notes</span></div>
+  <div class="change-callout">
+    Roma's determinate nature dumps <strong>150&ndash;300 lbs in July all at once</strong>. Freeze whole or chopped tomatoes (no blanching needed for jam) to pace production across fall and winter. Freezing actually breaks down cell walls and <strong>speeds reduction cooking</strong>. Heirloom surplus can also be frozen and blended into any jam or bloody mary batch later.
+  </div>
+
+  <div class="section-title">Product Lineup Summary <span class="tag">7 SKUs</span></div>
+  <div class="bed-container">
+    <table class="variety-table">
+      <thead>
+        <tr><th>Product</th><th>Channel</th><th>Tomato Focus</th><th>Positioning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Original Tomato Jam</td><td>Farmers market</td><td>Any mix</td><td>Base product &middot; entry price</td></tr>
+        <tr><td>Cherokee Rose Jam</td><td>Cherokee Rose Rest.</td><td>Cherokee Purple hero</td><td>Restaurant signature</td></tr>
+        <tr><td>Live Oak Orchard Jam</td><td>Live Oak Tap</td><td>Roma + Yellow Pear + Big Rainbow + peach</td><td>Restaurant signature &middot; bar pairing</td></tr>
+        <tr><td>Las Brasas Jam</td><td>Las Brasas</td><td>Roma + Whopper + Cherokee Purple + ají</td><td>Restaurant signature &middot; Peruvian accent</td></tr>
+        <tr><td>Bloody Mary Mix</td><td>Retail + Live Oak Tap</td><td>Roma-heavy blend</td><td>Premium flagship beverage</td></tr>
+        <tr><td>Tomato Water</td><td>Live Oak Tap (limited)</td><td>Heirloom premium</td><td>Specialty cocktail ingredient</td></tr>
+        <tr><td>Tomato Vodka Infusion</td><td>Specialty retail</td><td>Cherokee + Brandywine</td><td>Small-batch gift market</td></tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <!-- ═══════ SPRING HISTORY ═══════ -->
