@@ -1124,6 +1124,56 @@
   .heat-divider.medium { background: linear-gradient(90deg, #fdba74, transparent); border-left-color: #ea580c; color: #7c2d12; }
   .heat-divider.hot { background: linear-gradient(90deg, var(--coral-light), transparent); border-left-color: var(--coral); color: var(--coral-dark); }
 
+  /* ── Pricing tier cards ── */
+  .tier-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.9rem; margin-bottom: 1.2rem; }
+  .tier-card {
+    border-radius: var(--radius);
+    padding: 1rem 1.1rem 1.1rem;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .tier-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+  .tier-card .tier-num {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: rgba(0,0,0,0.06);
+    color: var(--text);
+    margin-bottom: 0.4rem;
+  }
+  .tier-card h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+  .tier-card .tier-prices {
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--green-800);
+  }
+  .tier-card .tier-prices .wholesale { color: var(--text-muted); font-weight: 500; font-size: 0.78rem; }
+  .tier-card ul { font-size: 0.76rem; line-height: 1.6; color: var(--text-muted); padding-left: 1rem; margin-top: 0.3rem; }
+  .tier-card.t1 { background: linear-gradient(135deg, var(--green-50), white); border-color: var(--green-200); }
+  .tier-card.t2 { background: linear-gradient(135deg, var(--teal-light), white); border-color: #99f6e4; }
+  .tier-card.t3 { background: linear-gradient(135deg, var(--amber-light), white); border-color: #fcd34d; }
+  .tier-card.t4 { background: linear-gradient(135deg, var(--orange-light), white); border-color: #fdba74; }
+  .tier-card.t5 { background: linear-gradient(135deg, var(--coral-light), white); border-color: var(--coral); }
+
+  .effort-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 999px;
+    margin-left: 0.4rem;
+    background: var(--surface-alt);
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 700px) { .tier-grid { grid-template-columns: 1fr; } }
+
   /* ── Production Guide ── */
   .practice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.9rem; margin-bottom: 1rem; }
   .practice-card {
@@ -1201,6 +1251,7 @@
   <button class="tab" onclick="showTab('guide')" role="tab">Plant Guide</button>
   <button class="tab" onclick="showTab('production')" role="tab">Production Guide</button>
   <button class="tab" onclick="showTab('jam')" role="tab">Jam &amp; Products</button>
+  <button class="tab" onclick="showTab('pricing')" role="tab">Pricing &amp; Schedule</button>
   <button class="tab" onclick="showTab('spring')" role="tab">Spring (History)</button>
 </div>
 
@@ -4767,35 +4818,40 @@
 
 <!-- ═══════ JAM & PRODUCTS ═══════ -->
 <div id="jam" class="panel">
-  <div class="section-title">Jam &amp; Products Line <span class="tag">17 SKUs &middot; 3 restaurants &middot; jams &middot; jellies &middot; beverages</span></div>
+  <div class="section-title">Jam &amp; Products Line <span class="tag">30 SKUs &middot; 3 restaurants &middot; full lineup</span></div>
 
   <div class="change-callout">
-    <strong>Overview:</strong> Tomato + pepper production from the 2026 garden supports a <strong>17-SKU lineup</strong> across <strong>3 restaurant clients + 4 retail channels</strong>. The line spans <strong>4 tomato jams</strong>, <strong>10 pepper jellies</strong> covering the full heat spectrum (none &rarr; mild &rarr; medium &rarr; hot), and <strong>3 tomato beverages</strong>. Custom jams and jellies tied to specific restaurants provide brand identity; the farmers market line and specialty retail SKUs cover the remainder.
+    <strong>Overview:</strong> Tomato, pepper, onion + garlic production from the 2026 garden (with onions/garlic sourced from DeKalb Farmers Market) supports a <strong>30-SKU lineup</strong> across <strong>3 restaurant clients + 4 retail channels</strong>. The line spans <strong>4 tomato jams</strong>, <strong>10 pepper jellies</strong> (full heat spectrum), <strong>3 tomato beverages</strong>, <strong>7 onion + garlic jams</strong>, and <strong>6 combination jams</strong> that bridge categories. See the <em>Pricing &amp; Schedule</em> tab for tiered pricing, monthly production calendar, and channel allocations.
   </div>
 
-  <div class="section-title">Restaurant Partnerships <span class="tag">8 restaurant SKUs</span></div>
+  <div class="section-title">Restaurant Partnerships <span class="tag">13 restaurant SKUs</span></div>
   <div class="hydro-grid">
     <div class="hydro-card">
-      <h3>&#127801; Cherokee Rose Restaurant <span class="heat-badge none">2 SKUs</span></h3>
+      <h3>&#127801; Cherokee Rose Restaurant <span class="heat-badge none">4 SKUs</span></h3>
       <ul style="font-size:0.8rem; color:var(--text-muted); line-height:1.7; padding-left:1rem; margin:0.3rem 0 0;">
         <li><strong style="color:var(--green-700);">Cherokee Rose Jam</strong> &mdash; Cherokee Purple hero, smoky-Southern jam</li>
-        <li><strong style="color:var(--green-700);">Sunset Sweet Jelly</strong> &mdash; heat-free amber pepper jelly (Orange Bell + Lunchbox + Sweet Long)</li>
+        <li><strong style="color:var(--green-700);">Sunset Sweet Jelly</strong> &mdash; heat-free amber pepper jelly</li>
+        <li><strong style="color:var(--green-700);">Red Wine &amp; Shallot Jam</strong> &mdash; French-bistro savory jam with thyme + rosemary</li>
+        <li><strong style="color:var(--green-700);">Cherokee Rose Sophisticate</strong> &mdash; premium Cherokee Purple + shallot + red wine combo</li>
       </ul>
     </div>
     <div class="hydro-card">
-      <h3>&#127795; Live Oak Tap <span class="heat-badge medium">4 SKUs</span></h3>
+      <h3>&#127795; Live Oak Tap <span class="heat-badge medium">6 SKUs</span></h3>
       <ul style="font-size:0.8rem; color:var(--text-muted); line-height:1.7; padding-left:1rem; margin:0.3rem 0 0;">
         <li><strong style="color:var(--green-700);">Live Oak Orchard Jam</strong> &mdash; bourbon peach with heirloom twist</li>
         <li><strong style="color:var(--green-700);">Hop &amp; Heat Jelly</strong> &mdash; medium pepper jelly with IPA reduction</li>
         <li><strong style="color:var(--green-700);">Bourbon Burn Jelly</strong> &mdash; hot SKU, purple cayenne + bourbon</li>
         <li><strong style="color:var(--green-700);">Tomato Water</strong> &mdash; premium clear cocktail ingredient</li>
+        <li><strong style="color:var(--green-700);">Bourbon Caramelized Onion Jam</strong> &mdash; deep Vidalia + bourbon + molasses</li>
+        <li><strong style="color:var(--green-700);">Live Oak Sundown Jam</strong> &mdash; savory tomato + Vidalia + peach + bourbon combo</li>
       </ul>
     </div>
     <div class="hydro-card">
-      <h3>&#128293; Las Brasas Peruvian <span class="heat-badge mild-med">2 SKUs</span></h3>
+      <h3>&#128293; Las Brasas Peruvian <span class="heat-badge mild-med">3 SKUs</span></h3>
       <ul style="font-size:0.8rem; color:var(--text-muted); line-height:1.7; padding-left:1rem; margin:0.3rem 0 0;">
         <li><strong style="color:var(--green-700);">Las Brasas Jam</strong> &mdash; ají amarillo + Cherokee Purple, Peruvian fire</li>
         <li><strong style="color:var(--green-700);">Cajun Fire Jelly</strong> &mdash; medium pepper jelly with cumin + oregano</li>
+        <li><strong style="color:var(--green-700);">Las Brasas Trinity Jam</strong> &mdash; premium tomato + pepper + onion + ají amarillo</li>
       </ul>
     </div>
   </div>
@@ -5511,61 +5567,810 @@
     </div>
   </div>
 
+  <div class="section-title">Onion &amp; Garlic Jam Line <span class="tag">7 SKUs &middot; reduction-set, no pectin</span></div>
+
+  <div class="change-callout">
+    <strong>Overview:</strong> Onion and garlic jams sit at the savory end of the spectrum &mdash; deep, caramelized, syrupy, set through long reduction (no pectin needed). Onions and garlic are sourced year-round from <strong>DeKalb Farmers Market</strong>, so production is not seasonal. <strong>Caramelization is everything</strong> &mdash; allow 45&ndash;60 minutes minimum on low-medium heat for proper depth.
+  </div>
+
+  <!-- Classic Bacon Onion Jam -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#127863; Classic Bacon Onion Jam <span class="bed-size">Farmers Market</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> The savory jam that started it all. Slowly caramelized yellow onions, smoky bacon, brown sugar, and balsamic vinegar reduced into something rich, sweet, and deeply savory. The single most popular savory jam on any farmers market table &mdash; sells out reliably.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> Our classic bacon onion jam &mdash; slow-caramelized onions, real bacon, and balsamic. Perfect on burgers, grilled cheese, or alongside roasted pork.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Yellow onions, bacon, brown sugar, balsamic vinegar, apple cider vinegar, fresh thyme, salt, black pepper.</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>1 lb bacon, diced</li>
+          <li>4 lbs yellow onions, thinly sliced</li>
+          <li>1 cup brown sugar</li>
+          <li>1/2 cup balsamic vinegar</li>
+          <li>1/2 cup apple cider vinegar</li>
+          <li>2 tbsp fresh thyme leaves</li>
+          <li>2 tsp salt</li>
+          <li>1 tsp black pepper</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>Cook bacon in a large heavy pot over medium heat until crispy. Remove bacon, leave 1/4 cup fat in pot.</li>
+          <li>Add onions to bacon fat, cook over medium-low heat 45&ndash;60 minutes, stirring occasionally, until deeply caramelized.</li>
+          <li>Add bacon back, brown sugar, both vinegars, thyme, salt, and pepper.</li>
+          <li>Reduce heat to low, simmer 30&ndash;45 minutes until thick and jammy.</li>
+          <li>Jar in sterilized half-pints, water bath process 15 minutes.</li>
+        </ol>
+        <p class="jam-yield">Yield: 7&ndash;9 half-pint jars</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Bourbon Caramelized Onion Jam -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#129347; Bourbon Caramelized Onion Jam <span class="bed-size">Live Oak Tap</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> A boozy, brooding caramelized onion jam built on Georgia's own Vidalia onions, bourbon, brown sugar, and a whisper of dark molasses. Deep, rich, slightly sweet, designed for bar boards and burger plates. Made exclusively for Live Oak Tap.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> Our bourbon-caramelized Vidalia onion jam &mdash; slow-cooked for over an hour and finished with bourbon. Excellent with sliders, charcuterie, or aged cheddar.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Vidalia onions, bourbon, brown sugar, dark molasses, balsamic vinegar, apple cider vinegar, fresh thyme, salt, black pepper, olive oil.</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>1/4 cup olive oil</li>
+          <li>5 lbs Vidalia onions, thinly sliced</li>
+          <li>1 cup bourbon</li>
+          <li>1 cup brown sugar</li>
+          <li>2 tbsp dark molasses</li>
+          <li>1/2 cup balsamic vinegar</li>
+          <li>1/2 cup apple cider vinegar</li>
+          <li>2 tbsp fresh thyme leaves</li>
+          <li>2 tsp salt</li>
+          <li>1 tsp black pepper</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>Heat olive oil in large heavy pot over medium-low heat.</li>
+          <li>Add Vidalias, cook 60 minutes, stirring occasionally, until deeply caramelized.</li>
+          <li>In separate small pan, simmer bourbon 3&ndash;4 minutes to mellow alcohol harshness.</li>
+          <li>Add bourbon reduction, brown sugar, molasses, both vinegars, thyme, salt, and pepper to onions.</li>
+          <li>Simmer 45 minutes until thick and syrupy.</li>
+          <li>Jar in sterilized half-pints, water bath process 15 minutes.</li>
+        </ol>
+        <p class="jam-yield">Yield: 8&ndash;10 half-pint jars</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Red Wine & Shallot Jam -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#127801; Red Wine &amp; Shallot Jam <span class="bed-size">Cherokee Rose Restaurant</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> A French-bistro-inspired jam built entirely on shallots &mdash; sweeter and more delicate than onions &mdash; slow-cooked with dry red wine, balsamic, fresh thyme, and rosemary. Deep burgundy color, sophisticated profile. Made exclusively for Cherokee Rose.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> Our restaurant's shallot and red wine jam &mdash; perfect alongside our filet, lamb chops, or duck breast.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Shallots, red wine, balsamic vinegar, brown sugar, white sugar, fresh thyme, salt, black pepper, olive oil.</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>1/4 cup olive oil</li>
+          <li>4 lbs shallots, thinly sliced</li>
+          <li>2 cups dry red wine (Cabernet Sauvignon or Merlot)</li>
+          <li>1 cup balsamic vinegar</li>
+          <li>3/4 cup brown sugar</li>
+          <li>1/2 cup white sugar</li>
+          <li>3 tbsp fresh thyme leaves</li>
+          <li>2 tsp salt</li>
+          <li>1 tsp black pepper</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>Heat olive oil in large heavy pot over medium-low heat.</li>
+          <li>Add shallots, cook 60 minutes until deeply caramelized and reduced significantly.</li>
+          <li>Add red wine, simmer 15 minutes to reduce alcohol.</li>
+          <li>Add balsamic, both sugars, thyme, salt, and pepper.</li>
+          <li>Simmer 45&ndash;60 minutes until thick, deep burgundy color, and jammy.</li>
+          <li>Jar in sterilized half-pints, water bath process 15 minutes.</li>
+        </ol>
+        <p class="jam-yield">Yield: 7&ndash;9 half-pint jars</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Roasted Garlic Confit Jam -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#128156; Roasted Garlic Confit Jam <span class="bed-size">Specialty</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> Whole heads of garlic slow-roasted until their flavor melts into something sweet, nutty, and butter-like. Built into a savory jam with extra virgin olive oil, honey, fresh rosemary and thyme. Doesn't taste like raw garlic at all.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> Our roasted garlic confit jam &mdash; twelve whole heads of garlic per batch, roasted to mellow sweetness. Gorgeous on crusty bread, pizza, or as a finish for roasted chicken.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Garlic, extra virgin olive oil, honey, white balsamic vinegar, white wine vinegar, sugar, fresh rosemary, fresh thyme, lemon zest, salt, black pepper.</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>12 whole heads garlic</li>
+          <li>1/2 cup extra virgin olive oil</li>
+          <li>1 cup honey</li>
+          <li>1 cup white balsamic vinegar</li>
+          <li>1/2 cup white wine vinegar</li>
+          <li>1/2 cup white sugar</li>
+          <li>2 tbsp fresh rosemary, finely chopped</li>
+          <li>2 tbsp fresh thyme leaves</li>
+          <li>2 tsp salt</li>
+          <li>1 tsp black pepper</li>
+          <li>1 tsp lemon zest</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li><strong>Roast garlic:</strong> Cut tops off 12 whole heads of garlic, drizzle with olive oil, wrap each in foil, roast at 400&deg;F for 40 minutes. Cool slightly, squeeze out soft cloves into bowl.</li>
+          <li>Mash roasted garlic with fork to coarse paste.</li>
+          <li>Combine garlic paste, olive oil, honey, both vinegars, sugar, rosemary, thyme, salt, pepper, and lemon zest in heavy pot.</li>
+          <li>Bring to simmer over low heat, cook 30&ndash;45 minutes until thick and jammy, stirring frequently.</li>
+          <li>Jar in sterilized half-pints, water bath process 15 minutes.</li>
+        </ol>
+        <p class="jam-yield">Yield: 6&ndash;8 half-pint jars</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Herbed Garlic & Shallot Jam -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#127807; Herbed Garlic &amp; Shallot Jam <span class="bed-size">Farmers Market</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> An "everything" savory jam combining roasted garlic and caramelized shallots with fresh thyme, rosemary, and lemon zest. Bright, herbal, deeply savory. The jar that sits next to the cheese board.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> Our roasted garlic and shallot jam with fresh herbs &mdash; incredible on crackers, eggs, or pasta.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Shallots, roasted garlic, white wine, white balsamic vinegar, white sugar, brown sugar, fresh thyme, fresh rosemary, lemon zest, salt, black pepper, olive oil.</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>2 lbs shallots, thinly sliced</li>
+          <li>6 whole heads garlic, roasted (see method)</li>
+          <li>1/4 cup olive oil</li>
+          <li>1 cup dry white wine</li>
+          <li>1 cup white balsamic vinegar</li>
+          <li>1 cup white sugar</li>
+          <li>1/4 cup brown sugar</li>
+          <li>2 tbsp fresh thyme leaves</li>
+          <li>2 tbsp fresh rosemary, finely chopped</li>
+          <li>1 tbsp lemon zest</li>
+          <li>2 tsp salt</li>
+          <li>1 tsp black pepper</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>Roast 6 heads of garlic at 400&deg;F for 40 minutes (see Roasted Garlic Confit method). Squeeze out cloves, mash to paste.</li>
+          <li>Heat olive oil in large pot over medium-low heat. Add shallots, cook 45 minutes until caramelized.</li>
+          <li>Add roasted garlic paste, white wine, simmer 10 minutes.</li>
+          <li>Add vinegar, both sugars, thyme, rosemary, lemon zest, salt, and pepper.</li>
+          <li>Simmer 30&ndash;45 minutes until thick.</li>
+          <li>Jar in sterilized half-pints, water bath process 15 minutes.</li>
+        </ol>
+        <p class="jam-yield">Yield: 7&ndash;9 half-pint jars</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Sweet Vidalia & Honey Jam -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#127855; Sweet Vidalia &amp; Honey Jam <span class="bed-size">Farmers Market &middot; Georgia Pride</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> A pure celebration of Georgia's official state vegetable &mdash; slow-caramelized Vidalia onions and Georgia honey, with no booze, no bacon, no heat. Just deep sweet onion and floral honey. The everyday jam that goes on everything.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> Our pure Vidalia and Georgia honey jam &mdash; sweet, simple, perfect on biscuits, ham, or breakfast sandwiches.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Vidalia onions, Georgia honey, apple cider vinegar, sugar, fresh thyme, salt, olive oil.</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>1/4 cup olive oil</li>
+          <li>5 lbs Vidalia onions, thinly sliced</li>
+          <li>1 cup Georgia honey</li>
+          <li>1/2 cup white sugar</li>
+          <li>3/4 cup apple cider vinegar</li>
+          <li>2 tbsp fresh thyme leaves</li>
+          <li>2 tsp salt</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>Heat olive oil in large heavy pot over medium-low heat.</li>
+          <li>Add Vidalias, cook 60 minutes, stirring occasionally, until deeply caramelized.</li>
+          <li>Add honey, sugar, vinegar, thyme, and salt.</li>
+          <li>Simmer 30&ndash;45 minutes until thick and golden.</li>
+          <li>Jar in sterilized half-pints, water bath process 15 minutes.</li>
+        </ol>
+        <p class="jam-yield">Yield: 7&ndash;9 half-pint jars</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Spicy Onion Jam -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#128293; Spicy Onion Jam <span class="bed-size">Specialty</span> <span class="heat-badge medium">Medium &middot; &#127798;&#127798;</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> For the heat-seekers in the savory jam category &mdash; slow-caramelized onions, mashed roasted garlic, and Calabrian chile paste (or our own purple cayenne paste). Sweet, savory, and seriously spicy. Sits between our pepper jelly and onion jam lines.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> Our spicy roasted garlic and onion jam with Calabrian chile &mdash; gorgeous on pizza, in pasta, or alongside grilled meats.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Yellow onions, roasted garlic, Calabrian chile paste (or purple cayenne paste), brown sugar, balsamic vinegar, apple cider vinegar, fresh oregano, salt, black pepper, olive oil.</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>1/4 cup olive oil</li>
+          <li>4 lbs yellow onions, thinly sliced</li>
+          <li>6 heads roasted garlic, mashed</li>
+          <li>1/4 cup Calabrian chile paste (or 2 tbsp purple cayenne paste)</li>
+          <li>1 cup brown sugar</li>
+          <li>1/2 cup balsamic vinegar</li>
+          <li>1/2 cup apple cider vinegar</li>
+          <li>2 tbsp fresh oregano, finely chopped</li>
+          <li>2 tsp salt</li>
+          <li>1 tsp black pepper</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>Roast garlic (400&deg;F, 40 min, see prior recipes). Squeeze out and mash.</li>
+          <li>Heat olive oil in large pot over medium-low heat. Add onions, cook 45&ndash;60 min until deeply caramelized.</li>
+          <li>Add roasted garlic, chile paste, brown sugar, both vinegars, oregano, salt, and pepper.</li>
+          <li>Simmer 30&ndash;45 minutes until thick and deep red.</li>
+          <li>Jar in sterilized half-pints, water bath process 15 minutes.</li>
+        </ol>
+        <p class="jam-yield">Yield: 7&ndash;9 half-pint jars</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="section-title">Combination Jam Line <span class="tag">6 SKUs &middot; multi-category bridges</span></div>
+
+  <div class="change-callout">
+    <strong>Combination jams</strong> span multiple primary ingredients (tomato + pepper + onion, etc.) and provide premium SKUs that draw across the full garden inventory. Some use pectin (Pepper-Onion Marmalade) where peppers dominate; the rest set through long reduction like the onion jams.
+  </div>
+
+  <!-- Tomato-Onion Confit Jam -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#127813;&#129364; Tomato-Onion Confit Jam <span class="bed-size">Farmers Market</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> The Italian-trattoria interpretation of tomato jam &mdash; Roma tomatoes, slow-caramelized onions, fresh garlic, balsamic, and basil from our garden. Less sweet than our Original Tomato Jam, more savory and onion-forward. Made for paninis and grilled cheese.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> Our tomato-onion confit jam with caramelized onions and fresh basil &mdash; Italian-inspired, perfect on grilled cheese or alongside eggs.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Roma tomatoes, yellow onions, garlic, sugar, balsamic vinegar, apple cider vinegar, fresh basil, salt, black pepper, red pepper flakes, olive oil.</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>6 lbs Roma tomatoes, cored and chopped</li>
+          <li>3 lbs yellow onions, thinly sliced</li>
+          <li>8 cloves garlic, minced</li>
+          <li>1/4 cup olive oil</li>
+          <li>2 cups sugar</li>
+          <li>1/2 cup balsamic vinegar</li>
+          <li>1/2 cup apple cider vinegar</li>
+          <li>1/2 cup fresh basil, chopped (added at end)</li>
+          <li>2 tsp salt</li>
+          <li>1 tsp black pepper</li>
+          <li>1 tsp red pepper flakes</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>Heat olive oil in large pot, cook onions 45 minutes until caramelized.</li>
+          <li>Add garlic, cook 2 minutes.</li>
+          <li>Add tomatoes, sugar, both vinegars, salt, pepper, and red pepper flakes.</li>
+          <li>Simmer 90 minutes until thick.</li>
+          <li>Stir in basil in final 5 minutes.</li>
+          <li>Jar in sterilized half-pints, water bath process 15 minutes.</li>
+        </ol>
+        <p class="jam-yield">Yield: 9&ndash;11 half-pint jars</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Pepper-Onion Marmalade -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#127798;&#129364; Pepper-Onion Marmalade <span class="bed-size">Farmers Market</span> <span class="heat-badge mild">Mild &middot; &#127798;</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> Somewhere between pepper jelly and onion jam &mdash; chunky, spreadable, a touch of jalape&ntilde;o heat. Bell peppers and onions form the body, with garlic and thyme adding depth. The cheese board champion.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> Our pepper-onion marmalade &mdash; bell peppers, caramelized onions, and a touch of jalape&ntilde;o. Stunning on cheese boards or burgers.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Red Bell peppers, Orange Bell peppers, yellow onions, garlic, jalape&ntilde;os, sugar, apple cider vinegar, lemon juice, fresh thyme, salt, pectin, olive oil.</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>2 cups Red Bell peppers, finely chopped</li>
+          <li>1 cup Orange Bell peppers, finely chopped</li>
+          <li>2 cups yellow onions, thinly sliced</li>
+          <li>1/2 cup jalape&ntilde;os, seeded and finely chopped</li>
+          <li>8 cloves garlic, minced</li>
+          <li>1/4 cup olive oil</li>
+          <li>5 cups sugar</li>
+          <li>1 cup apple cider vinegar</li>
+          <li>1/4 cup lemon juice</li>
+          <li>2 tbsp fresh thyme</li>
+          <li>2 tsp salt</li>
+          <li>2 pouches liquid pectin</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>Heat olive oil in large pot. Cook onions 30 minutes until caramelized.</li>
+          <li>Add garlic, cook 2 min.</li>
+          <li>Add peppers, sugar, vinegar, lemon juice, thyme, and salt. Bring to hard rolling boil, stir constantly. Boil 2 minutes.</li>
+          <li>Stir in pectin, return to hard boil for exactly 1 minute.</li>
+          <li>Skim foam, ladle into sterilized half-pints (1/4&Prime; headspace).</li>
+          <li>Water bath process 10 minutes.</li>
+        </ol>
+        <p class="jam-yield">Yield: 8&ndash;10 half-pint jars</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Las Brasas Trinity Jam -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#127813;&#127798;&#129364; Las Brasas Trinity Jam <span class="bed-size">Las Brasas Peruvian &middot; Premium SKU</span> <span class="heat-badge medium">Medium &middot; &#127798;&#127798;</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> Our most ambitious Peruvian-inspired creation. Roma and Cherokee Purple tomatoes, Cajun Belle and jalape&ntilde;o peppers, caramelized onions, eight heads of roasted garlic, and authentic ají amarillo paste &mdash; essentially "salsa criolla meets tomato jam." Premium offering for Las Brasas.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> Our Trinity jam &mdash; tomato, pepper, and onion with ají amarillo. The flagship of our Las Brasas collection. Perfect with anticuchos, lomo saltado, or pollo a la brasa.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Roma tomatoes, Cherokee Purple tomatoes, yellow onions, Cajun Belle peppers, jalape&ntilde;os, roasted garlic, ají amarillo paste, sugar, apple cider vinegar, fresh lime juice, salt, ground cumin, dried oregano, olive oil.</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>4 lbs Roma tomatoes, cored and chopped</li>
+          <li>2 lbs Cherokee Purple tomatoes, cored and chopped</li>
+          <li>2 lbs yellow onions, thinly sliced</li>
+          <li>1.5 cups Cajun Belle peppers, finely chopped</li>
+          <li>1 cup jalape&ntilde;os, seeded and finely chopped</li>
+          <li>8 heads roasted garlic, mashed</li>
+          <li>1/4 cup olive oil</li>
+          <li>4 cups sugar</li>
+          <li>3 tbsp ají amarillo paste</li>
+          <li>1 cup apple cider vinegar</li>
+          <li>1/2 cup fresh lime juice</li>
+          <li>4 tsp salt</li>
+          <li>1 tbsp ground cumin</li>
+          <li>2 tsp dried oregano</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>Roast garlic (400&deg;F, 40 min). Mash.</li>
+          <li>Heat olive oil in large pot, cook onions 45 minutes until caramelized.</li>
+          <li>Add peppers, cook 5 minutes.</li>
+          <li>Add tomatoes, roasted garlic, sugar, ají amarillo, vinegar, lime juice, salt, cumin, and oregano.</li>
+          <li>Simmer 2&ndash;2.5 hours until thick.</li>
+          <li>Jar in sterilized half-pints, water bath process 15 minutes.</li>
+        </ol>
+        <p class="jam-yield">Yield: 13&ndash;15 half-pint jars</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Live Oak Sundown Jam -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#127813;&#127825;&#129364; Live Oak Sundown Jam <span class="bed-size">Live Oak Tap</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> A savory, kitchen-friendly counterpart to our sweet Live Oak Orchard Jam. Roma tomatoes, deeply caramelized Vidalia onions, peaches, bourbon, and fresh thyme and ginger. Designed for plates, not desserts.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> Our savory tomato, Vidalia, and peach jam with bourbon &mdash; perfect on burgers, pork tenderloin, or with smoked meats.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Roma tomatoes, Vidalia onions, peaches, bourbon, brown sugar, balsamic vinegar, apple cider vinegar, fresh thyme, fresh ginger, salt, black pepper, olive oil.</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>4 lbs Roma tomatoes, cored and chopped</li>
+          <li>3 lbs Vidalia onions, thinly sliced</li>
+          <li>2 lbs peaches, peeled and chopped</li>
+          <li>1/2 cup bourbon</li>
+          <li>1/4 cup olive oil</li>
+          <li>3 cups brown sugar</li>
+          <li>1/2 cup balsamic vinegar</li>
+          <li>1/2 cup apple cider vinegar</li>
+          <li>2 tbsp fresh thyme leaves</li>
+          <li>2 tbsp fresh ginger, grated</li>
+          <li>3 tsp salt</li>
+          <li>1 tsp black pepper</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>Heat olive oil in large pot, cook Vidalias 60 minutes until deeply caramelized.</li>
+          <li>Simmer bourbon in small pan 3&ndash;4 minutes to mellow.</li>
+          <li>Add tomatoes, peaches, bourbon, brown sugar, both vinegars, thyme, ginger, salt, and pepper to onions.</li>
+          <li>Simmer 90 minutes until thick.</li>
+          <li>Jar in sterilized half-pints, water bath process 15 minutes.</li>
+        </ol>
+        <p class="jam-yield">Yield: 11&ndash;13 half-pint jars</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Cherokee Rose Sophisticate -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#127801;&#128156; Cherokee Rose Sophisticate <span class="bed-size">Cherokee Rose &middot; Premium SKU</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> The fine-dining counterpart to our Cherokee Rose Jam. Cherokee Purple tomatoes, slow-cooked shallots, eight heads of roasted garlic, and dry red wine. Deep, savory, wine-forward &mdash; designed for steak frites and lamb plates.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> Our Cherokee Rose Sophisticate &mdash; Cherokee Purple tomato, shallot, and red wine jam. Pairs perfectly with our filet, lamb, or duck.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Cherokee Purple tomatoes, shallots, roasted garlic, dry red wine, brown sugar, balsamic vinegar, apple cider vinegar, fresh thyme, fresh rosemary, salt, black pepper, olive oil.</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>5 lbs Cherokee Purple tomatoes, cored and chopped</li>
+          <li>2 lbs shallots, thinly sliced</li>
+          <li>8 heads roasted garlic, mashed</li>
+          <li>1/4 cup olive oil</li>
+          <li>2 cups dry red wine (Cabernet)</li>
+          <li>1 cup brown sugar</li>
+          <li>1/2 cup balsamic vinegar</li>
+          <li>1/2 cup apple cider vinegar</li>
+          <li>3 tbsp fresh thyme</li>
+          <li>2 tbsp fresh rosemary</li>
+          <li>3 tsp salt</li>
+          <li>1 tsp black pepper</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>Roast garlic (400&deg;F, 40 min). Mash.</li>
+          <li>Heat olive oil in large pot, cook shallots 45 minutes until caramelized.</li>
+          <li>Add red wine, simmer 15 minutes to reduce.</li>
+          <li>Add tomatoes, roasted garlic, brown sugar, both vinegars, thyme, rosemary, salt, and pepper.</li>
+          <li>Simmer 90&ndash;120 minutes until thick and deep wine color.</li>
+          <li>Jar in sterilized half-pints, water bath process 15 minutes.</li>
+        </ol>
+        <p class="jam-yield">Yield: 10&ndash;12 half-pint jars</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Bacon-Pepper Jam -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#127863;&#127798; Bacon-Pepper Jam <span class="bed-size">Specialty</span> <span class="heat-badge medium">Medium &middot; &#127798;&#127798;</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> Sweet-savory-smoky-spicy in one jar. Bacon, jalape&ntilde;os, Cajun Belles, caramelized onions, brown sugar, bourbon, and smoked paprika. The "I'd buy this in a gas station and it would still be good" jam &mdash; except yours is artisan quality.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> Our bacon and pepper jam &mdash; bacon, caramelized onions, jalape&ntilde;o, and bourbon. Legendary on burgers.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Yellow onions, bacon, jalape&ntilde;os, Cajun Belle peppers, garlic, brown sugar, bourbon, balsamic vinegar, apple cider vinegar, salt, black pepper, smoked paprika.</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>1 lb bacon, diced</li>
+          <li>3 lbs yellow onions, thinly sliced</li>
+          <li>1.5 cups jalape&ntilde;os, seeded and finely chopped</li>
+          <li>1 cup Cajun Belle peppers, finely chopped</li>
+          <li>8 cloves garlic, minced</li>
+          <li>1 cup brown sugar</li>
+          <li>1/2 cup bourbon</li>
+          <li>1/2 cup balsamic vinegar</li>
+          <li>1/2 cup apple cider vinegar</li>
+          <li>2 tsp salt</li>
+          <li>1 tsp black pepper</li>
+          <li>1 tsp smoked paprika</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>Cook bacon until crispy. Remove, leave 1/4 cup fat in pot.</li>
+          <li>Cook onions in bacon fat 45 minutes until caramelized.</li>
+          <li>Add jalape&ntilde;os, Cajun Belles, garlic, cook 5 minutes.</li>
+          <li>Simmer bourbon in separate pan 3&ndash;4 minutes to mellow.</li>
+          <li>Add bacon back, brown sugar, bourbon, both vinegars, salt, pepper, and smoked paprika.</li>
+          <li>Simmer 30&ndash;45 minutes until thick.</li>
+          <li>Jar in sterilized half-pints, water bath process 15 minutes.</li>
+        </ol>
+        <p class="jam-yield">Yield: 8&ndash;10 half-pint jars</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="section-title">Onion &amp; Garlic Production Notes <span class="tag">Caramelization &middot; roasting</span></div>
+  <div class="hydro-grid">
+    <div class="hydro-card">
+      <h3>&#9203; No Pectin Needed</h3>
+      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">Onion and garlic jams set through long reduction. Cook until thick, syrupy, and a spoon dragged across the bottom of the pan leaves a clear track.</p>
+    </div>
+    <div class="hydro-card">
+      <h3>&#127869; Caramelization Is Everything</h3>
+      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">Take your time. Onions need <strong>45&ndash;60 minutes minimum</strong> on low-medium heat to develop deep flavor. Vidalias get an extra 60 min for full sweetness. Rushing produces mediocre jam.</p>
+    </div>
+    <div class="hydro-card">
+      <h3>&#129364; Roasted Garlic Technique</h3>
+      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">Cut tops off whole heads, drizzle with olive oil, wrap in foil, roast at <strong>400&deg;F for 40 minutes</strong>. Squeeze soft cloves out when cool. Used across Roasted Garlic Confit, Herbed Garlic &amp; Shallot, Spicy Onion, Las Brasas Trinity, and Cherokee Rose Sophisticate.</p>
+    </div>
+    <div class="hydro-card">
+      <h3>&#128722; Sourcing</h3>
+      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">Onions, garlic, and shallots from <strong>DeKalb Farmers Market</strong> year-round. Vidalias in season (spring/early summer) directly from Vidalia, GA growers. No need to grow these.</p>
+    </div>
+    <div class="hydro-card">
+      <h3>&#127863; Bacon Handling</h3>
+      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">Render bacon first, reserve <strong>1/4 cup fat</strong> for cooking onions. Don't pour off all the fat &mdash; that's where the flavor lives.</p>
+    </div>
+    <div class="hydro-card">
+      <h3>&#128202; Jelly vs. Jam Set</h3>
+      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;"><strong>Pepper jellies</strong> = bright, vinegar-forward, set firm with pectin. <strong>Onion jams</strong> = deep, caramelized, syrupy, set through reduction. Pepper-Onion Marmalade uses pectin (peppers dominate); other combinations rely on reduction.</p>
+    </div>
+  </div>
+
   <div class="section-title">Freezing Strategy <span class="tag">Production notes</span></div>
   <div class="change-callout">
     Roma's determinate nature dumps <strong>150&ndash;300 lbs in July all at once</strong>. Freeze whole or chopped tomatoes (no blanching needed for jam) to pace production across fall and winter. Freezing actually breaks down cell walls and <strong>speeds reduction cooking</strong>. Heirloom surplus can also be frozen and blended into any jam or bloody mary batch later.
   </div>
 
-  <div class="section-title">Product Lineup Summary <span class="tag">17 SKUs &middot; jams + jellies + beverages</span></div>
+  <div class="section-title">Product Lineup Summary <span class="tag">30 SKUs &middot; full inventory with pricing &amp; effort</span></div>
   <div class="bed-container" style="overflow-x:auto;">
     <table class="variety-table">
       <thead>
-        <tr><th>Product</th><th>Heat</th><th>Channel</th></tr>
+        <tr><th>Product</th><th>Category</th><th>Heat</th><th>Channel</th><th>Yield/batch</th><th>Retail</th><th>Wholesale</th><th>Effort</th></tr>
       </thead>
       <tbody>
-        <tr><td><strong>Original Tomato Jam</strong></td><td><span class="heat-badge none">None</span></td><td>Farmers market</td></tr>
-        <tr><td><strong>Cherokee Rose Jam</strong></td><td><span class="heat-badge medium">Medium</span></td><td>Cherokee Rose</td></tr>
-        <tr><td><strong>Live Oak Orchard Jam</strong></td><td><span class="heat-badge mild">Mild</span></td><td>Live Oak Tap</td></tr>
-        <tr><td><strong>Las Brasas Jam</strong></td><td><span class="heat-badge hot">Med-Hot</span></td><td>Las Brasas</td></tr>
-        <tr><td><strong>Sunset Sweet Jelly</strong></td><td><span class="heat-badge none">None</span></td><td>Cherokee Rose</td></tr>
-        <tr><td><strong>Garden Verde Jelly</strong></td><td><span class="heat-badge none">None</span></td><td>Farmers market</td></tr>
-        <tr><td><strong>Banana Tang Jelly</strong></td><td><span class="heat-badge mild">Mild</span></td><td>Farmers market</td></tr>
-        <tr><td><strong>Sweet Heat Jelly</strong></td><td><span class="heat-badge mild-med">Mild-Med</span></td><td>Farmers market</td></tr>
-        <tr><td><strong>Hop &amp; Heat Jelly</strong></td><td><span class="heat-badge medium">Medium</span></td><td>Live Oak Tap</td></tr>
-        <tr><td><strong>Cajun Fire Jelly</strong></td><td><span class="heat-badge medium">Medium</span></td><td>Las Brasas</td></tr>
-        <tr><td><strong>Burrito Smoke Jelly</strong></td><td><span class="heat-badge medium">Medium</span></td><td>Farmers market</td></tr>
-        <tr><td><strong>Smoked Poblano Jelly</strong></td><td><span class="heat-badge medium">Medium</span></td><td>Specialty / farmers market</td></tr>
-        <tr><td><strong>Purple Reign Jelly</strong></td><td><span class="heat-badge hot">Hot</span></td><td>Specialty / farmers market</td></tr>
-        <tr><td><strong>Bourbon Burn Jelly</strong></td><td><span class="heat-badge hot">Hot</span></td><td>Live Oak Tap</td></tr>
-        <tr><td><strong>Bloody Mary Mix</strong></td><td><span class="heat-badge medium">Medium</span></td><td>Retail + Live Oak Tap</td></tr>
-        <tr><td><strong>Tomato Water</strong></td><td><span class="heat-badge none">None</span></td><td>Live Oak Tap (limited)</td></tr>
-        <tr><td><strong>Tomato Vodka Infusion</strong></td><td><span class="heat-badge none">None</span></td><td>Specialty retail</td></tr>
+        <tr><td><strong>Original Tomato Jam</strong></td><td>Tomato jam</td><td><span class="heat-badge none">None</span></td><td>Farmers market</td><td>10&ndash;12 jars</td><td>$8</td><td>$4</td><td>&#11088;</td></tr>
+        <tr><td><strong>Cherokee Rose Jam</strong></td><td>Tomato jam</td><td><span class="heat-badge medium">Medium</span></td><td>Cherokee Rose</td><td>12&ndash;14 jars</td><td>$12</td><td>$6</td><td>&#11088;&#11088;</td></tr>
+        <tr><td><strong>Live Oak Orchard Jam</strong></td><td>Tomato jam</td><td><span class="heat-badge mild">Mild</span></td><td>Live Oak Tap</td><td>13&ndash;15 jars</td><td>$12</td><td>$6</td><td>&#11088;&#11088;</td></tr>
+        <tr><td><strong>Las Brasas Jam</strong></td><td>Tomato jam</td><td><span class="heat-badge hot">Med-Hot</span></td><td>Las Brasas</td><td>13&ndash;15 jars</td><td>$12</td><td>$6</td><td>&#11088;&#11088;</td></tr>
+        <tr><td><strong>Tomato Vodka Infusion</strong></td><td>Beverage</td><td><span class="heat-badge none">None</span></td><td>Specialty retail</td><td>1 bottle (750ml)</td><td>$45</td><td>$22</td><td>&#11088;&#11088;&#11088;</td></tr>
+        <tr><td><strong>Bloody Mary Mix</strong></td><td>Beverage</td><td><span class="heat-badge medium">Medium</span></td><td>Retail + Live Oak Tap</td><td>~8 pint jars</td><td>$14 (pint)</td><td>$7</td><td>&#11088;&#11088;</td></tr>
+        <tr><td><strong>Tomato Water</strong></td><td>Beverage</td><td><span class="heat-badge none">None</span></td><td>Live Oak Tap (limited)</td><td>~2 cups / 5 lbs</td><td>$18 (4 oz)</td><td>$9</td><td>&#11088;&#11088;&#11088;</td></tr>
+        <tr><td><strong>Sunset Sweet Jelly</strong></td><td>Pepper jelly</td><td><span class="heat-badge none">None</span></td><td>Cherokee Rose</td><td>6&ndash;8 jars</td><td>$12</td><td>$6</td><td>&#11088;</td></tr>
+        <tr><td><strong>Garden Verde Jelly</strong></td><td>Pepper jelly</td><td><span class="heat-badge none">None</span></td><td>Farmers market</td><td>6&ndash;8 jars</td><td>$8</td><td>$4</td><td>&#11088;</td></tr>
+        <tr><td><strong>Banana Tang Jelly</strong></td><td>Pepper jelly</td><td><span class="heat-badge mild">Mild</span></td><td>Farmers market</td><td>6&ndash;8 jars</td><td>$8</td><td>$4</td><td>&#11088;</td></tr>
+        <tr><td><strong>Sweet Heat Jelly</strong></td><td>Pepper jelly</td><td><span class="heat-badge mild-med">Mild-Med</span></td><td>Farmers market</td><td>6&ndash;8 jars</td><td>$8</td><td>$4</td><td>&#11088;</td></tr>
+        <tr><td><strong>Hop &amp; Heat Jelly</strong></td><td>Pepper jelly</td><td><span class="heat-badge medium">Medium</span></td><td>Live Oak Tap</td><td>6&ndash;8 jars</td><td>$10</td><td>$5</td><td>&#11088;&#11088;</td></tr>
+        <tr><td><strong>Cajun Fire Jelly</strong></td><td>Pepper jelly</td><td><span class="heat-badge medium">Medium</span></td><td>Las Brasas</td><td>7&ndash;9 jars</td><td>$12</td><td>$6</td><td>&#11088;&#11088;</td></tr>
+        <tr><td><strong>Burrito Smoke Jelly</strong></td><td>Pepper jelly</td><td><span class="heat-badge medium">Medium</span></td><td>Farmers market</td><td>6&ndash;8 jars</td><td>$10</td><td>$5</td><td>&#11088;&#11088;</td></tr>
+        <tr><td><strong>Smoked Poblano Jelly</strong></td><td>Pepper jelly</td><td><span class="heat-badge medium">Medium</span></td><td>Specialty / farmers market</td><td>6&ndash;8 jars</td><td>$12</td><td>$6</td><td>&#11088;&#11088;&#11088;</td></tr>
+        <tr><td><strong>Purple Reign Jelly</strong></td><td>Pepper jelly</td><td><span class="heat-badge hot">Hot</span></td><td>Specialty / farmers market</td><td>6&ndash;8 jars</td><td>$14</td><td>$7</td><td>&#11088;&#11088;&#11088;</td></tr>
+        <tr><td><strong>Bourbon Burn Jelly</strong></td><td>Pepper jelly</td><td><span class="heat-badge hot">Hot</span></td><td>Live Oak Tap</td><td>6&ndash;8 jars</td><td>$14</td><td>$7</td><td>&#11088;&#11088;&#11088;</td></tr>
+        <tr><td><strong>Classic Bacon Onion Jam</strong></td><td>Onion jam</td><td><span class="heat-badge none">None</span></td><td>Farmers market</td><td>7&ndash;9 jars</td><td>$10</td><td>$5</td><td>&#11088;&#11088;</td></tr>
+        <tr><td><strong>Bourbon Caramelized Onion</strong></td><td>Onion jam</td><td><span class="heat-badge none">None</span></td><td>Live Oak Tap</td><td>8&ndash;10 jars</td><td>$12</td><td>$6</td><td>&#11088;&#11088;&#11088;</td></tr>
+        <tr><td><strong>Red Wine &amp; Shallot Jam</strong></td><td>Onion jam</td><td><span class="heat-badge none">None</span></td><td>Cherokee Rose</td><td>7&ndash;9 jars</td><td>$12</td><td>$6</td><td>&#11088;&#11088;</td></tr>
+        <tr><td><strong>Roasted Garlic Confit</strong></td><td>Garlic jam</td><td><span class="heat-badge none">None</span></td><td>Specialty</td><td>6&ndash;8 jars</td><td>$14</td><td>$7</td><td>&#11088;&#11088;&#11088;</td></tr>
+        <tr><td><strong>Herbed Garlic &amp; Shallot</strong></td><td>Onion+garlic</td><td><span class="heat-badge none">None</span></td><td>Farmers market</td><td>7&ndash;9 jars</td><td>$12</td><td>$6</td><td>&#11088;&#11088;&#11088;</td></tr>
+        <tr><td><strong>Sweet Vidalia &amp; Honey</strong></td><td>Onion jam</td><td><span class="heat-badge none">None</span></td><td>Farmers market</td><td>7&ndash;9 jars</td><td>$10</td><td>$5</td><td>&#11088;</td></tr>
+        <tr><td><strong>Spicy Onion Jam</strong></td><td>Onion jam</td><td><span class="heat-badge medium">Medium</span></td><td>Specialty</td><td>7&ndash;9 jars</td><td>$12</td><td>$6</td><td>&#11088;</td></tr>
+        <tr><td><strong>Tomato-Onion Confit</strong></td><td>Combination</td><td><span class="heat-badge none">None</span></td><td>Farmers market</td><td>9&ndash;11 jars</td><td>$10</td><td>$5</td><td>&#11088;&#11088;</td></tr>
+        <tr><td><strong>Pepper-Onion Marmalade</strong></td><td>Combination</td><td><span class="heat-badge mild">Mild</span></td><td>Farmers market</td><td>8&ndash;10 jars</td><td>$10</td><td>$5</td><td>&#11088;&#11088;</td></tr>
+        <tr><td><strong>Las Brasas Trinity</strong></td><td>Combination</td><td><span class="heat-badge medium">Medium</span></td><td>Las Brasas (premium)</td><td>13&ndash;15 jars</td><td>$14</td><td>$7</td><td>&#11088;&#11088;&#11088;</td></tr>
+        <tr><td><strong>Live Oak Sundown</strong></td><td>Combination</td><td><span class="heat-badge none">None</span></td><td>Live Oak Tap</td><td>11&ndash;13 jars</td><td>$12</td><td>$6</td><td>&#11088;&#11088;&#11088;</td></tr>
+        <tr><td><strong>Cherokee Rose Sophisticate</strong></td><td>Combination</td><td><span class="heat-badge none">None</span></td><td>Cherokee Rose (premium)</td><td>10&ndash;12 jars</td><td>$14</td><td>$7</td><td>&#11088;&#11088;&#11088;</td></tr>
+        <tr><td><strong>Bacon-Pepper Jam</strong></td><td>Combination</td><td><span class="heat-badge medium">Medium</span></td><td>Specialty</td><td>8&ndash;10 jars</td><td>$12</td><td>$6</td><td>&#11088;&#11088;</td></tr>
       </tbody>
     </table>
+    <p style="font-size:0.72rem; color:var(--text-light); margin-top:0.6rem; line-height:1.5;"><strong>Effort key:</strong> &#11088; Easy (single-batch, common ingredients) &middot; &#11088;&#11088; Moderate (caramelization, multi-step) &middot; &#11088;&#11088;&#11088; Complex (roasting/smoking, longer process). <strong>Restaurant SKUs:</strong> wholesale price applies whether the restaurant uses the jar in dishes or sells it retail to take home.</p>
   </div>
 
   <div class="section-title">Channel Breakdown <span class="tag">Where each SKU goes</span></div>
   <div class="hydro-grid">
     <div class="hydro-card">
-      <h3>&#127801; Cherokee Rose <span class="heat-badge none">2 SKUs</span></h3>
-      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">Cherokee Rose Jam &middot; Sunset Sweet Jelly</p>
+      <h3>&#127801; Cherokee Rose <span class="heat-badge none">4 SKUs</span></h3>
+      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">Cherokee Rose Jam &middot; Sunset Sweet Jelly &middot; Red Wine &amp; Shallot Jam &middot; Cherokee Rose Sophisticate</p>
+      <p style="font-size:0.72rem; color:var(--text-light); line-height:1.5; margin-top:0.4rem; font-style:italic;">Wholesale to restaurant; same jars also displayed retail for take-home customers.</p>
     </div>
     <div class="hydro-card">
-      <h3>&#127795; Live Oak Tap <span class="heat-badge medium">4 SKUs</span></h3>
-      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">Live Oak Orchard Jam &middot; Hop &amp; Heat Jelly &middot; Bourbon Burn Jelly &middot; Tomato Water</p>
+      <h3>&#127795; Live Oak Tap <span class="heat-badge medium">6 SKUs</span></h3>
+      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">Live Oak Orchard Jam &middot; Hop &amp; Heat Jelly &middot; Bourbon Burn Jelly &middot; Tomato Water &middot; Bourbon Caramelized Onion &middot; Live Oak Sundown</p>
+      <p style="font-size:0.72rem; color:var(--text-light); line-height:1.5; margin-top:0.4rem; font-style:italic;">Wholesale to bar; same jars also offered retail at the Tap for take-home.</p>
     </div>
     <div class="hydro-card">
-      <h3>&#128293; Las Brasas <span class="heat-badge mild-med">2 SKUs</span></h3>
-      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">Las Brasas Jam &middot; Cajun Fire Jelly</p>
+      <h3>&#128293; Las Brasas <span class="heat-badge mild-med">3 SKUs</span></h3>
+      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">Las Brasas Jam &middot; Cajun Fire Jelly &middot; Las Brasas Trinity Jam</p>
+      <p style="font-size:0.72rem; color:var(--text-light); line-height:1.5; margin-top:0.4rem; font-style:italic;">Wholesale to restaurant; same jars also offered retail for take-home.</p>
     </div>
     <div class="hydro-card">
-      <h3>&#127820; Farmers Market <span class="heat-badge mild">9 SKUs</span></h3>
-      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">Original Tomato Jam &middot; Garden Verde Jelly &middot; Banana Tang Jelly &middot; Sweet Heat Jelly &middot; Burrito Smoke Jelly &middot; Smoked Poblano Jelly (also specialty) &middot; Purple Reign Jelly (also specialty)</p>
+      <h3>&#127820; Farmers Market <span class="heat-badge mild">12 SKUs</span></h3>
+      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">Original Tomato Jam &middot; Garden Verde Jelly &middot; Banana Tang Jelly &middot; Sweet Heat Jelly &middot; Burrito Smoke Jelly &middot; Smoked Poblano Jelly (also specialty) &middot; Purple Reign Jelly (also specialty) &middot; Classic Bacon Onion &middot; Sweet Vidalia &amp; Honey &middot; Herbed Garlic &amp; Shallot &middot; Tomato-Onion Confit &middot; Pepper-Onion Marmalade</p>
     </div>
     <div class="hydro-card">
-      <h3>&#129518; Specialty Retail <span class="heat-badge hot">2 SKUs</span></h3>
-      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">Tomato Vodka Infusion &middot; Bloody Mary Mix (also retail)</p>
+      <h3>&#129518; Specialty Retail <span class="heat-badge hot">5 SKUs</span></h3>
+      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">Tomato Vodka Infusion &middot; Bloody Mary Mix (also Live Oak) &middot; Roasted Garlic Confit &middot; Spicy Onion Jam &middot; Bacon-Pepper Jam</p>
     </div>
+  </div>
+</div>
+
+<!-- ═══════ PRICING & SCHEDULE ═══════ -->
+<div id="pricing" class="panel">
+  <div class="section-title">Pricing &amp; Production Schedule <span class="tag">30 SKUs &middot; tiers &middot; calendar &middot; effort</span></div>
+
+  <div class="change-callout">
+    <strong>Pricing principles:</strong> Half-pint (8 oz) jars are the standard retail size; pints are reserved for Bloody Mary Mix. <strong>Wholesale = 50% of retail.</strong> Restaurant exclusives priced at premium tier; specialty products (limited production, premium ingredients) priced at top tier.
+  </div>
+
+  <div class="change-callout" style="background: linear-gradient(135deg, var(--amber-light), var(--orange-light)); border-color: #fcd34d;">
+    <strong>Restaurant pricing &mdash; both wholesale &amp; retail:</strong> Restaurants pay <strong>wholesale</strong> for every jar regardless of how they use it. The restaurant can either (a) use the jar in their kitchen/menu service or (b) display it for retail take-home sale to their customers at the suggested retail price. Either way, your invoice to them is the wholesale number. Showing the retail price alongside makes the value proposition concrete &mdash; it tells the restaurant "you can sell this jar for $12 to your customer; you pay me $6." That's the pitch.
+  </div>
+
+  <div class="section-title">Pricing Tiers <span class="tag">5 tiers &middot; retail / wholesale</span></div>
+  <div class="tier-grid">
+    <div class="tier-card t1">
+      <span class="tier-num">Tier 1 &middot; Entry</span>
+      <h3 class="tier-prices">$8 retail <span class="wholesale">/ $4 wholesale</span></h3>
+      <ul>
+        <li>Original Tomato Jam</li>
+        <li>Garden Verde Jelly</li>
+        <li>Banana Tang Jelly</li>
+        <li>Sweet Heat Jelly</li>
+      </ul>
+    </div>
+    <div class="tier-card t2">
+      <span class="tier-num">Tier 2 &middot; Standard</span>
+      <h3 class="tier-prices">$10 retail <span class="wholesale">/ $5 wholesale</span></h3>
+      <ul>
+        <li>Burrito Smoke Jelly</li>
+        <li>Hop &amp; Heat Jelly</li>
+        <li>Sweet Vidalia &amp; Honey</li>
+        <li>Tomato-Onion Confit</li>
+        <li>Classic Bacon Onion</li>
+        <li>Pepper-Onion Marmalade</li>
+      </ul>
+    </div>
+    <div class="tier-card t3">
+      <span class="tier-num">Tier 3 &middot; Premium</span>
+      <h3 class="tier-prices">$12 retail <span class="wholesale">/ $6 wholesale</span></h3>
+      <ul>
+        <li>Cherokee Rose Jam</li>
+        <li>Live Oak Orchard Jam</li>
+        <li>Las Brasas Jam</li>
+        <li>Sunset Sweet Jelly</li>
+        <li>Cajun Fire Jelly</li>
+        <li>Smoked Poblano Jelly</li>
+        <li>Bourbon Caramelized Onion</li>
+        <li>Red Wine &amp; Shallot</li>
+        <li>Herbed Garlic &amp; Shallot</li>
+        <li>Spicy Onion Jam</li>
+        <li>Live Oak Sundown</li>
+        <li>Bacon-Pepper Jam</li>
+      </ul>
+    </div>
+    <div class="tier-card t4">
+      <span class="tier-num">Tier 4 &middot; Specialty</span>
+      <h3 class="tier-prices">$14 retail <span class="wholesale">/ $7 wholesale</span></h3>
+      <ul>
+        <li>Purple Reign Jelly</li>
+        <li>Bourbon Burn Jelly</li>
+        <li>Roasted Garlic Confit</li>
+        <li>Cherokee Rose Sophisticate</li>
+        <li>Las Brasas Trinity</li>
+        <li>Bloody Mary Mix (pint)</li>
+      </ul>
+    </div>
+    <div class="tier-card t5">
+      <span class="tier-num">Tier 5 &middot; Luxury</span>
+      <h3 class="tier-prices">$18&ndash;$45 retail <span class="wholesale">/ 50% wholesale</span></h3>
+      <ul>
+        <li>Tomato Water (4 oz) &mdash; $18 / $9</li>
+        <li>Tomato Vodka Infusion (750 ml) &mdash; $45 / $22</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-title">Channel Strategy <span class="tag">SKU counts &amp; tier ranges</span></div>
+  <div class="bed-container" style="overflow-x:auto;">
+    <table class="variety-table">
+      <thead>
+        <tr><th>Channel</th><th>SKU Count</th><th>Tier Range</th><th>Focus</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Cherokee Rose</strong></td><td>4</td><td>T3&ndash;T4</td><td>Tomato + onion + jelly variety; Southern-elegant identity</td></tr>
+        <tr><td><strong>Live Oak Tap</strong></td><td>6</td><td>T2&ndash;T5</td><td>Bar pairing; beer/bourbon themes; cocktail program</td></tr>
+        <tr><td><strong>Las Brasas Peruvian</strong></td><td>3</td><td>T3&ndash;T4</td><td>Peruvian-inspired, ají amarillo signature, fire-cooking pairing</td></tr>
+        <tr><td><strong>Farmers Market</strong></td><td>12</td><td>T1&ndash;T4</td><td>Full heat range, gateway products, gifting</td></tr>
+        <tr><td><strong>Specialty Retail</strong></td><td>5</td><td>T3&ndash;T5</td><td>Limited production, premium ingredients, gift market</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.72rem; color:var(--text-light); margin-top:0.6rem; line-height:1.5;">SKU counts overlap (e.g., Smoked Poblano sold both farmers market and specialty); restaurant SKUs are also offered retail at the venue at the same retail tier.</p>
+  </div>
+
+  <div class="section-title">Production Schedule <span class="tag">Month-by-month calendar</span></div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="month">June</div>
+      <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.6; margin-top:0.3rem;">Greenhouse pepper harvest begins. First sweet pepper jellies (<strong>Sunset Sweet, Garden Verde, Banana Tang</strong>) &mdash; light production, restaurant samples and farmers market introduction.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="month" style="color:var(--coral-dark);">July &mdash; PEAK MONTH</div>
+      <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.6; margin-top:0.3rem;">Roma tomato dump (<strong>150&ndash;300 lbs</strong>). All 4 tomato jams in active production. Heirloom tomato peak &mdash; Cherokee Purple, Brandywine for premium products. <strong>Bloody Mary Mix</strong> production. <strong>Tomato Water</strong> from heirloom seconds. <strong>Freeze surplus heavily for fall production.</strong> Continue pepper jellies as more peppers ripen.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="month">August</div>
+      <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.6; margin-top:0.3rem;">Continued tomato harvest from indeterminates (slicers). Pepper production continues. All tomato jams + pepper jellies in active production. <strong>Caramelized onion jams begin</strong> (DeKalb sourcing year-round). Combination jams using fresh ingredients (Tomato-Onion Confit, Live Oak Sundown).</p>
+    </div>
+    <div class="timeline-item">
+      <div class="month">September</div>
+      <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.6; margin-top:0.3rem;">Late-season pepper peaks (purple cayenne, jalape&ntilde;o, poblano). Make <strong>Purple Reign, Bourbon Burn, Smoked Poblano</strong>. Continue onion jams. Begin freezer-stockpile production using frozen July tomatoes. Holiday-season prep begins.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="month">October</div>
+      <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.6; margin-top:0.3rem;">Peak gift-jar season prep. Use frozen tomatoes for bonus jam batches. All onion/garlic jam production at full speed (Roasted Garlic Confit, Herbed Garlic &amp; Shallot, Bourbon Caramelized Onion, Red Wine &amp; Shallot). Combination premium SKUs (<strong>Las Brasas Trinity, Cherokee Rose Sophisticate</strong>). Tomato Vodka Infusion (3&ndash;5 day window per batch).</p>
+    </div>
+    <div class="timeline-item">
+      <div class="month">November &ndash; December</div>
+      <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.6; margin-top:0.3rem;">Holiday gift sales. All from-freezer batches. <strong>Bourbon-finished products front and center</strong> for gift market (Bourbon Caramelized Onion, Bourbon Burn, Bacon-Pepper, Live Oak Sundown).</p>
+    </div>
+    <div class="timeline-item">
+      <div class="month">January &ndash; February</div>
+      <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.6; margin-top:0.3rem;">Light production using last frozen tomato stockpile. Focus on <strong>onion/garlic jams (no seasonality limit)</strong>. Restaurant restocks. Plan year-two SKU adjustments.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="month">March &ndash; May</div>
+      <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.6; margin-top:0.3rem;">Spring sales picking up. Onion/garlic jams continue. Plan and seed garden for next harvest. Restaurant relationships maintained with consistent SKUs.</p>
+    </div>
+  </div>
+
+  <div class="section-title">Production Effort Ratings <span class="tag">Easy &middot; Moderate &middot; Complex</span></div>
+  <div class="hydro-grid">
+    <div class="hydro-card">
+      <h3>&#11088; Easy <span class="effort-badge">7 SKUs</span></h3>
+      <p style="font-size:0.74rem; color:var(--text-light); line-height:1.5; margin-bottom:0.4rem;">Single batch, common ingredients, no special prep.</p>
+      <ul style="font-size:0.78rem; color:var(--text-muted); line-height:1.6; padding-left:1rem;">
+        <li>Original Tomato Jam</li>
+        <li>Banana Tang Jelly</li>
+        <li>Sweet Heat Jelly</li>
+        <li>Garden Verde Jelly</li>
+        <li>Sunset Sweet Jelly</li>
+        <li>Sweet Vidalia &amp; Honey</li>
+        <li>Spicy Onion Jam (after garlic roasted)</li>
+      </ul>
+    </div>
+    <div class="hydro-card">
+      <h3>&#11088;&#11088; Moderate <span class="effort-badge">12 SKUs</span></h3>
+      <p style="font-size:0.74rem; color:var(--text-light); line-height:1.5; margin-bottom:0.4rem;">Caramelization, multi-step, longer cook.</p>
+      <ul style="font-size:0.78rem; color:var(--text-muted); line-height:1.6; padding-left:1rem;">
+        <li>Cherokee Rose Jam</li>
+        <li>Live Oak Orchard Jam</li>
+        <li>Las Brasas Jam</li>
+        <li>Hop &amp; Heat Jelly</li>
+        <li>Cajun Fire Jelly</li>
+        <li>Burrito Smoke Jelly</li>
+        <li>Pepper-Onion Marmalade</li>
+        <li>Tomato-Onion Confit</li>
+        <li>Classic Bacon Onion Jam</li>
+        <li>Red Wine &amp; Shallot Jam</li>
+        <li>Bloody Mary Mix</li>
+        <li>Bacon-Pepper Jam</li>
+      </ul>
+    </div>
+    <div class="hydro-card">
+      <h3>&#11088;&#11088;&#11088; Complex <span class="effort-badge">11 SKUs</span></h3>
+      <p style="font-size:0.74rem; color:var(--text-light); line-height:1.5; margin-bottom:0.4rem;">Roasting/smoking, specialty ingredients, longer process.</p>
+      <ul style="font-size:0.78rem; color:var(--text-muted); line-height:1.6; padding-left:1rem;">
+        <li>Smoked Poblano Jelly (charring)</li>
+        <li>Roasted Garlic Confit (roasting + slow cook)</li>
+        <li>Herbed Garlic &amp; Shallot (roasting + caramel.)</li>
+        <li>Bourbon Caramelized Onion (60+ min caramel.)</li>
+        <li>Live Oak Sundown</li>
+        <li>Las Brasas Trinity (premium)</li>
+        <li>Cherokee Rose Sophisticate (premium)</li>
+        <li>Purple Reign Jelly (heat handling)</li>
+        <li>Bourbon Burn Jelly</li>
+        <li>Tomato Water (24-hour drip)</li>
+        <li>Tomato Vodka Infusion (3&ndash;5 day infuse)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-title">Annual Volume Estimate <span class="tag">Year 1 &middot; if all SKUs produced</span></div>
+  <div class="change-callout">
+    <strong>Total batches per year:</strong> ~60&ndash;80 across all SKUs<br>
+    <strong>Total jars per year:</strong> ~480&ndash;640 half-pint jars + ~50 pint jars (Bloody Mary)<br>
+    <strong>Estimated retail value</strong> (if all sold direct): <strong>$5,500&ndash;$7,500</strong><br>
+    <strong>Estimated wholesale value</strong> (if all sold to restaurants/retail): <strong>$3,000&ndash;$4,000</strong><br>
+    <strong>Realistic mixed-channel year 1 revenue:</strong> $3,500&ndash;$5,500
+    <p style="margin-top:0.6rem; font-size:0.78rem; color:var(--text-muted); font-style:italic;"><strong>Note:</strong> Producing all 30 SKUs at one batch each is the high-effort/low-margin path. A more focused strategy of <strong>10&ndash;15 SKUs at higher volumes</strong> per SKU is likely more profitable in year 1 &mdash; pick the ones with the strongest channel pull (restaurant signatures + farmers market gateways like Original Tomato Jam, Sweet Heat Jelly, Classic Bacon Onion).</p>
   </div>
 </div>
 
