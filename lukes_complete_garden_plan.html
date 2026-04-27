@@ -1092,6 +1092,38 @@
   .recipe-body li { margin-bottom: 0.2rem; }
   .jam-yield { margin-top: 0.8rem; font-weight: 600; color: var(--green-800); padding: 0.5rem 0.8rem; background: var(--green-50); border-radius: 4px; display: inline-block; }
 
+  .heat-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+  .heat-badge.none { background: var(--green-100); color: var(--green-700); }
+  .heat-badge.mild { background: #fef3c7; color: #92400e; }
+  .heat-badge.mild-med { background: #fed7aa; color: #9a3412; }
+  .heat-badge.medium { background: #fdba74; color: #7c2d12; }
+  .heat-badge.hot { background: var(--coral-light); color: var(--coral-dark); border: 1px solid var(--coral); }
+  .heat-divider {
+    margin: 1.4rem 0 0.8rem;
+    padding: 0.5rem 0.9rem;
+    background: linear-gradient(90deg, var(--green-50), transparent);
+    border-left: 3px solid var(--green-500);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--green-800);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .heat-divider.mild { background: linear-gradient(90deg, #fef3c7, transparent); border-left-color: #f59e0b; color: #92400e; }
+  .heat-divider.mild-med { background: linear-gradient(90deg, #fed7aa, transparent); border-left-color: #fb923c; color: #9a3412; }
+  .heat-divider.medium { background: linear-gradient(90deg, #fdba74, transparent); border-left-color: #ea580c; color: #7c2d12; }
+  .heat-divider.hot { background: linear-gradient(90deg, var(--coral-light), transparent); border-left-color: var(--coral); color: var(--coral-dark); }
+
   /* ── Production Guide ── */
   .practice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.9rem; margin-bottom: 1rem; }
   .practice-card {
@@ -4735,32 +4767,40 @@
 
 <!-- ═══════ JAM & PRODUCTS ═══════ -->
 <div id="jam" class="panel">
-  <div class="section-title">Jam &amp; Products Line <span class="tag">3 restaurants &middot; 3 retail products</span></div>
+  <div class="section-title">Jam &amp; Products Line <span class="tag">17 SKUs &middot; 3 restaurants &middot; jams &middot; jellies &middot; beverages</span></div>
 
   <div class="change-callout">
-    <strong>Overview:</strong> Tomato production from the 2026 garden supports <strong>3 restaurant clients + 3 retail products</strong>. Custom jams tied to specific restaurants provide brand identity and a strong sales pitch. Beverage products add premium SKUs to the lineup.
+    <strong>Overview:</strong> Tomato + pepper production from the 2026 garden supports a <strong>17-SKU lineup</strong> across <strong>3 restaurant clients + 4 retail channels</strong>. The line spans <strong>4 tomato jams</strong>, <strong>10 pepper jellies</strong> covering the full heat spectrum (none &rarr; mild &rarr; medium &rarr; hot), and <strong>3 tomato beverages</strong>. Custom jams and jellies tied to specific restaurants provide brand identity; the farmers market line and specialty retail SKUs cover the remainder.
   </div>
 
-  <div class="section-title">Restaurant Partnerships <span class="tag">Signature jams</span></div>
+  <div class="section-title">Restaurant Partnerships <span class="tag">8 restaurant SKUs</span></div>
   <div class="hydro-grid">
     <div class="hydro-card">
-      <h3>&#127801; Cherokee Rose Restaurant</h3>
-      <p style="font-weight:600; color:var(--green-700); font-size:0.85rem; margin-bottom:0.4rem;">Signature jam: <em>Cherokee Rose</em> &mdash; Cherokee Purple hero</p>
-      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">A smoky, complex Southern-style jam featuring Cherokee Purple as the namesake star.</p>
+      <h3>&#127801; Cherokee Rose Restaurant <span class="heat-badge none">2 SKUs</span></h3>
+      <ul style="font-size:0.8rem; color:var(--text-muted); line-height:1.7; padding-left:1rem; margin:0.3rem 0 0;">
+        <li><strong style="color:var(--green-700);">Cherokee Rose Jam</strong> &mdash; Cherokee Purple hero, smoky-Southern jam</li>
+        <li><strong style="color:var(--green-700);">Sunset Sweet Jelly</strong> &mdash; heat-free amber pepper jelly (Orange Bell + Lunchbox + Sweet Long)</li>
+      </ul>
     </div>
     <div class="hydro-card">
-      <h3>&#127795; Live Oak Tap</h3>
-      <p style="font-weight:600; color:var(--green-700); font-size:0.85rem; margin-bottom:0.4rem;">Signature jam: <em>Live Oak Orchard</em> &mdash; bourbon peach with heirloom twist</p>
-      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">Bar-friendly jam with Yellow Pear sweetness, Big Rainbow color, Roma body, and bourbon to tie it to the Tap's beverage identity. Also: premium tomato water for cocktail program.</p>
+      <h3>&#127795; Live Oak Tap <span class="heat-badge medium">4 SKUs</span></h3>
+      <ul style="font-size:0.8rem; color:var(--text-muted); line-height:1.7; padding-left:1rem; margin:0.3rem 0 0;">
+        <li><strong style="color:var(--green-700);">Live Oak Orchard Jam</strong> &mdash; bourbon peach with heirloom twist</li>
+        <li><strong style="color:var(--green-700);">Hop &amp; Heat Jelly</strong> &mdash; medium pepper jelly with IPA reduction</li>
+        <li><strong style="color:var(--green-700);">Bourbon Burn Jelly</strong> &mdash; hot SKU, purple cayenne + bourbon</li>
+        <li><strong style="color:var(--green-700);">Tomato Water</strong> &mdash; premium clear cocktail ingredient</li>
+      </ul>
     </div>
     <div class="hydro-card">
-      <h3>&#128293; Las Brasas Peruvian</h3>
-      <p style="font-weight:600; color:var(--green-700); font-size:0.85rem; margin-bottom:0.4rem;">Signature jam: <em>Las Brasas</em> &mdash; bright, spicy, ají amarillo</p>
-      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">Authentic Peruvian-inspired jam featuring ají amarillo, lime, and Cherokee Purple for smoky depth.</p>
+      <h3>&#128293; Las Brasas Peruvian <span class="heat-badge mild-med">2 SKUs</span></h3>
+      <ul style="font-size:0.8rem; color:var(--text-muted); line-height:1.7; padding-left:1rem; margin:0.3rem 0 0;">
+        <li><strong style="color:var(--green-700);">Las Brasas Jam</strong> &mdash; ají amarillo + Cherokee Purple, Peruvian fire</li>
+        <li><strong style="color:var(--green-700);">Cajun Fire Jelly</strong> &mdash; medium pepper jelly with cumin + oregano</li>
+      </ul>
     </div>
   </div>
 
-  <div class="section-title">Signature Jam Recipes <span class="tag">4 jams</span></div>
+  <div class="section-title">Signature Tomato Jam Recipes <span class="tag">4 jams</span></div>
 
   <!-- Original Tomato Jam -->
   <div class="bed-container jam-card">
@@ -5030,27 +5070,502 @@
     </details>
   </div>
 
+  <div class="section-title">Pepper Jelly Line <span class="tag">10 SKUs &middot; full heat spectrum</span></div>
+
+  <div class="change-callout">
+    <strong>Overview:</strong> Pepper jellies extend the product line into a <strong>full heat spectrum</strong> (None &rarr; Mild &rarr; Medium &rarr; Hot) with 10 distinct SKUs. Pepper inventory from <strong>Bed B + grow bags</strong> supports a portfolio that adds 1&ndash;2 SKUs to each restaurant relationship and 7 SKUs to the farmers market lineup. Pepper jellies require added pectin to set (unlike tomato jams). Each batch yields <strong>~6&ndash;8 half-pint jars</strong>.
+  </div>
+
+  <div class="bed-container" style="margin-bottom:1.2rem;">
+    <div class="bed-label" style="margin-bottom:0.6rem; font-weight:600; color:var(--green-800);">&#129364; Pepper Inventory Reference</div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:0.6rem; font-size:0.8rem; line-height:1.6;">
+      <div><span class="heat-badge none">No heat</span><br><span style="color:var(--text-muted);">Orange Bell, Green Bell, Lunchbox Orange, Sweet Long</span></div>
+      <div><span class="heat-badge mild">Mild</span><br><span style="color:var(--text-muted);">Cajun Belle, Banana Pepper</span></div>
+      <div><span class="heat-badge medium">Medium</span><br><span style="color:var(--text-muted);">Jalape&ntilde;o, Mammoth Jalape&ntilde;o, Poblano, Burrito</span></div>
+      <div><span class="heat-badge hot">Hot</span><br><span style="color:var(--text-muted);">Purple Cayenne</span></div>
+    </div>
+  </div>
+
+  <div class="heat-divider">No Heat &middot; 2 jellies</div>
+
+  <!-- Sunset Sweet Jelly -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#127749; Sunset Sweet Jelly <span class="bed-size">Cherokee Rose Restaurant</span> <span class="heat-badge none">No heat</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> A sun-drenched, heat-free pepper jelly built on Orange Bell, Lunchbox Orange, and Sweet Long peppers. Stunning amber-gold color with pure, deep sweet pepper flavor &mdash; sophisticated enough for a brunch table or a fine cheese course. Made exclusively for Cherokee Rose.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> Our restaurant's heat-free pepper jelly, made with three sweet pepper varieties &mdash; beautiful amber color, deep pepper sweetness, no heat at all.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Orange Bell peppers, Lunchbox Orange peppers, Sweet Long peppers, sugar, white balsamic vinegar, lemon juice, salt, pectin.</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>1 cup Orange Bell peppers, finely chopped</li>
+          <li>1 cup Lunchbox Orange peppers, finely chopped</li>
+          <li>1 cup Sweet Long peppers, finely chopped</li>
+          <li>1 cup white balsamic vinegar</li>
+          <li>1/4 cup lemon juice</li>
+          <li>5 cups sugar</li>
+          <li>1 tsp salt</li>
+          <li>2 pouches liquid pectin</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>Process all peppers in food processor until very finely chopped.</li>
+          <li>Combine peppers, vinegar, lemon juice, sugar, and salt in a heavy-bottomed pot.</li>
+          <li>Bring to hard rolling boil, stirring constantly. Boil 1 minute.</li>
+          <li>Stir in pectin, return to hard boil for exactly 1 minute.</li>
+          <li>Skim foam, ladle into sterilized half-pint jars (1/4&Prime; headspace).</li>
+          <li>Water bath process 10 minutes.</li>
+        </ol>
+        <p class="jam-yield">Yield: 6&ndash;8 half-pint jars</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Garden Verde Jelly -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#127807; Garden Verde Jelly <span class="bed-size">Farmers Market</span> <span class="heat-badge none">No heat</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> A bright, herbaceous green pepper jelly built on Green Bell, Sweet Long pepper, and fresh basil from our garden. Vegetal, fresh, almost like summer in a jar &mdash; pairs beautifully with Italian flavors and summer cheeses.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> A vibrant green pepper jelly with fresh basil &mdash; perfect for fresh mozzarella, prosciutto, or summer salads.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Green Bell peppers, Sweet Long peppers, fresh basil, sugar, white wine vinegar, lemon juice, salt, pectin.</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>1.5 cups Green Bell peppers, finely chopped</li>
+          <li>1.5 cups Sweet Long peppers, finely chopped</li>
+          <li>1/2 cup fresh basil leaves, chopped fine</li>
+          <li>1 cup white wine vinegar</li>
+          <li>1/4 cup lemon juice</li>
+          <li>5 cups sugar</li>
+          <li>1 tsp salt</li>
+          <li>2 pouches liquid pectin</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>Process peppers in food processor until finely chopped.</li>
+          <li>Combine peppers (NOT basil yet), vinegar, lemon juice, sugar, and salt in pot.</li>
+          <li>Bring to hard rolling boil, stirring constantly. Boil 1 minute.</li>
+          <li>Stir in basil and pectin, return to hard boil for exactly 1 minute.</li>
+          <li>Skim foam, ladle into sterilized half-pint jars (1/4&Prime; headspace).</li>
+          <li>Water bath process 10 minutes.</li>
+        </ol>
+        <p class="jam-yield">Yield: 6&ndash;8 half-pint jars</p>
+      </div>
+    </details>
+    <p class="jam-why"><strong>Note:</strong> Add basil only in final 30 seconds of boil to preserve color and freshness.</p>
+  </div>
+
+  <div class="heat-divider mild">Mild &middot; 1 jelly</div>
+
+  <!-- Banana Tang Jelly -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#127819; Banana Tang Jelly <span class="bed-size">Farmers Market</span> <span class="heat-badge mild">Mild &middot; &#127798;</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> A friendly, golden-hued pepper jelly built on tangy banana peppers and a touch of Cajun Belle. Mild warmth, distinctive tang, and a beautiful sunny color from a hint of turmeric. The "starter" pepper jelly &mdash; approachable for anyone nervous about heat.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> A mild, golden pepper jelly with banana peppers &mdash; tangy, gently warm, and excellent with sharp cheddar or on a turkey sandwich.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Banana peppers, Cajun Belle peppers, sugar, apple cider vinegar, lemon juice, salt, ground turmeric, pectin.</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>2 cups banana peppers, seeded and finely chopped</li>
+          <li>1 cup Cajun Belle peppers, finely chopped (with seeds for slight heat)</li>
+          <li>1 cup apple cider vinegar</li>
+          <li>1/4 cup lemon juice</li>
+          <li>5 cups sugar</li>
+          <li>1 tsp salt</li>
+          <li>1/2 tsp ground turmeric</li>
+          <li>2 pouches liquid pectin</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>Process peppers in food processor until finely chopped.</li>
+          <li>Combine peppers, vinegar, lemon juice, sugar, salt, and turmeric in pot.</li>
+          <li>Bring to hard rolling boil, stirring constantly. Boil 1 minute.</li>
+          <li>Stir in pectin, return to hard boil for exactly 1 minute.</li>
+          <li>Skim foam, ladle into sterilized half-pint jars (1/4&Prime; headspace).</li>
+          <li>Water bath process 10 minutes.</li>
+        </ol>
+        <p class="jam-yield">Yield: 6&ndash;8 half-pint jars</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="heat-divider mild-med">Mild-Medium &middot; 1 jelly</div>
+
+  <!-- Sweet Heat Jelly -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#127825; Sweet Heat Jelly <span class="bed-size">Farmers Market</span> <span class="heat-badge mild-med">Mild-Medium &middot; &#127798;&#127798;</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> The classic gateway pepper jelly &mdash; Lunchbox Orange peppers for sweetness and color, jalape&ntilde;os for slow-building heat. Beautiful orange-red color, perfectly balanced sweet-and-heat profile. The version everyone's grandmother served on cream cheese.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> Our classic sweet-and-spicy pepper jelly &mdash; sweet up front, slow building heat at the finish, gorgeous on cream cheese or as a glaze for grilled chicken.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Lunchbox Orange peppers, jalape&ntilde;os, sugar, apple cider vinegar, lemon juice, salt, pectin.</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>2 cups Lunchbox Orange peppers, finely chopped</li>
+          <li>1 cup jalape&ntilde;os, seeded and finely chopped</li>
+          <li>1 cup apple cider vinegar</li>
+          <li>1/4 cup lemon juice</li>
+          <li>5 cups sugar</li>
+          <li>1 tsp salt</li>
+          <li>2 pouches liquid pectin</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>Wear gloves to handle jalape&ntilde;os. Process peppers in food processor until finely chopped.</li>
+          <li>Combine peppers, vinegar, lemon juice, sugar, and salt in pot.</li>
+          <li>Bring to hard rolling boil, stirring constantly. Boil 1 minute.</li>
+          <li>Stir in pectin, return to hard boil for exactly 1 minute.</li>
+          <li>Skim foam, ladle into sterilized half-pint jars (1/4&Prime; headspace).</li>
+          <li>Water bath process 10 minutes.</li>
+        </ol>
+        <p class="jam-yield">Yield: 6&ndash;8 half-pint jars</p>
+      </div>
+    </details>
+    <p class="jam-why"><strong>Note:</strong> For more heat, leave half the jalape&ntilde;o seeds in.</p>
+  </div>
+
+  <div class="heat-divider medium">Medium &middot; 4 jellies</div>
+
+  <!-- Hop & Heat Jelly -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#127795; Hop &amp; Heat Jelly <span class="bed-size">Live Oak Tap</span> <span class="heat-badge medium">Medium &middot; &#127798;&#127798;</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> A bar-pairing pepper jelly built around Mammoth Jalape&ntilde;os, Cajun Belles, and a concentrated IPA reduction. Bitter hops balance the sweetness; the heat is medium and steady. Designed specifically for beer flights and pub boards. Made exclusively for Live Oak Tap.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> Our house pepper jelly, made with Mammoth jalape&ntilde;os and a hoppy IPA reduction &mdash; perfect with beer cheese, pretzels, or alongside any of our beer flights.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Mammoth jalape&ntilde;os, Cajun Belle peppers, IPA beer reduction, sugar, apple cider vinegar, lemon juice, salt, pectin.</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>1.5 cups Mammoth jalape&ntilde;os, seeded and finely chopped</li>
+          <li>1 cup Cajun Belle peppers, finely chopped</li>
+          <li>1/2 cup IPA beer reduction (start with 2 cups IPA, simmer to 1/2 cup)</li>
+          <li>1 cup apple cider vinegar</li>
+          <li>1/4 cup lemon juice</li>
+          <li>5 cups sugar</li>
+          <li>1 tsp salt</li>
+          <li>2 pouches liquid pectin</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>Reduce 2 cups good hoppy IPA to 1/2 cup. Cool.</li>
+          <li>Process peppers in food processor until finely chopped.</li>
+          <li>Combine peppers, beer reduction, vinegar, lemon juice, sugar, and salt in pot.</li>
+          <li>Bring to hard rolling boil, stirring constantly. Boil 1 minute.</li>
+          <li>Stir in pectin, return to hard boil for exactly 1 minute.</li>
+          <li>Skim foam, ladle into sterilized half-pint jars (1/4&Prime; headspace).</li>
+          <li>Water bath process 10 minutes.</li>
+        </ol>
+        <p class="jam-yield">Yield: 6&ndash;8 half-pint jars</p>
+      </div>
+    </details>
+    <p class="jam-why"><strong>Note:</strong> Choose an IPA with strong hop character &mdash; Sweetwater 420, Creature Comforts Tropicalia, or any Georgia local IPA works well.</p>
+  </div>
+
+  <!-- Cajun Fire Jelly -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#128293; Cajun Fire Jelly <span class="bed-size">Las Brasas Peruvian</span> <span class="heat-badge medium">Medium &middot; &#127798;&#127798;</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> A bridge product to our Las Brasas Jam &mdash; pepper jelly meets Peruvian spice. Cajun Belle and jalape&ntilde;o for heat, Cherokee Purple tomato for smoky depth, cumin and oregano for Peruvian character. More spreadable than the jam, designed for breakfast plates and grilled meats. Made exclusively for Las Brasas.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> Our Peruvian-inspired pepper jelly, made with Cajun Belle, jalape&ntilde;o, and Cherokee Purple tomato &mdash; pairs perfectly with our pollo a la brasa or yuca frita.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Cajun Belle peppers, jalape&ntilde;os, Cherokee Purple tomatoes, sugar, apple cider vinegar, lime juice, salt, ground cumin, dried oregano, pectin.</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>1.5 cups Cajun Belle peppers, finely chopped</li>
+          <li>1 cup jalape&ntilde;os, seeded and finely chopped</li>
+          <li>1 cup Cherokee Purple tomatoes, peeled and finely chopped</li>
+          <li>1 cup apple cider vinegar</li>
+          <li>1/4 cup fresh lime juice</li>
+          <li>5 cups sugar</li>
+          <li>1 tsp salt</li>
+          <li>1 tsp ground cumin</li>
+          <li>1/2 tsp dried oregano</li>
+          <li>2 pouches liquid pectin</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>Peel Cherokee Purple tomatoes (score X, blanch 30 sec, peel). Finely chop.</li>
+          <li>Process peppers in food processor until finely chopped.</li>
+          <li>Combine peppers, tomatoes, vinegar, lime juice, sugar, salt, cumin, and oregano in pot.</li>
+          <li>Bring to hard rolling boil, stirring constantly. Boil 2 minutes (extra time for tomato).</li>
+          <li>Stir in pectin, return to hard boil for exactly 1 minute.</li>
+          <li>Skim foam, ladle into sterilized half-pint jars (1/4&Prime; headspace).</li>
+          <li>Water bath process 10 minutes.</li>
+        </ol>
+        <p class="jam-yield">Yield: 7&ndash;9 half-pint jars</p>
+      </div>
+    </details>
+    <p class="jam-why"><strong>Note:</strong> Tomato adds body and color but requires the longer initial boil to break down.</p>
+  </div>
+
+  <!-- Burrito Smoke Jelly -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#127790; Burrito Smoke Jelly <span class="bed-size">Farmers Market</span> <span class="heat-badge medium">Medium &middot; &#127798;&#127798;</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> A Tex-Mex inspired pepper jelly built on Burrito peppers (thick walls, great body), poblano, and a touch of jalape&ntilde;o. Smoky paprika and cumin add depth. Perfect for breakfast tacos, carnitas, or any time you want pepper jelly with a Mexican accent.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> A Tex-Mex pepper jelly with Burrito peppers, poblano, and smoked paprika &mdash; excellent on carnitas, breakfast tacos, or with eggs.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Burrito peppers, poblano peppers, jalape&ntilde;os, sugar, apple cider vinegar, lime juice, salt, smoked paprika, ground cumin, pectin.</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>1.5 cups Burrito peppers, seeded and finely chopped</li>
+          <li>1 cup poblano peppers, seeded and finely chopped</li>
+          <li>1/2 cup jalape&ntilde;os, seeded and finely chopped</li>
+          <li>1 cup apple cider vinegar</li>
+          <li>1/4 cup fresh lime juice</li>
+          <li>5 cups sugar</li>
+          <li>1 tsp salt</li>
+          <li>1 tsp smoked paprika</li>
+          <li>1/2 tsp ground cumin</li>
+          <li>2 pouches liquid pectin</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>Process peppers in food processor until finely chopped.</li>
+          <li>Combine peppers, vinegar, lime juice, sugar, salt, smoked paprika, and cumin in pot.</li>
+          <li>Bring to hard rolling boil, stirring constantly. Boil 1 minute.</li>
+          <li>Stir in pectin, return to hard boil for exactly 1 minute.</li>
+          <li>Skim foam, ladle into sterilized half-pint jars (1/4&Prime; headspace).</li>
+          <li>Water bath process 10 minutes.</li>
+        </ol>
+        <p class="jam-yield">Yield: 6&ndash;8 half-pint jars</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Smoked Poblano Jelly -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#127762; Smoked Poblano Jelly <span class="bed-size">Specialty Premium</span> <span class="heat-badge medium">Medium &middot; &#127798;&#127798;</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> Our standout specialty product &mdash; fire-roasted poblano peppers charred to a blister, peeled by hand, and slow-built into a jelly with deep, earthy, smoky character unlike any other pepper jelly on the market. Limited production, premium price. The kind of product that sells itself once tasted.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> Our fire-roasted poblano pepper jelly, made by charring whole poblanos until blistered, then hand-peeling them &mdash; deeply smoky and complex.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Roasted poblano peppers, jalape&ntilde;os, sugar, apple cider vinegar, lime juice, salt, ground cumin, dried oregano, pectin.</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>6&ndash;8 large poblano peppers (to yield ~2 cups roasted/peeled)</li>
+          <li>1/2 cup jalape&ntilde;os, seeded and finely chopped</li>
+          <li>1 cup apple cider vinegar</li>
+          <li>1/4 cup fresh lime juice</li>
+          <li>5 cups sugar</li>
+          <li>1 tsp salt</li>
+          <li>1 tsp ground cumin</li>
+          <li>1/2 tsp dried oregano</li>
+          <li>2 pouches liquid pectin</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>Char whole poblanos directly over gas flame, on grill, or under broiler until skin is blackened and blistered (5&ndash;8 min).</li>
+          <li>Place in covered bowl 15 min to steam.</li>
+          <li>Peel charred skin off (do not rinse). Remove stems and seeds.</li>
+          <li>Process roasted poblanos and jalape&ntilde;os in food processor until finely chopped.</li>
+          <li>Combine peppers, vinegar, lime juice, sugar, salt, cumin, and oregano in pot.</li>
+          <li>Bring to hard rolling boil, stirring constantly. Boil 1 minute.</li>
+          <li>Stir in pectin, return to hard boil for exactly 1 minute.</li>
+          <li>Skim foam, ladle into sterilized half-pint jars (1/4&Prime; headspace).</li>
+          <li>Water bath process 10 minutes.</li>
+        </ol>
+        <p class="jam-yield">Yield: 6&ndash;8 half-pint jars</p>
+      </div>
+    </details>
+    <p class="jam-why"><strong>Note:</strong> The roasting step is non-negotiable &mdash; it's what makes this jelly special.</p>
+  </div>
+
+  <div class="heat-divider hot">Hot &middot; 2 jellies</div>
+
+  <!-- Purple Reign Jelly -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#128156; Purple Reign Jelly <span class="bed-size">Specialty Showpiece</span> <span class="heat-badge hot">Hot &middot; &#127798;&#127798;&#127798;</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> A visually unforgettable pepper jelly made entirely from Purple Cayenne peppers &mdash; producing a stunning violet-magenta color rarely seen in pepper jellies. Strong, fruity heat with a bright finish. Premium specialty SKU; limited production by the season's purple cayenne harvest.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> Our specialty hot pepper jelly, made from purple cayenne peppers &mdash; striking violet color, fruity heat, beautiful with cream cheese, vanilla ice cream, or grilled lamb.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Purple cayenne peppers, sugar, apple cider vinegar, lemon juice, salt, pectin.</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>2 cups Purple Cayenne peppers, finely chopped (gloves required, ventilated area)</li>
+          <li>1 cup apple cider vinegar</li>
+          <li>1/4 cup lemon juice</li>
+          <li>5 cups sugar</li>
+          <li>1 tsp salt</li>
+          <li>2 pouches liquid pectin</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li><strong>WEAR GLOVES.</strong> Stem cayennes &mdash; leave seeds in for full heat, remove half for medium-hot.</li>
+          <li>Process cayennes in food processor in well-ventilated area.</li>
+          <li>Combine peppers, vinegar, lemon juice, sugar, and salt in pot.</li>
+          <li>Bring to hard rolling boil, stirring constantly. Boil 1 minute.</li>
+          <li>Stir in pectin, return to hard boil for exactly 1 minute.</li>
+          <li>Skim foam, ladle into sterilized half-pint jars (1/4&Prime; headspace).</li>
+          <li>Water bath process 10 minutes.</li>
+        </ol>
+        <p class="jam-yield">Yield: 6&ndash;8 half-pint jars</p>
+      </div>
+    </details>
+    <p class="jam-why"><strong>Note:</strong> Color intensity depends on cayenne ripeness &mdash; fully ripe purple cayennes give the strongest violet-magenta color. Expect a stunning, unusual finished product.</p>
+  </div>
+
+  <!-- Bourbon Burn Jelly -->
+  <div class="bed-container jam-card">
+    <div class="bed-header">
+      <h2>&#128293; Bourbon Burn Jelly <span class="bed-size">Live Oak Tap &middot; Hot SKU</span> <span class="heat-badge hot">Hot &middot; &#127798;&#127798;&#127798;</span></h2>
+    </div>
+    <p class="jam-desc"><strong>Product description:</strong> Our hot SKU for Live Oak Tap &mdash; purple cayenne and jalape&ntilde;o tamed by a bourbon reduction that adds sweet-oak complexity. Pairs beautifully with smoked meats, aged cheddar, dark chocolate, or even vanilla ice cream. Made exclusively for Live Oak Tap.</p>
+    <p class="jam-server"><strong>Server pitch:</strong> Our hot bourbon-and-cayenne pepper jelly &mdash; strong heat mellowed by bourbon, perfect with our smoked meats, aged cheddar, or as a wild dessert pairing with vanilla ice cream.</p>
+    <p class="jam-meta"><strong>Ingredients:</strong> Purple cayenne peppers, jalape&ntilde;os, bourbon, sugar, apple cider vinegar, lemon juice, salt, pectin.</p>
+    <details class="recipe-details">
+      <summary>Show full recipe + method</summary>
+      <div class="recipe-body">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>1.5 cups Purple Cayenne peppers, finely chopped (gloves required)</li>
+          <li>1 cup jalape&ntilde;os, seeded and finely chopped</li>
+          <li>1/3 cup bourbon, simmered to mellow</li>
+          <li>1 cup apple cider vinegar</li>
+          <li>1/4 cup lemon juice</li>
+          <li>5 cups sugar</li>
+          <li>1 tsp salt</li>
+          <li>2 pouches liquid pectin</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>Simmer 1/3 cup bourbon 3&ndash;4 min to mellow alcohol. Cool.</li>
+          <li><strong>WEAR GLOVES.</strong> Process peppers in food processor.</li>
+          <li>Combine peppers, bourbon, vinegar, lemon juice, sugar, and salt in pot.</li>
+          <li>Bring to hard rolling boil, stirring constantly. Boil 1 minute.</li>
+          <li>Stir in pectin, return to hard boil for exactly 1 minute.</li>
+          <li>Skim foam, ladle into sterilized half-pint jars (1/4&Prime; headspace).</li>
+          <li>Water bath process 10 minutes.</li>
+        </ol>
+        <p class="jam-yield">Yield: 6&ndash;8 half-pint jars</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="section-title">Pepper Jelly Production Notes <span class="tag">Pectin &middot; heat &middot; ripening</span></div>
+  <div class="hydro-grid">
+    <div class="hydro-card">
+      <h3>&#129516; Pectin Requirement</h3>
+      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">All pepper jellies use <strong>2 pouches liquid pectin (Certo, 6 oz total)</strong> OR <strong>1 box powdered Sure-Jell (1.75 oz)</strong> per batch. Never substitute or omit &mdash; pepper jellies will not set without added pectin.</p>
+    </div>
+    <div class="hydro-card">
+      <h3>&#9888;&#65039; Heat Handling</h3>
+      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">Always wear nitrile gloves when seeding hot peppers. Never touch your face. Work in well-ventilated areas when processing cayenne or large quantities of jalape&ntilde;o.</p>
+    </div>
+    <div class="hydro-card">
+      <h3>&#128202; Standard Process</h3>
+      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">All half-pint jars filled to <strong>1/4&Prime; headspace</strong>. Water bath process <strong>10 minutes</strong>. Decatur GA elevation (~1,000 ft) requires no time adjustment.</p>
+    </div>
+    <div class="hydro-card">
+      <h3>&#127797; Ripening Notes</h3>
+      <ul style="font-size:0.78rem; color:var(--text-muted); line-height:1.6; padding-left:1rem; margin-top:0.3rem;">
+        <li>Sweet peppers: pick when fully colored for maximum sweetness</li>
+        <li>Purple Cayenne: wait until deep purple/violet for best color</li>
+        <li>Poblanos: pick slightly soft (riper = sweeter, better roasting)</li>
+      </ul>
+    </div>
+    <div class="hydro-card">
+      <h3>&#128247; Pepper Inventory Per Season Run</h3>
+      <ul style="font-size:0.78rem; color:var(--text-muted); line-height:1.6; padding-left:1rem; margin-top:0.3rem;">
+        <li>Bell/sweet (Orange, Green, Lunchbox, Sweet Long): ~6&ndash;8 cups</li>
+        <li>Banana peppers: ~2 cups</li>
+        <li>Cajun Belle: ~3 cups</li>
+        <li>Jalape&ntilde;o + Mammoth: ~5 cups</li>
+        <li>Burrito: ~1.5 cups</li>
+        <li>Poblano: ~3 cups (raw, before roasting)</li>
+        <li>Purple Cayenne: ~3.5 cups</li>
+      </ul>
+    </div>
+    <div class="hydro-card">
+      <h3>&#127853; Total Production</h3>
+      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">Full season run: <strong>10 batches &times; 6&ndash;8 jars = 60&ndash;80 half-pint jars</strong> across the pepper jelly line.</p>
+    </div>
+  </div>
+
   <div class="section-title">Freezing Strategy <span class="tag">Production notes</span></div>
   <div class="change-callout">
     Roma's determinate nature dumps <strong>150&ndash;300 lbs in July all at once</strong>. Freeze whole or chopped tomatoes (no blanching needed for jam) to pace production across fall and winter. Freezing actually breaks down cell walls and <strong>speeds reduction cooking</strong>. Heirloom surplus can also be frozen and blended into any jam or bloody mary batch later.
   </div>
 
-  <div class="section-title">Product Lineup Summary <span class="tag">7 SKUs</span></div>
-  <div class="bed-container">
+  <div class="section-title">Product Lineup Summary <span class="tag">17 SKUs &middot; jams + jellies + beverages</span></div>
+  <div class="bed-container" style="overflow-x:auto;">
     <table class="variety-table">
       <thead>
-        <tr><th>Product</th><th>Channel</th><th>Tomato Focus</th><th>Positioning</th></tr>
+        <tr><th>Product</th><th>Heat</th><th>Channel</th></tr>
       </thead>
       <tbody>
-        <tr><td>Original Tomato Jam</td><td>Farmers market</td><td>Any mix</td><td>Base product &middot; entry price</td></tr>
-        <tr><td>Cherokee Rose Jam</td><td>Cherokee Rose Rest.</td><td>Cherokee Purple hero</td><td>Restaurant signature</td></tr>
-        <tr><td>Live Oak Orchard Jam</td><td>Live Oak Tap</td><td>Roma + Yellow Pear + Big Rainbow + peach</td><td>Restaurant signature &middot; bar pairing</td></tr>
-        <tr><td>Las Brasas Jam</td><td>Las Brasas</td><td>Roma + Whopper + Cherokee Purple + ají</td><td>Restaurant signature &middot; Peruvian accent</td></tr>
-        <tr><td>Bloody Mary Mix</td><td>Retail + Live Oak Tap</td><td>Roma-heavy blend</td><td>Premium flagship beverage</td></tr>
-        <tr><td>Tomato Water</td><td>Live Oak Tap (limited)</td><td>Heirloom premium</td><td>Specialty cocktail ingredient</td></tr>
-        <tr><td>Tomato Vodka Infusion</td><td>Specialty retail</td><td>Cherokee + Brandywine</td><td>Small-batch gift market</td></tr>
+        <tr><td><strong>Original Tomato Jam</strong></td><td><span class="heat-badge none">None</span></td><td>Farmers market</td></tr>
+        <tr><td><strong>Cherokee Rose Jam</strong></td><td><span class="heat-badge medium">Medium</span></td><td>Cherokee Rose</td></tr>
+        <tr><td><strong>Live Oak Orchard Jam</strong></td><td><span class="heat-badge mild">Mild</span></td><td>Live Oak Tap</td></tr>
+        <tr><td><strong>Las Brasas Jam</strong></td><td><span class="heat-badge hot">Med-Hot</span></td><td>Las Brasas</td></tr>
+        <tr><td><strong>Sunset Sweet Jelly</strong></td><td><span class="heat-badge none">None</span></td><td>Cherokee Rose</td></tr>
+        <tr><td><strong>Garden Verde Jelly</strong></td><td><span class="heat-badge none">None</span></td><td>Farmers market</td></tr>
+        <tr><td><strong>Banana Tang Jelly</strong></td><td><span class="heat-badge mild">Mild</span></td><td>Farmers market</td></tr>
+        <tr><td><strong>Sweet Heat Jelly</strong></td><td><span class="heat-badge mild-med">Mild-Med</span></td><td>Farmers market</td></tr>
+        <tr><td><strong>Hop &amp; Heat Jelly</strong></td><td><span class="heat-badge medium">Medium</span></td><td>Live Oak Tap</td></tr>
+        <tr><td><strong>Cajun Fire Jelly</strong></td><td><span class="heat-badge medium">Medium</span></td><td>Las Brasas</td></tr>
+        <tr><td><strong>Burrito Smoke Jelly</strong></td><td><span class="heat-badge medium">Medium</span></td><td>Farmers market</td></tr>
+        <tr><td><strong>Smoked Poblano Jelly</strong></td><td><span class="heat-badge medium">Medium</span></td><td>Specialty / farmers market</td></tr>
+        <tr><td><strong>Purple Reign Jelly</strong></td><td><span class="heat-badge hot">Hot</span></td><td>Specialty / farmers market</td></tr>
+        <tr><td><strong>Bourbon Burn Jelly</strong></td><td><span class="heat-badge hot">Hot</span></td><td>Live Oak Tap</td></tr>
+        <tr><td><strong>Bloody Mary Mix</strong></td><td><span class="heat-badge medium">Medium</span></td><td>Retail + Live Oak Tap</td></tr>
+        <tr><td><strong>Tomato Water</strong></td><td><span class="heat-badge none">None</span></td><td>Live Oak Tap (limited)</td></tr>
+        <tr><td><strong>Tomato Vodka Infusion</strong></td><td><span class="heat-badge none">None</span></td><td>Specialty retail</td></tr>
       </tbody>
     </table>
+  </div>
+
+  <div class="section-title">Channel Breakdown <span class="tag">Where each SKU goes</span></div>
+  <div class="hydro-grid">
+    <div class="hydro-card">
+      <h3>&#127801; Cherokee Rose <span class="heat-badge none">2 SKUs</span></h3>
+      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">Cherokee Rose Jam &middot; Sunset Sweet Jelly</p>
+    </div>
+    <div class="hydro-card">
+      <h3>&#127795; Live Oak Tap <span class="heat-badge medium">4 SKUs</span></h3>
+      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">Live Oak Orchard Jam &middot; Hop &amp; Heat Jelly &middot; Bourbon Burn Jelly &middot; Tomato Water</p>
+    </div>
+    <div class="hydro-card">
+      <h3>&#128293; Las Brasas <span class="heat-badge mild-med">2 SKUs</span></h3>
+      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">Las Brasas Jam &middot; Cajun Fire Jelly</p>
+    </div>
+    <div class="hydro-card">
+      <h3>&#127820; Farmers Market <span class="heat-badge mild">9 SKUs</span></h3>
+      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">Original Tomato Jam &middot; Garden Verde Jelly &middot; Banana Tang Jelly &middot; Sweet Heat Jelly &middot; Burrito Smoke Jelly &middot; Smoked Poblano Jelly (also specialty) &middot; Purple Reign Jelly (also specialty)</p>
+    </div>
+    <div class="hydro-card">
+      <h3>&#129518; Specialty Retail <span class="heat-badge hot">2 SKUs</span></h3>
+      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">Tomato Vodka Infusion &middot; Bloody Mary Mix (also retail)</p>
+    </div>
   </div>
 </div>
 
