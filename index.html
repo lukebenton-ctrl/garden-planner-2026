@@ -7371,23 +7371,52 @@
     event.target.classList.add('active');
   }
 
-  // ── LocalStorage helpers ──
+  // ── State persistence ──
+  // Tries the server API first (PHP/MySQL); falls back to localStorage when
+  // offline or when running as a static file (GitHub Pages, file://).
   const STORAGE_KEY = 'garden-planner-2026';
-  function loadState() {
+  const API_URL = 'api/state.php';
+  let _cache = {};        // in-memory mirror, updated on every change
+  let _apiAvailable = null; // null = unknown, true/false after first probe
+
+  function _localLoad() {
     try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
     catch { return {}; }
   }
+  function _localSave(state) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch {}
+  }
+
+  async function _apiLoad() {
+    const res = await fetch(API_URL, { headers: { 'Accept': 'application/json' } });
+    if (!res.ok) throw new Error('api unavailable');
+    return await res.json();
+  }
+  async function _apiSaveOne(key, value) {
+    const res = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ key, value }),
+    });
+    if (!res.ok) throw new Error('save failed');
+  }
+
+  function loadState() { return _cache; }
   function saveState(state) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    _cache = state;
+    _localSave(state); // always mirror locally for offline
   }
 
   // ── Checklist toggle ──
   function toggleCheck(el) {
     el.classList.toggle('checked');
     const key = el.dataset.check;
-    const state = loadState();
-    state[key] = el.classList.contains('checked');
-    saveState(state);
+    const checked = el.classList.contains('checked');
+    _cache[key] = checked;
+    _localSave(_cache);
+    if (_apiAvailable) {
+      _apiSaveOne(key, checked).catch(() => { _apiAvailable = false; });
+    }
     updateProgress();
     updateMonthProgress();
   }
@@ -7396,22 +7425,41 @@
   function toggleBag(el) {
     el.classList.toggle('checked');
     const key = el.dataset.bag;
-    const state = loadState();
-    state[key] = el.classList.contains('checked');
-    saveState(state);
+    const checked = el.classList.contains('checked');
+    _cache[key] = checked;
+    _localSave(_cache);
+    if (_apiAvailable) {
+      _apiSaveOne(key, checked).catch(() => { _apiAvailable = false; });
+    }
     updateProgress();
   }
 
   // ── Restore saved state ──
-  function restoreState() {
-    const state = loadState();
+  async function restoreState() {
+    // Try server first; fall back to localStorage.
+    try {
+      _cache = await _apiLoad();
+      _apiAvailable = true;
+      // Bring any local-only changes (made while offline) up to the server.
+      const local = _localLoad();
+      for (const k of Object.keys(local)) {
+        if (_cache[k] !== local[k]) {
+          _cache[k] = local[k];
+          _apiSaveOne(k, local[k]).catch(() => {});
+        }
+      }
+    } catch {
+      _apiAvailable = false;
+      _cache = _localLoad();
+    }
     document.querySelectorAll('[data-check]').forEach(el => {
-      if (state[el.dataset.check]) el.classList.add('checked');
+      if (_cache[el.dataset.check]) el.classList.add('checked');
     });
     document.querySelectorAll('[data-bag]').forEach(el => {
-      if (state[el.dataset.bag]) el.classList.add('checked');
+      if (_cache[el.dataset.bag]) el.classList.add('checked');
     });
     updateProgress();
+    updateMonthProgress();
   }
 
   // ── Progress bar ──
@@ -7687,8 +7735,9 @@
   });
 
   // ── Init ──
+  // restoreState() is async (it tries the server first); it calls
+  // updateProgress + updateMonthProgress itself once data is loaded.
   restoreState();
-  updateMonthProgress();
 </script>
 </body>
 </html>

@@ -1,0 +1,4 @@
+# Deny direct access to internal includes.
+<Files "_db.php">
+  Require all denied
+</Files>
