@@ -1,81 +1,75 @@
-# Web Deployment — SiteGround Git Auto-Pull
+# Web Deployment — GitHub Actions → SiteGround
 
-This document covers wiring the repo to `garden.lukebenton.com` on SiteGround so every `git push` auto-deploys.
+Every `git push` to `main` triggers a GitHub Action that rsyncs the repo to
+`garden.lukebenton.com/public_html` over SSH. SiteGround's built-in Git tool
+doesn't support pulling from external GitHub repos, so we use this instead.
 
-## What gets deployed
-
-The entire repo is pulled to `public_html`. `.htaccess` denies direct web access to sensitive files (`config.php`, `.sql`, `.sh`, `.md`). The PHP backend (`api/`, `bootstrap.php`) provides the persistence layer; the static planner (`index.html`) is served as-is.
-
-## One-time SiteGround setup
+## One-time setup
 
 ### 1. Confirm SSL is live
+**Site Tools → Security → SSL Manager** — confirm Let's Encrypt is active for `garden.lukebenton.com`. Then **HTTPS Enforce** → ON.
 
-**Site Tools → Security → SSL Manager** — confirm Let's Encrypt is installed for `garden.lukebenton.com`. Then **HTTPS Enforce** → ON.
+### 2. Replace the SSH key in SiteGround
+The earlier `garden` key was in a format the Action's rsync can't load. Replace it.
 
-### 2. Wire SiteGround Git to this repo
+1. **Site Tools → Devs → SSH Keys Manager** → delete the existing `garden` key
+2. Click **Import Public Key** → name it `github-actions` → paste the new public key (see chat)
 
-**Site Tools → Devs → Git**
+### 3. Add four secrets to GitHub
+**GitHub repo → Settings → Secrets and variables → Actions → New repository secret**, four times:
 
-1. Click **Create**.
-2. Choose **"Create from external"** (or "Add" → "From remote URL").
-3. **Repository URL**: `https://github.com/lukebenton-ctrl/garden-planner-2026.git`
-4. **Branch**: `claude/add-garden-web-view-MxQNT` (or `main` once merged)
-5. **Path on server**: `garden.lukebenton.com/public_html`
-6. **Authentication**: GitHub PAT (Personal Access Token) with `repo` read scope, since the repo is private. Create at https://github.com/settings/tokens.
-7. Save. SiteGround does the initial clone.
+| Secret name | Value |
+|---|---|
+| `SITEGROUND_HOST` | `gvam1301.siteground.biz` |
+| `SITEGROUND_PORT` | `18765` |
+| `SITEGROUND_USER` | `u2060-ndz1sldvhgts` |
+| `SITEGROUND_PATH` | `/home/customer/www/garden.lukebenton.com/public_html/` |
+| `SITEGROUND_SSH_KEY` | the full private key (begins `-----BEGIN OPENSSH PRIVATE KEY-----`) |
 
-### 3. Enable auto-deploy on push
+### 4. Trigger the first deploy
+Either:
+- Push any small commit to `main`, OR
+- **GitHub → Actions tab → "Deploy to SiteGround" workflow → Run workflow → main**
 
-In the same Git panel for the new repo, find **"Automatic deployment"** and toggle ON. SiteGround uses a webhook on the GitHub side; it'll prompt you to add the webhook URL to GitHub (Settings → Webhooks → Add webhook → paste URL, content type JSON, event: push).
+Watch the run. Green check = files are on the server.
 
-### 4. Run the bootstrap installer
+### 5. Run the installer
+Visit **`https://garden.lukebenton.com/bootstrap.php`** in a browser.
 
-Visit **https://garden.lukebenton.com/bootstrap.php** in a browser.
-
-Fill in the form with the SiteGround MySQL credentials:
+Fill in MySQL creds:
 - **DB host**: `localhost`
 - **DB name**: `dbjnxwauotrgiv`
 - **DB user**: `uyp86ufa3xguf`
-- **DB password**: (the one you rotated — see security note below)
+- **DB password**: the freshly-rotated one
 
-Click **Install**. The script creates the schema, writes `config.php` (with `0600` permissions), and shows a success page.
+Click **Install**. The script creates the schema, writes `config.php` (0600 perms), and shows a success page.
 
-### 5. Delete `bootstrap.php` immediately
-
+### 6. Delete `bootstrap.php` from the server
 **Site Tools → File Manager → garden.lukebenton.com → public_html → bootstrap.php → Delete**
 
-⚠️ This file is unauthenticated. Leaving it on the server lets anyone re-trigger setup. Delete it.
+(`bootstrap.php` is still in the repo. After you confirm install worked, ask Claude to remove it from the repo so it doesn't reappear on the next deploy. Even if it does, it refuses to run setup again once `config.php` exists.)
 
-(Note: it's still in the git repo, so future pulls would re-create it. Either delete it from the repo too once setup is permanent, or accept that you re-delete it after future deploys until then.)
-
-### 6. (Recommended) Protect the URL
-
-**Site Tools → Security → Protected URLs** — add HTTP basic auth in front of the whole subdomain. Pick a username + password. This keeps the planner private without needing in-app login.
+### 7. (Recommended) Lock the URL
+**Site Tools → Security → Protected URLs** — basic auth on `garden.lukebenton.com/` keeps the planner private.
 
 ## After setup
 
-- Visit `https://garden.lukebenton.com/` — the planner loads, checkbox state is now persisted to MySQL.
-- Toggle some checkboxes, reload the page — state survives. From any device.
-- GitHub Pages version (`https://lukebenton-ctrl.github.io/garden-planner-2026/`) still works as a static fallback with localStorage-only state.
-
-## Ongoing development
-
-1. Claude (or you) commits + pushes to `claude/add-garden-web-view-MxQNT` (or `main`).
-2. GitHub webhook fires → SiteGround pulls → site updates within seconds.
-3. No DB schema changes needed for routine content edits. For schema changes, update `db/schema.sql` and run the new statements via **Site Tools → MySQL → phpMyAdmin**.
+- Visit `https://garden.lukebenton.com/`. Checkbox state persists across all devices.
+- Every push to `main` redeploys via GitHub Actions (~30 seconds).
 
 ## Security notes
 
-- **`config.php` lives at the web root** but is denied via `.htaccess`. Verify by visiting `https://garden.lukebenton.com/config.php` — you should get **403 Forbidden**.
-- **Rotate the DB password** before running the bootstrap installer (the original was pasted in chat). Site Tools → MySQL → Users → change password → use the new one in bootstrap.
-- **No in-app auth yet.** Rely on Protected URLs (step 6) for privacy.
-- **No CSRF protection yet** on the API. Acceptable because the API only accepts `application/json` Content-Type, which a CSRF form can't send cross-origin. Add a token to `config.php` + check on every API request when you add features.
+- **`config.php` denied at the web root** via `.htaccess`. Visit `https://garden.lukebenton.com/config.php` → expect **403**.
+- **Rotate the DB password** before bootstrap (old one was pasted in chat).
+- **No in-app auth.** Rely on Protected URLs for privacy.
+- **No CSRF protection yet** on the API. Acceptable because the API only accepts `application/json` Content-Type (CSRF forms can't send it cross-origin). Add a token-based check when more endpoints are added.
 
 ## Troubleshooting
 
 | Symptom | Likely cause | Fix |
 |---|---|---|
-| `503 Not installed` on `/api/state.php` | bootstrap not run | run `/bootstrap.php` |
-| `500 DB connection failed` | wrong creds in `config.php` | delete `config.php`, re-run bootstrap |
-| Checkboxes don't persist across devices | API unreachable, app fell back to localStorage | open DevTools Network tab, check `/api/state.php` request |
-| Auto-deploy not firing on push | webhook not registered or token expired | re-add webhook in GitHub repo settings |
+| Action fails: `Permission denied (publickey)` | Wrong key in `SITEGROUND_SSH_KEY` or public key not in SiteGround | Re-paste exact private key into secret; re-import public key in SG SSH Keys |
+| Action fails: `Connection timed out` | Wrong host/port | Verify against SG → Devs → SSH Credentials |
+| `503 Not installed` on `/api/state.php` | bootstrap not run yet | Run `/bootstrap.php` |
+| `500 DB connection failed` | wrong creds in `config.php` | delete `config.php` via File Manager, re-run bootstrap |
+| Checkboxes don't persist across devices | API unreachable, app fell back to localStorage | DevTools Network tab → check `/api/state.php` request status |

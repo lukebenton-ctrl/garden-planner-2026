@@ -1,0 +1,44 @@
+name: Deploy to SiteGround
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy via rsync over SSH
+        uses: easingthemes/ssh-deploy@v5.1.0
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SITEGROUND_SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.SITEGROUND_HOST }}
+          REMOTE_PORT: ${{ secrets.SITEGROUND_PORT }}
+          REMOTE_USER: ${{ secrets.SITEGROUND_USER }}
+          TARGET: ${{ secrets.SITEGROUND_PATH }}
+          # -avzc = archive, verbose, compressed, skip-by-checksum
+          # No --delete: server-generated files (config.php) must survive.
+          ARGS: "-avzc"
+          EXCLUDE: |
+            /.git/
+            /.github/
+            /node_modules/
+            /publish.sh
+            /README.md
+            /WEB_DEPLOY.md
+            /.gitignore
+            /lukes_complete_garden_plan.html
+            /db/
+            /config.php
+
+      - name: Summary
+        run: |
+          echo "### Deployed to SiteGround :rocket:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- Host: \`${{ secrets.SITEGROUND_HOST }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Target: \`${{ secrets.SITEGROUND_PATH }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Commit: \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
