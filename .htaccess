@@ -1,0 +1,25 @@
+# Deny direct access to config, schema, and dev artifacts.
+<Files "config.php">
+  Require all denied
+</Files>
+<Files "publish.sh">
+  Require all denied
+</Files>
+<Files ".gitignore">
+  Require all denied
+</Files>
+
+<FilesMatch "\.(sql|md|sh)$">
+  Require all denied
+</FilesMatch>
+
+# Allow README.md to be served? No — block by default. Devs read it on GitHub.
+
+# Sensible defaults
+Options -Indexes
+ServerSignature Off
+
+# Reasonable caching for the static planner
+<FilesMatch "\.(html|css|js)$">
+  Header set Cache-Control "no-cache, must-revalidate"
+</FilesMatch>
